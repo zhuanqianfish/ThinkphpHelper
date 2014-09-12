@@ -37,12 +37,12 @@ class ThinkphpHelperAction extends Action {
 			$resultCode .= "<th>".$columnName."</th>\r\n";
 		}
 		
-		$resultCode .= "</thead>\r\n". '<volist name="{$' .$tableName. 'List}" id="vo">'."\r\n<tr>\r\n";
+		$resultCode .= "</thead>\r\n". '<volist name="' .$tableName. 'List" id="vo">'."\r\n<tr>\r\n";
 		foreach($tableInfoArray as $tableInfo){ //拼接循环部分
 			$resultCode .= '<td>{$vo.' .$tableInfo[$this->getColumnNameKey()]. "}<td>\r\n";
 		}
-		$resultCode .= '<td><a href="U(' .ucfirst($tableName). '/editPage)/id/{$vo.id}">编辑</a> | '	//假定所有表均以id为主键
-					.'<a href="U(' .ucfirst($tableName).'/delete)/id/{$vo.id}" onclick="return confirm("确定删除吗？")">删除</a></td>'
+		$resultCode .= '<td><a href="{:U(\'' .ucfirst($tableName). '/edit\')}/id/{$vo.id}">编辑</a> | '	//假定所有表均以id为主键
+					.'<a href="{:U(\'' .ucfirst($tableName).'/delete\')}/id/{$vo.id}" onclick=\'return confirm("确定删除吗？")\'>删除</a></td>'
 					."\r\n<tr>\r\n</volist>\r\n</table>\r\n";
 		//dump($resultCode);
 		$this->show('<literal>'.$resultCode.'</literal>');//<literal>标签是防止$Think 系统的标签在show中被解析
@@ -64,8 +64,8 @@ class ThinkphpHelperAction extends Action {
 			foreach($tableInfoArray as $tableInfo){ 
 				$resultCode .= "<td>" .$tableInfo[$this->getColumnNameKey()]. "</td>\r\n";
 			}
-			$resultCode .= '<td><a href="'.U(ucfirst($tableName).'/editPage').'/id/'.$i.'">编辑</a> | '	
-					.'<a href="'.U(ucfirst($tableName).'/delete').'" onclick="return confirm("确定删除吗？")">删除</a></td></tr>'."\r\n";
+			$resultCode .= '<td><a href="'.U(ucfirst($tableName).'/edit'.'/id/'.$i).'">编辑</a> | '	
+					.'<a href="'.U(ucfirst($tableName).'/delete/id/'.$i).'" onclick=\'return confirm("确定删除吗？")\'>删除</a></td></tr>'."\r\n";
 		}
 		$resultCode .= "</table>\r\n";
 		//return $resultCode;
@@ -76,16 +76,17 @@ class ThinkphpHelperAction extends Action {
 	public function allCode(){
 		$tableName = $this->_param('table'); 
 		$resultCode = <<<str
-public function add@TableName(){
+public function all(){
 	$@tableNameModel = M('@TableName');
 	$@tableNameList = $@tableNameModel ->select();
 	\$this->assign('@tableNameList', $@tableNameList);
+	\$this->display();
 }
 str;
 		$resultCode = str_replace('@tableName', $tableName, $resultCode);
 		$resultCode = str_replace('@TableName', ucfirst($tableName), $resultCode);//修正为驼峰命名，首字母大写
 		//return $resultCode;
-		$this->show($resultCode);
+		$this->show('<literal>' .$resultCode. '</literal>');
 	}
 	
 	//生成新建页面代码
@@ -105,9 +106,6 @@ str;
 			//dump($tableInfo);
 			if($name != 'id'){
 				$resultCode .=  '<label  class="col-sm-2 control-label">' .$name;
-				if(($notnull == 1) && ($pk == 0)){
-					$resultCode .= '<span class="label label-info">必填</span>';
-				}
 				$resultCode .= '</label>';
 				//这里按说应该区别对待，为了简单就写了个一样的
 				$resultCode .=  '<p class="col-sm-10">'
@@ -141,15 +139,12 @@ str;
 									.'</p>';
 					break;
 				}*/
-			}else{
-				$resultCode .= '<p><input type="hidden" name="id"  /></p>';
 			}
 
-			
-			if(!is_null($dflt_value)){
-				$resultCode .= '默认值:'.$dflt_value;
-			}
-			$resultCode .= "<br>\r\n";
+			//if(!is_null($dflt_value)){
+			//	$resultCode .= '默认值:'.$dflt_value;
+			//}
+			$resultCode .= "\r\n";
 		}
 		$resultCode .='<input  type="submit"  value="提交" class="btn btn-default" />' 
 					."</form>";
@@ -161,9 +156,9 @@ str;
 	public function addCode(){	
 		$tableName = $this->_param('table'); 
 		$resultCode = <<<str
-public function add@TableName(){
-	$@tableNameModel = M('@TableName');
-	if(\$this->isPost()){ 
+public function add(){
+	if(\$this->isPost()){
+		$@tableNameModel = M('@TableName');
 		$@tableNameModel ->create();
 		\$flag = $@tableNameModel ->add();
 		if(\$flag){
@@ -172,7 +167,7 @@ public function add@TableName(){
 			\$this->error('新建失败',U('@TableName/all')); 
 		}
 	}else{
-		\$this->error('非法的提交',U('@TableName/all')); 
+		\$this->display(); 
 	}
 }
 str;
@@ -189,18 +184,9 @@ str;
 		$resultCode = '<form class="form-horizontal" method="post">'."\r\n";
 		$tableInfoArray = $this->getTableInfoArray($tableName);
 			foreach($tableInfoArray as $tableInfo){
-				$cid  = $tableInfo['cid'];
 				$name = $tableInfo[$this->getColumnNameKey()];
-				$type = $tableInfo['type'];
-				$notnull = $tableInfo['notnull'];
-				$dflt_value = $tableInfo['dflt_value'];
-				$pk = $tableInfo['pk'];
-				
 				if($name != 'id'){
 					$resultCode .=  '<label  class="col-sm-2 control-label">' .$name;
-					if(($notnull == 1) && ($pk == 0)){
-						$resultCode .= '<span class="label label-info">必填</span>';
-					}
 					$resultCode .= '</label>';
 					//这里按说应该区别对待，为了简单就写了个一样的
 					$resultCode .=  '<p class="col-sm-10">'
@@ -251,9 +237,9 @@ str;
 	public function editCode(){ 
 		$tableName = $this->_param('table'); 
 		$resultCode = <<<str
-public function edit@TableName(){
+public function edit(){
 	$@tableNameModel = M('@TableName');
-	if(\$this->isPost()){ 
+	if(\$this->isPost()){
 		$@tableNameModel ->create();
 		\$flag = $@tableNameModel ->save();
 		if(\$flag){
@@ -265,6 +251,7 @@ public function edit@TableName(){
 		\$id = \$this->_param('id'); 
 		$@tableName = $@tableNameModel->find(\$id);
 		\$this->assign('@tableName', $@tableName);
+		\$this->display();
 	}
 }
 
@@ -279,7 +266,7 @@ str;
 	public function deleteCode(){
 		$tableName = $this->_param('table'); 
 		$resultCode = <<<str
-public function delete@TableName(){
+public function delete(){
 	$@tableNameModel = M('@tableName');
 	\$id = \$this->_param('id'); 
 	\$flag = $@tableNameModel->where('id='.\$id)->delete();
@@ -741,7 +728,6 @@ margin: 10px 0;
 fieldset label {
 display: block;
 float: left;
-width: 200px;
 height: 25px;
 line-height: 25px;
 text-shadow: 0 1px 0 #fff;
@@ -880,7 +866,7 @@ padding:5px;
 		<div class="clear"></div>
 		<div class="module_content">
 						<fieldset>
-							<label>列出所有记录代码(all+表名)</label>
+							<label>列出所有记录代码</label>
 							<textarea rows="12" id="allCode"></textarea>
 						</fieldset>
 		</div>
@@ -909,7 +895,7 @@ padding:5px;
 		<div class="clear"></div>
 		<div class="module_content">
 						<fieldset>
-							<label>新建操作处理代码(add+表名)</label>
+							<label>新建操作处理代码</label>
 							<textarea rows="12" id="addCode"></textarea>
 						</fieldset>
 		</div>
@@ -938,7 +924,7 @@ padding:5px;
 		<div class="clear"></div>
 		<div class="module_content">
 						<fieldset>
-							<label>编辑操作处理代码(edit+表名)</label>
+							<label>编辑操作处理代码</label>
 							<textarea rows="12" id="editCode"></textarea>
 						</fieldset>
 		</div>
@@ -948,7 +934,7 @@ padding:5px;
 		
 		<div class="module_content">
 						<fieldset>
-							<label>删除操作处理代码(delete+表名)</label>
+							<label>删除操作处理代码</label>
 							<textarea rows="12" id="deleteCode"></textarea>
 						</fieldset>
 		</div>
