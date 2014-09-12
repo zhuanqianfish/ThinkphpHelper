@@ -14,5 +14,5 @@ Thinkphp对于后台操作的支持已经非常强大，再加上最近非常流
 
 聪明的你一定知道它是怎么用的对吧？
 
-它一定有很多不足之处，希望大家能不吝赐教，让它变得更好，让Thinkphp用起来更方便。
+项目地址：https://github.com/zhuanqianfish/ThinkphpHelper
 
