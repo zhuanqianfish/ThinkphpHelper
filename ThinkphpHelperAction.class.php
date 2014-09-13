@@ -829,10 +829,8 @@ padding:5px;
 		 <p>	
 		 生成代码命名规则为：<br>
 		 列出所有数据操作名：all<br>
-		 新建页面名：addPage<br>
-		 编辑页面名：editPage<br>
-		 新建操作名：add<br>
-		 编辑操作名：edit<br>
+		 新建页面名：add<br>
+		 编辑页面名：edit<br>
 		 删除操作名：delete<br>
 		</p>
 		
