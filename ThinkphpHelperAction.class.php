@@ -39,7 +39,7 @@ class ThinkphpHelperAction extends Action {
 		
 		$resultCode .= "<td>操作</td>\r\n</tr>\r\n</thead>\r\n". '<volist name="' .$tableName. 'List" id="vo">'."\r\n<tr>\r\n";
 		foreach($tableInfoArray as $tableInfo){ //拼接循环部分
-			$resultCode .= '<td>{$vo.' .$tableInfo[$this->getColumnNameKey()]. "}<td>\r\n";
+			$resultCode .= '<td>{$vo.' .$tableInfo[$this->getColumnNameKey()]. "}</td>\r\n";
 		}
 		$resultCode .= '<td><a href="{:U(\'' .ucfirst($tableName). '/edit\')}/id/{$vo.id}">编辑</a> | '	//假定所有表均以id为主键
 					.'<a href="{:U(\'' .ucfirst($tableName).'/delete\')}/id/{$vo.id}" onclick=\'return confirm("确定删除吗？")\'>删除</a></td>'
