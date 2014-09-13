@@ -267,7 +267,7 @@ str;
 		$tableName = $this->_param('table'); 
 		$resultCode = <<<str
 public function delete(){
-	$@tableNameModel = M('@tableName');
+	$@tableNameModel = M('@TableName');
 	\$id = \$this->_param('id'); 
 	\$flag = $@tableNameModel->where('id='.\$id)->delete();
 	if(\$flag){
