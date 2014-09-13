@@ -37,7 +37,7 @@ class ThinkphpHelperAction extends Action {
 			$resultCode .= "<th>".$columnName."</th>\r\n";
 		}
 		
-		$resultCode .= "</thead>\r\n". '<volist name="' .$tableName. 'List" id="vo">'."\r\n<tr>\r\n";
+		$resultCode .= "<td>操作</td>\r\n</tr>\r\n</thead>\r\n". '<volist name="' .$tableName. 'List" id="vo">'."\r\n<tr>\r\n";
 		foreach($tableInfoArray as $tableInfo){ //拼接循环部分
 			$resultCode .= '<td>{$vo.' .$tableInfo[$this->getColumnNameKey()]. "}<td>\r\n";
 		}
