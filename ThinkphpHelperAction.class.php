@@ -110,7 +110,7 @@ str;
 				//这里按说应该区别对待，为了简单就写了个一样的
 				$resultCode .=  '<p class="col-sm-10">'
 									.'<input type="text" class="form-control" placeholder="' 
-									.$name. '" name="'.$name.'" value="{$'.$tableName.'.'.$name.'}" />'
+									.$name. '" name="'.$name.'" />'
 									.'</p>';
 				/* 如sqlite就可以分成4种
 				switch ($type){ 
