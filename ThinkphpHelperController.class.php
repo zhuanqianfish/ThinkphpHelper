@@ -4,9 +4,12 @@
 //	weiyunstudio.com
 //	sjj zhuanqianfish@gmail.com
 //	2014年9月11日
+namespace Home\Controller;
+use Think\Controller;
+use Think\Model;
 
 
-class ThinkphpHelperAction extends Action {
+class ThinkphpHelperController extends Controller {
 
 	const SQLITE_COLUMN_NAME_KEY = 'name';	//sqlite列名键
 	const MYSQL_COLUMN_NAME_KEY = 'COLUMN_NAME';	//mysql列名键
@@ -28,7 +31,7 @@ class ThinkphpHelperAction extends Action {
 	
 	//列出所有记录页面代码
 	public function allPageCode(){
-		$tableName = $this->_param('table'); 
+		$tableName = I('table'); 
 		$Model = M($tableName);
 		$resultCode = "<table class=\"table table-striped\">\r\n<thead>\r\n<tr>\r\n";	
 		$tableInfoArray = $this->getTableInfoArray($tableName);
@@ -37,12 +40,12 @@ class ThinkphpHelperAction extends Action {
 			$resultCode .= "<th>".$columnName."</th>\r\n";
 		}
 		
-		$resultCode .= "<th>操作</th>\r\n</tr>\r\n</thead>\r\n". '<volist name="' .$tableName. 'List" id="vo">'."\r\n<tr>\r\n";
+		$resultCode .= "<td>操作</td>\r\n</tr>\r\n</thead>\r\n". '<volist name="' .$tableName. 'List" id="vo">'."\r\n<tr>\r\n";
 		foreach($tableInfoArray as $tableInfo){ //拼接循环部分
 			$resultCode .= '<td>{$vo.' .$tableInfo[$this->getColumnNameKey()]. "}</td>\r\n";
 		}
-		$resultCode .= '<td><a href="{:U(\'' .ucfirst($tableName). '/edit\')}/id/{$vo.id}">编辑</a> | '	//假定所有表均以id为主键
-					.'<a href="{:U(\'' .ucfirst($tableName).'/delete\')}/id/{$vo.id}" onclick=\'return confirm("确定删除吗？")\'>删除</a></td>'
+		$resultCode .= '<td><a href="{:U(\'' .ucfirst($tableName). '/edit\')}?id={$vo.id}">编辑</a> | '	//假定所有表均以id为主键
+					.'<a href="{:U(\'' .ucfirst($tableName).'/delete\')}?id={$vo.id}" onclick=\'return confirm("确定删除吗？")\'>删除</a></td>'
 					."\r\n<tr>\r\n</volist>\r\n</table>\r\n";
 		//dump($resultCode);
 		$this->show('<literal>'.$resultCode.'</literal>');//<literal>标签是防止$Think 系统的标签在show中被解析
@@ -51,7 +54,7 @@ class ThinkphpHelperAction extends Action {
 	
 	//列出所有记录页面，读取并填充数据
 	public function previewAllPage(){ 
-		$tableName = $this->_param('table'); 
+		$tableName = I('table'); 
 		$Model = M($tableName);
 		$resultCode = "<table class=\"table table-striped\">\r\n<thead>\r\n<tr>\r\n";
 		$tableInfoArray = $this->getTableInfoArray($tableName);
@@ -64,8 +67,8 @@ class ThinkphpHelperAction extends Action {
 			foreach($tableInfoArray as $tableInfo){ 
 				$resultCode .= "<td>" .$tableInfo[$this->getColumnNameKey()]. "</td>\r\n";
 			}
-			$resultCode .= '<td><a href="'.U(ucfirst($tableName).'/edit'.'/id/'.$i).'">编辑</a> | '	
-					.'<a href="'.U(ucfirst($tableName).'/delete/id/'.$i).'" onclick=\'return confirm("确定删除吗？")\'>删除</a></td></tr>'."\r\n";
+			$resultCode .= '<td><a href="'.U(ucfirst($tableName).'/edit?id='.$i).'">编辑</a> | '	
+					.'<a href="'.U(ucfirst($tableName).'/delete?id='.$i).'" onclick=\'return confirm("确定删除吗？")\'>删除</a></td></tr>'."\r\n";
 		}
 		$resultCode .= "</table>\r\n";
 		//return $resultCode;
@@ -74,7 +77,7 @@ class ThinkphpHelperAction extends Action {
 	
 	//生成所有记录代码
 	public function allCode(){
-		$tableName = $this->_param('table'); 
+		$tableName = I('table'); 
 		$resultCode = <<<str
 public function all(){
 	$@tableNameModel = M('@TableName');
@@ -91,7 +94,7 @@ str;
 	
 	//生成新建页面代码
 	public function addPage(){ 
-		$tableName = $this->_param('table'); 
+		$tableName = I('table'); 
 		$Model = new Model();
 		$resultCode = '<form class="form-horizontal" method="post">'."\r\n";
 		$tableInfoArray = $this->getTableInfoArray($tableName);
@@ -154,10 +157,10 @@ str;
 	
 	//新建操作代码
 	public function addCode(){	
-		$tableName = $this->_param('table'); 
+		$tableName = I('table'); 
 		$resultCode = <<<str
 public function add(){
-	if(\$this->isPost()){
+	if(IS_POST){
 		$@tableNameModel = M('@TableName');
 		$@tableNameModel ->create();
 		\$flag = $@tableNameModel ->add();
@@ -179,7 +182,7 @@ str;
 	
 	//编辑页面
 	public function editPage(){	
-		$tableName = $this->_param('table'); 
+		$tableName = I('table'); 
 		$Model = new Model();
 		$resultCode = '<form class="form-horizontal" method="post">'."\r\n";
 		$tableInfoArray = $this->getTableInfoArray($tableName);
@@ -235,11 +238,11 @@ str;
 
 	//生成编辑代码
 	public function editCode(){ 
-		$tableName = $this->_param('table'); 
+		$tableName = I('table'); 
 		$resultCode = <<<str
 public function edit(){
 	$@tableNameModel = M('@TableName');
-	if(\$this->isPost()){
+	if(IS_POST){
 		$@tableNameModel ->create();
 		\$flag = $@tableNameModel ->save();
 		if(\$flag){
@@ -248,7 +251,7 @@ public function edit(){
 			\$this->error('编辑失败',U('@TableName/all')); 
 		}
 	}else{
-		\$id = \$this->_param('id'); 
+		\$id = I('id'); 
 		$@tableName = $@tableNameModel->find(\$id);
 		\$this->assign('@tableName', $@tableName);
 		\$this->display();
@@ -264,11 +267,11 @@ str;
 	
 	//删除代码
 	public function deleteCode(){
-		$tableName = $this->_param('table'); 
+		$tableName = I('table'); 
 		$resultCode = <<<str
 public function delete(){
-	$@tableNameModel = M('@TableName');
-	\$id = \$this->_param('id'); 
+	$@tableNameModel = M('@tableName');
+	\$id = I('id'); 
 	\$flag = $@tableNameModel->where('id='.\$id)->delete();
 	if(\$flag){
 		\$this->success('删除成功', U('@TableName/all'));
@@ -319,10 +322,10 @@ str;
 		$Model = new Model(); // 实例化一个model对象 没有对应任何数据表
 		if($dbType == 'mysql'){
 			$dbName = C('DB_NAME');
-			$result = $Model->query("select * from information_schema.columns where table_schema='".$dbName."' and table_name='".$tableName."'");
+			$result = $Model->query("select * from information_schema.columns where table_schema='".$dbName."' and table_name='".C('DB_PREFIX').$tableName."'");
 			return $result;
 		}else{ //sqlite
-			$result = $Model->query("pragma table_info (".$tableName.")");
+			$result = $Model->query("pragma table_info (".C('DB_PREFIX').$tableName.")");
 			return $result;
 		} 
 		$this->error('数据库类型不支持');
@@ -353,12 +356,12 @@ str;
 	
 	<script type="text/javascript">
 	@URLS;
-	
+	DB_PREFIX = '@DB_PREFIX';
 	jQuery(document).ready(function($) {
 		$('#gogogo').bind("click", function(){
 			table = $('#tables option:selected').val();
-			if($('#prefix').val() != ''){
-				table = table.substr($('#prefix').val().length);
+			if(DB_PREFIX != ''){
+				table = table.substr(DB_PREFIX.length);
 			}
 			gogogo(table);
 		}); 
@@ -453,15 +456,16 @@ text-indent: 4.5%;
 width: 68%;
 }
 
-.btn_view_site {
+.right_title {
 float: left;
 width: 9%;
 }
 
-.btn_view_site a {
+.right_title h2 {
 display: block;
 margin-top: 12px;
-width: 91px;
+font-size:14px;
+width: 120px;
 height: 27px;
 text-align: center;
 line-height: 29px;
@@ -469,9 +473,6 @@ color: #fff;
 text-decoration: none;
 text-shadow: 0 -1px 0 #000;}
 
-.btn_view_site a:hover {
-background-position: 0 -27px;
-}
 
 /* Secondary Header Bar */
 
@@ -763,10 +764,6 @@ border: 1px solid #77BACE;
 box-shadow: inset 0 2px 2px #ccc, 0 0 10px #ADDCE6;
 }
 
-.tableSelect,#prefix{
-	width:90%;
-}
-
 /* Alerts */
 
 #main h4#alert_info {
@@ -799,17 +796,15 @@ padding:5px;
 	<header id="header">
 		<hgroup>
 			<!--<h1 class="site_title"><a href="#">weiyunstudio</a></h1>-->
-			<h2 class="section_title">ThinkPHP 代码生成 V0.1</h2>
-			<div class="btn_view_site">
-				<!--<a href="#">更多</a>-->
+			<h2 class="section_title">ThinkPHP 代码生成 V0.2</h2>
+			<div class="right_title">
+				<h2>for ThinkPHP3.2.2</h2>
 			</div>
 		</hgroup>
 	</header> <!-- end of header bar -->
 
 	
 	<aside id="sidebar" class="column">
-		<h4>数据表前缀(没有请留空)</h4>
-			<p><input type="text" id="prefix" /></p>
 		<h4>选择表格</h4>
 		<p>
 			<select class="form-control tableSelect" id="tables">
@@ -950,7 +945,7 @@ tpl;
 	return $templateStr;
 	}
 
-	//处理模板,主要是替换表名
+	//处理模板,主要js的参数
 	public function showTemplate(){
 		$templateStr = $this->getTemplateStr();
 		$optionStr = '';
@@ -961,18 +956,18 @@ tpl;
 		
 		$templateStr = str_replace('@tableNames', $optionStr, $templateStr);
 		
-		$urlStr = '';
-		$urlStr .= 'allPageUrl = "'		.U(MODULE_NAME.'/previewAllPage').'";';
-		$urlStr .= 'allPageCodeUrl = "'	.U(MODULE_NAME.'/allPageCode').'";';
-		$urlStr .= 'allCodeUrl = "'		.U(MODULE_NAME.'/allCode').'";';
-		$urlStr .= 'addPageUrl = "'		.U(MODULE_NAME.'/addPage').'";';
-		$urlStr .= 'addCodeUrl = "'		.U(MODULE_NAME.'/addCode').'";';
-		$urlStr .= 'editPageUrl = "'	.U(MODULE_NAME.'/editPage').'";';
-		$urlStr .= 'editCodeUrl = "'	.U(MODULE_NAME.'/editCode').'";';
-		$urlStr .= 'deleteCodeUrl = "'	.U(MODULE_NAME.'/deleteCode').'"';
-		
+		$urlStr  = 'allPageUrl = \''		.__CONTROLLER__."/previewAllPage/';\r\n";
+		$urlStr .= 'allPageCodeUrl = \''	.__CONTROLLER__."/allPageCode/';\r\n";
+		$urlStr .= 'allCodeUrl = \''		.__CONTROLLER__."/allCode/';\r\n";
+		$urlStr .= 'addPageUrl = \''		.__CONTROLLER__."/addPage/';\r\n";
+		$urlStr .= 'addCodeUrl = \''		.__CONTROLLER__."/addCode/';\r\n";
+		$urlStr .= 'editPageUrl = \''	.__CONTROLLER__."/editPage/';\r\n";
+		$urlStr .= 'editCodeUrl = \''	.__CONTROLLER__."/editCode/';\r\n";
+		$urlStr .= 'deleteCodeUrl = \''	.__CONTROLLER__."/deleteCode/';\r\n";
+
 		$templateStr = str_replace('@URLS', $urlStr, $templateStr);
-		//dump($urlStr);
+		$templateStr = str_replace('@DB_PREFIX', C('DB_PREFIX'), $templateStr);
 		$this->show($templateStr);
 	}
+	
 }
