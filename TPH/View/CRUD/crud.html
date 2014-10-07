@@ -54,7 +54,7 @@
 		$('#gogogo').bind("click", function(){
 			table = $('#tables option:selected').val();
 			if(db_prefix != ''){
-				table = table.substr(db_prefix.length);
+				table = table.replace(db_prefix,'');
 			}
 			gogogo(table);
 		});

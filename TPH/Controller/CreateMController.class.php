@@ -11,6 +11,7 @@ use Think\Model;
 //生成模块
 class CreateMController extends Controller {
     public function index(){
+		$this->assign('db_prefix',C('DB_PREFIX'));
 		$tableNameList = $this->getTableNameList();
 		$this->assign('tableNameList', $tableNameList);
 		$moduleNameList = $this->getModuleNameList();

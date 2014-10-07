@@ -1,4 +1,6 @@
 <script type="text/javascript">
+db_prefix = '{$db_prefix}';
+
 function gogogo(moduleName, selectTableName, layoutName){
 	$.post("__CONTROLLER__/creatFiles", {'moduleName' : moduleName, 'selectTableName' : selectTableName, 'layoutName' : layoutName},
 		function(data){
@@ -12,9 +14,15 @@ jQuery(document).ready(function($) {
 			moduleName = $('#moduleName').val();
 			checkedBox = $('input:checked');
 			selectTableName = [];
+			if(db_prefix != ''){
+				checkedBox.each(function(){
+				selectTableName.push($(this).val().replace(db_prefix,''));
+				});
+			}else{
 			checkedBox.each(function(){
 				selectTableName.push($(this).val());
 				});
+			}
 			layoutName = $('#layoutName').val();
 			gogogo(moduleName, selectTableName, layoutName);
 		});	
