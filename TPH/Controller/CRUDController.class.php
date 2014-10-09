@@ -8,79 +8,21 @@ namespace TPH\Controller;
 use Think\Controller;
 use Think\Model;
 
-
 class CRUDController extends Controller {
-	const SQLITE_COLUMN_NAME_KEY = 'name';	//sqlite列名键
-	const MYSQL_COLUMN_NAME_KEY = 'COLUMN_NAME';	//mysql列名键
-
 	public function crud(){	//生成CRUD代码
-		$this->assign('tableNameArray',$this->getTableNamesArray());
-		$this->assign('moduleNameList', $this->getModuleNameList());
+		$this->assign('tableNameList', getTableNameList());
+		$this->assign('moduleNameList', getModuleNameList());
+		$this->assign('selectTableName', session('selectTableName'));
 		$this->assign('db_prefix',C('DB_PREFIX'));
 		$this->display();
     }
-	
-	
-	//获取表名列表
-	public function getTableNamesArray(){
-		$dbType = C('DB_TYPE');
-		$Model = new Model(); // 实例化一个model对象 没有对应任何数据表
-		if($dbType == 'mysql'){
-			$dbName = C('DB_NAME');
-			$result = Array();
-			$tempArray = $Model->query("select table_name from information_schema.tables where table_schema='".$dbName."' and table_type='base table'");
-			foreach($tempArray as $temp){
-				$result[] = $temp['table_name'];
-			}
-			return $result;
-		}else{ //sqlite
-			$result = Array();
-			$tempArray = $Model->query("select * from sqlite_master where type='table' order by name");
-			foreach($tempArray as $temp){
-				$result[] = $temp['name'];
-			}
-			return $result;
-		} 
-		$this->error('数据库类型不支持');
-	}
-	
-	//获取列名列表
-	public function getTableInfoArray($tableName){
-		$dbType = C('DB_TYPE');
-		$Model = new Model(); // 实例化一个model对象 没有对应任何数据表
-		if($dbType == 'mysql'){
-			$dbName = C('DB_NAME');
-			$result = $Model->query("select * from information_schema.columns where table_schema='".$dbName."' and table_name='".C('DB_PREFIX').$tableName."'");
-			return $result;
-		}else{ //sqlite
-			$result = $Model->query("pragma table_info (".C('DB_PREFIX').$tableName.")");
-			return $result;
-		} 
-		$this->error('数据库类型不支持');
-	}
-	
-	//每个数据表的结构
-	private function getStructure(){ 	
-		$Model = new Model(); 
-		$tableNamesArray = $this->getTableNamesArray();
-		foreach($tableNamesArray as $tableNameArray){
-			show( $Model->query("pragma table_info (".$tableNameArray['name'].")"));
+
+	public function getSessionTableName(){
+		$selectTableName = '';
+		for($i = 0; $i < count(session('selectTableName')); $i++){
+			$selectTableName .= "'".session('selectTableName')[$i]."',";
 		}
-	}
-	
-	//根据数据库类型获取列名键
-	private function getColumnNameKey(){
-		$dbType = C('DB_TYPE');
-		if($dbType == 'mysql'){
-			return self::MYSQL_COLUMN_NAME_KEY;
-		}else{
-			return self::SQLITE_COLUMN_NAME_KEY;
-		}
-	}
-	
-	public function test(){
-		$str = "aaaaaaaaa";
-		echo ($str);
+		return $selectTableName;
 	}
 	
 	public function getPageCode($tableName){	//	分页代码
@@ -99,15 +41,15 @@ class CRUDController extends Controller {
 		$isPage = I('isPage');
 		$Model = M($tableName);
 		$resultCode = "<table class=\"table table-striped table-bordered table-hover\">\r\n<thead>\r\n<tr>\r\n";	
-		$tableInfoArray = $this->getTableInfoArray($tableName);
+		$tableInfoArray = getTableInfoArray($tableName);
 		foreach($tableInfoArray as $tableInfo){ //拼接表头
-			$columnName = $tableInfo[$this->getColumnNameKey()];
+			$columnName = $tableInfo[getColumnNameKey()];
 			$resultCode .= "<th><center>".$columnName."</center></th>\r\n";
 		}
 		
 		$resultCode .= "<td>操作</td>\r\n</tr>\r\n</thead>\r\n". '<volist name="' .$tableName. 'List" id="vo">'."\r\n<tr>\r\n";
 		foreach($tableInfoArray as $tableInfo){ //拼接循环部分
-			$resultCode .= '<td>{$vo.' .$tableInfo[$this->getColumnNameKey()]. "}</td>\r\n";
+			$resultCode .= '<td>{$vo.' .$tableInfo[getColumnNameKey()]. "}</td>\r\n";
 		}
 		$resultCode .= '<td><a href="{:U(\'' .ucfirst($tableName). '/edit\')}?id={$vo.id}">编辑</a> | '	//假定所有表均以id为主键
 					.'<a href="{:U(\'' .ucfirst($tableName).'/delete\')}?id={$vo.id}" onclick=\'return confirm("确定删除吗？")\'>删除</a></td>'
@@ -129,15 +71,15 @@ class CRUDController extends Controller {
 		$tableName = I('table'); 
 		$Model = M($tableName);
 		$resultCode = "<table class=\"table table-striped table-bordered table-hover\">\r\n<thead>\r\n<tr>\r\n";
-		$tableInfoArray = $this->getTableInfoArray($tableName);
+		$tableInfoArray = getTableInfoArray($tableName);
 		foreach($tableInfoArray as $tableInfo){ //拼接表头
-			$name = $tableInfo[$this->getColumnNameKey()];
+			$name = $tableInfo[getColumnNameKey()];
 			$resultCode .= "<th><center>".$name."</center></th>\r\n";
 		}
 		$resultCode .= "<th>操 作</th>\r\n</tr>\r\n</thead>\r\n";
 		for($i = 0; $i < 5; $i++){//填充5个数据
 			foreach($tableInfoArray as $tableInfo){ 
-				$resultCode .= "<td>" .$tableInfo[$this->getColumnNameKey()]. "</td>\r\n";
+				$resultCode .= "<td>" .$tableInfo[getColumnNameKey()]. "</td>\r\n";
 			}
 			$resultCode .= '<td><a href="'.U(ucfirst($tableName).'/edit?id='.$i).'">编辑</a> | '	
 					.'<a href="'.U(ucfirst($tableName).'/delete?id='.$i).'" onclick=\'return confirm("确定删除吗？")\'>删除</a></td></tr>'."\r\n";
@@ -179,10 +121,10 @@ class CRUDController extends Controller {
 		$tableName = I('table'); 
 		$Model = new Model();
 		$resultCode = '<form class="form-horizontal" method="post">'."\r\n";
-		$tableInfoArray = $this->getTableInfoArray($tableName);
+		$tableInfoArray = getTableInfoArray($tableName);
 		
 		foreach($tableInfoArray as $tableInfo){
-			$name = $tableInfo[$this->getColumnNameKey()];
+			$name = $tableInfo[getColumnNameKey()];
 			// $cid  = $tableInfo['cid'];	//这里本来是给sqlite数据库的，为了兼容mysql暂时取消
 			// $type = $tableInfo['type'];
 			// $notnull = $tableInfo['notnull'];
@@ -271,9 +213,9 @@ str;
 		$tableName = I('table'); 
 		$Model = new Model();
 		$resultCode = '<form class="form-horizontal" method="post">'."\r\n";
-		$tableInfoArray = $this->getTableInfoArray($tableName);
+		$tableInfoArray = getTableInfoArray($tableName);
 			foreach($tableInfoArray as $tableInfo){
-				$name = $tableInfo[$this->getColumnNameKey()];
+				$name = $tableInfo[getColumnNameKey()];
 				if($name != 'id'){
 					$resultCode .=  '<label  class="col-sm-2 control-label">' .$name;
 					$resultCode .= '</label>';
@@ -383,44 +325,39 @@ str;
 	
 	//生成所有代码对应的文件，
 	public function creatAllFiles(){
-		$tableName = I('tableName');
+		$tableName = I('selectTableName');
 		$moduleName = I('moduleName');
 		$controllerPath = APP_PATH. ucfirst($moduleName). "/Controller/";
-		$viewPath = APP_PATH. ucfirst($moduleName). "/View/".ucfirst($tableName)."/";
-		$_POST['table'] = $tableName;
 		
-		$controllerStr = "<?php\r\n";
-		$controllerStr .= "//由ThinkphpHelper自动生成,请根据需要修改\r\n";
-		$controllerStr .= "namespace ".ucfirst($moduleName)."\Controller;\r\n";
-		$controllerStr .= "use Think\Controller;\r\n\r\n";
-		$controllerStr .= "class ". ucfirst($tableName) ."Controller extends Controller {\r\n";
-		$controllerStr .= $this->generateAllCode()."\r\n\r\n";
-		$controllerStr .= $this->generateAddCode()."\r\n\r\n";
-		$controllerStr .= $this->generateEditCode()."\r\n\r\n";
-		$controllerStr .= $this->generateDeleteCode()."\r\n\r\n}";
-		
-		$originalAllViewStr = $this->generateAllPageCode();
-		$allViewStr = $this->makeTemplate("all.html", "管理".$tableName, $originalAllViewStr);
-		$originalAddViewStr = $this->generateAddPage();
-		$addViewStr = $this->makeTemplate("add.html", "新建".$tableName, $originalAddViewStr);
-		$originalEditViewStr = $this->generateEditPage();
-		$editViewStr = $this->makeTemplate("edit.html", "编辑".$tableName, $originalEditViewStr);
-		
-		file_put_contents($controllerPath.ucfirst($tableName)."Controller.class.php", $controllerStr);//生成Controller文件
-		FileUtil::createDir($viewPath);
-		file_put_contents($viewPath."all.html", $allViewStr);
-		file_put_contents($viewPath."add.html", $addViewStr);
-		file_put_contents($viewPath."edit.html", $editViewStr);
+		for($i = 0;$i < count($tableName); $i++){
+			$_POST['table'] = $tableName[$i];
+			$viewPath = APP_PATH. ucfirst($moduleName). "/View/".ucfirst($tableName[$i])."/";
+			$controllerStr = "<?php\r\n";
+			$controllerStr .= "//由ThinkphpHelper自动生成,请根据需要修改\r\n";
+			$controllerStr .= "namespace ".ucfirst($moduleName)."\Controller;\r\n";
+			$controllerStr .= "use Think\Controller;\r\n\r\n";
+			$controllerStr .= "class ". ucfirst($tableName[$i]) ."Controller extends Controller {\r\n";
+			$controllerStr .= $this->generateAllCode()."\r\n\r\n";
+			$controllerStr .= $this->generateAddCode()."\r\n\r\n";
+			$controllerStr .= $this->generateEditCode()."\r\n\r\n";
+			$controllerStr .= $this->generateDeleteCode()."\r\n\r\n}";
+			
+			$originalAllViewStr = $this->generateAllPageCode();
+			$allViewStr = $this->makeTemplate("all.html", "管理".$tableName[$i], $originalAllViewStr);
+			$originalAddViewStr = $this->generateAddPage();
+			$addViewStr = $this->makeTemplate("add.html", "新建".$tableName[$i], $originalAddViewStr);
+			$originalEditViewStr = $this->generateEditPage();
+			$editViewStr = $this->makeTemplate("edit.html", "编辑".$tableName[$i], $originalEditViewStr);
+			
+			file_put_contents($controllerPath.ucfirst($tableName[$i])."Controller.class.php", $controllerStr);//生成Controller文件
+			FileUtil::createDir($viewPath);
+			file_put_contents($viewPath."all.html", $allViewStr);
+			file_put_contents($viewPath."add.html", $addViewStr);
+			file_put_contents($viewPath."edit.html", $editViewStr);
+		}
 		echo "生成完成。";
 	}
 	
-	
-	//读取项目目录下的文件夹，供用户选择哪个才是模块目录
-	public function getModuleNameList(){
-		$ignoreList = Array("Common","Home","Runtime","TPH");
-		$allFileList = FileUtil::getDirList(APP_PATH);
-		return array_diff($allFileList, $ignoreList);
-	}
 	
 	//解析add,edit,all模板
 	public function makeTemplate($templateFileName, $operateTitle, $content){

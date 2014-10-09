@@ -12,14 +12,43 @@ p{
 <div class="mainbar">
 
 <h1>帮助</h1>
-<p>1.配置好你的数据库，把TPH文件夹复制到你的项目目录中</p>
-<p>2.修改你的入口文件，加入你要生成的模块，像这样：define('BIND_MODULE','Test');访问你的入口文件，让Thinkphp自动生成你的模块下的目录结构，然后删除这条定义，否则第3步访问TPH时会提示“无法加载控制器”（注意，暂时仅支持在项目根目录下的模块）</p>
-<p>3.访问http://127.0.0.1/[这里是你的项目名]/index.php/TPH,这时你应该能看到ThinkphpHelper的操作界面了</p>
-<p>4.在“生成模块选项”中，选择你的目标模块，把你要生成的控制器对应的表名打上勾，点击下面的“生成”按钮，这一步是为了生成布局文件，同时它会修改模块目录下的config文件使之开启布局选项。</p>
-<p>5.在“生成CRUD代码”中，选择你要生成的目标模块，并且选择你要生成的数据表，点击蓝色按钮“直接生成文件”</p>
-<p>6.继续选择你要生成的其他数据表，并生成对应的文件</p>
-<p>7.修改你的模块中的IndexController.class.php文件的index方法，将其内容改为：$this->display();</p>
-<p>8.访问你的项目，have fun</p>
+<a href="http://weiyunstudio.qiniudn.com/1.png"><img class="alignnone" src="http://weiyunstudio.qiniudn.com/1.png" alt="" /></a>
+
+测试中我使用的是Sqlite数据库，复制数据库文件到项目目录下，如使用Mysql数据库可以省略此步骤。
+
+<a href="http://weiyunstudio.qiniudn.com/1.png"><img class="alignnone" src="http://weiyunstudio.qiniudn.com/2.png" alt="" /></a>
+
+将TPH文件夹复制到项目目录下。
+
+<a href="http://weiyunstudio.qiniudn.com/1.png"><img class="alignnone" src="http://weiyunstudio.qiniudn.com/3.png" alt="" /></a>
+
+修改项目配置文件，主要是配置数据库信息。
+
+<a href="http://weiyunstudio.qiniudn.com/1.png"><img class="alignnone" src="http://weiyunstudio.qiniudn.com/4.png" alt="" /></a>
+
+访问一下TPH，应该看到以上界面
+
+<a href="http://weiyunstudio.qiniudn.com/1.png"><img class="alignnone" src="http://weiyunstudio.qiniudn.com/5.png" alt="" /></a>
+
+点击“生成模块选项”选择好目标模块，把需要生成的表名打上勾，点击生成。成功后，会有提示生成路径。此步骤主要是为了生成布局文件。
+
+<a href="http://weiyunstudio.qiniudn.com/1.png"><img class="alignnone" src="http://weiyunstudio.qiniudn.com/6.png" alt="" /></a>
+
+点击“生成CRUD代码”，注意选择和上一步相同的数据表，点击生成文件。
+
+<a href="http://weiyunstudio.qiniudn.com/1.png"><img class="alignnone" src="http://weiyunstudio.qiniudn.com/7.png" alt="" /></a>
+
+修改Index控制器下的index方法内容为：$this-&gt;show();如图
+
+<a href="http://weiyunstudio.qiniudn.com/1.png"><img class="alignnone" src="http://weiyunstudio.qiniudn.com/8.png" alt="" /></a>
+
+再次访问你的项目，have fun.
+
+&nbsp;
+
+&nbsp;
+
+注：聪明的你一定发现了，布局模板是可以自定义的，你可以创建自己的模板风格进行生成，具体做法是在TPH/Template文件夹下创建一个文件夹，在此文件夹下创建一个名为“layout.html”的布局文件，新的布局名称就是文件夹名。
 
 </div>   
   

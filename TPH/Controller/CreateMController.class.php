@@ -12,9 +12,9 @@ use Think\Model;
 class CreateMController extends Controller {
     public function index(){
 		$this->assign('db_prefix',C('DB_PREFIX'));
-		$tableNameList = $this->getTableNameList();
+		$tableNameList = getTableNameList();
 		$this->assign('tableNameList', $tableNameList);
-		$moduleNameList = $this->getModuleNameList();
+		$moduleNameList = getModuleNameList();
 		$this->assign('moduleNameList', $moduleNameList);
 		$layoutNameList = $this->getLayoutTemplateNameList();
 		$this->assign('layoutNameList', $layoutNameList);
@@ -31,12 +31,14 @@ class CreateMController extends Controller {
 		$configPath	= $modulePath. 'Conf/';
 		FileUtil::copyDir(MODULE_PATH .'Template/'. $layoutName, $layoutPath, true);//先复制文件结构
 		
+		//把选择的数据表存入Session供其他步骤调用
+		session('selectTableName',$selectTableName);
 		//这里设定所有模板都使用layout.html作为文件名   
 		$layoutStr = $this->makeLayoutTemplateFile(MODULE_PATH .'Template/'. $layoutName. '/layout.html', $selectTableName);
 		FileUtil::unlinkFile($layoutPath."layout.html");//删除原模板文件
 		file_put_contents($layoutPath."layout.html", $layoutStr);//写入解析后的模板
-		$configStr = $this->newConfigFileStr();
-		file_put_contents($configPath."config.php", $configStr);//改写配置文件为使用框架
+		
+		file_put_contents($configPath.'config.php', $this->newConfigFileStr());//修改配置文件
 		echo $layoutName. '写入布局模板成功，路径：'. $layoutPath;
 	}
 	
@@ -70,43 +72,9 @@ return array(
 newConfigFileStr;
 	}
 	
-	//读取项目目录下的文件夹，供用户选择哪个才是module目录
-	public function getModuleNameList(){
-		$ignoreList = Array("Common","Home","Runtime","TPH");
-		$allFileList = FileUtil::getDirList(APP_PATH);
-		return array_diff($allFileList, $ignoreList);
-	}
-	
+
 	public function getLayoutTemplateNameList(){
 		$layoutTemplateNameList = FileUtil::getDirList(MODULE_PATH."/Template");
 		return $layoutTemplateNameList;
-	}
-	
-	//获取表名列表
-	public function  getTableNameList(){
-		$dbType = C('DB_TYPE');
-		$Model = new Model(); // 实例化一个model对象 没有对应任何数据表
-		if($dbType == 'mysql'){
-			$dbName = C('DB_NAME');
-			$result = Array();
-			$tempArray = $Model->query("select table_name from information_schema.tables where table_schema='".$dbName."' and table_type='base table'");
-			foreach($tempArray as $temp){
-				$result[] = $temp['table_name'];
-			}
-			return $result;
-		}else{ //sqlite
-			$result = Array();
-			$tempArray = $Model->query("select * from sqlite_master where type='table' order by name");
-			foreach($tempArray as $temp){
-				$result[] = $temp['name'];
-			}
-			return $result;
-		} 
-		$this->error('数据库类型不支持');
-	}
-	
-	//获取需要生成的表名
-	public function getSelectTableName(){
-		$this->show();
 	}
 }

@@ -44,8 +44,8 @@
 		
 	}
 
-	function createFiles(moduleName, tableName){
-		$.post(createFlieUrl, {"moduleName":moduleName,"tableName":tableName}, function(data){
+	function createFiles(moduleName, selectTableName){
+		$.post(createFlieUrl, {"moduleName":moduleName,"selectTableName":selectTableName}, function(data){
 		  $('#fileMsg').html(data);
 		});
 	}
@@ -61,11 +61,19 @@
 		
 		$('#createFilesBtn').bind("click", function(){
 			moduleName = $('#moduleName option:selected').val();
-			tableName = $('#tables option:selected').val();
+			checkedBox = $('input:checked');
+			selectTableName = [];
 			if(db_prefix != ''){
-				tableName = tableName.substr(db_prefix.length);
+				checkedBox.each(function(){
+				selectTableName.push($(this).val().replace(db_prefix,''));
+				});
+			}else{
+			checkedBox.each(function(){
+				selectTableName.push($(this).val());
+				});
 			}
-			createFiles(moduleName, tableName);
+			createFiles(moduleName, selectTableName);
+			
 		});
 		
 		$('#isPage').bind("click",function(){
@@ -93,55 +101,11 @@
           <!-- Dashboard Graph starts -->
 		<div class="row">
 			<div class="col-md-6">
-				<div class="widget">
-					<div class="widget-head">
-					  <div class="pull-left" height="80">
-					  选择数据表
-					  </div>
-					  <div class="widget-icons pull-right">
-						<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
-						<a href="#" class="wclose"><i class="icon-remove"></i></a>
-					  </div>  
-					  <div class="clearfix"></div>
-					</div>  
-					<div class="widget-content" >
-					<div class="padd">
-                      <div class="form quick-post">
-                                      <!-- Edit profile form (not working)-->
-                                      <div class="form-horizontal">                        
-                                          <!-- Table -->
-                                          <div class="form-group">
-                                            <label class="control-label col-lg-3">数据表:</label>
-                                            <div class="col-lg-9">                               
-                                                <select class="form-control" id="tables">
-												  <volist name="tableNameArray" id="table" >
-														<option value="{$table}">{$table}</option>
-													</volist>
-												</select>  
-                                            </div>
-                                          </div>              
-                                          
-                                          <!-- Buttons -->
-                                          <div class="form-group">
-                                             <!-- Buttons -->
-											 <div class="col-lg-offset-2 col-lg-9">
-												<button class="btn btn-success" id="gogogo">生成</button>
-											 </div>
-                                          </div>
-                                      </div>
-                                    </div><!--end  paddad-->
-			
-					</div>
-				</div>	
-				</div>	
-			</div>
-			
-			 <div class="col-md-6">
 
               <div class="widget">
 
                 <div class="widget-head">
-                  <div class="pull-left">生成代码选项</div>
+                  <div class="pull-left">直接生成文件</div>
                   <div class="widget-icons pull-right">
                     <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
                     <a href="#" class="wclose"><i class="icon-remove"></i></a>
@@ -152,14 +116,7 @@
                 <div class="widget-content">
                   <div class="padd">
                     <form class="form-horizontal">
-					  <!-- Title -->
-					  <div class="form-group">
-						<label class="control-label col-lg-3" for="title">生成带分页代码</label>
-						<div class="col-lg-3"> 
-						  <input type="checkbox" id="isPage" checked />
-						</div>
-					  </div>
-					  <div class="form-group">
+					<div class="form-group">
 						<label class="control-label col-lg-3" for="title">选择模块</label>
 						<div class="col-lg-6"> 
 						 <select class="form-control" id="moduleName">
@@ -169,6 +126,16 @@
 						</select> 
 						</div>
 					  </div>
+					  <!-- 数据表 -->
+					  <div class="form-group">
+						<label class="control-label col-lg-3">数据表:</label>
+						<div class="col-lg-9">                               
+							<volist name="tableNameList" id="table" >
+								<input type="checkbox" name="table" value="{$table}">{$table}</input><br>
+							</volist> 
+						</div>
+					  </div>
+					  
 					</form>
                   </div>
                 </div>
@@ -181,6 +148,54 @@
               </div>
 
             </div>
+			
+			
+			<div class="col-md-6">
+				<div class="widget">
+					<div class="widget-head">
+					  <div class="pull-left" height="80">
+					  手动生成
+					  </div>
+					  <div class="widget-icons pull-right">
+						<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+						<a href="#" class="wclose"><i class="icon-remove"></i></a>
+					  </div>  
+					  <div class="clearfix"></div>
+					</div>  
+					<div class="widget-content" >
+					<div class="padd">	  
+                      <div class="form quick-post">
+						  <!-- Edit profile form (not working)-->
+						  <div class="form-horizontal">                        
+							  <!-- Table -->
+							  <div class="form-group">
+								<label class="control-label col-lg-3">数据表:</label>
+								<div class="col-lg-9">                               
+									<select class="form-control" id="tables">
+										<volist name="tableNameList" id="table" >
+											<option value="{$table}" >{$table}</option>
+										</volist>
+									</select>  
+								</div>
+							  </div>              
+							  <label class="control-label col-lg-1" for="title">生成带分页代码</label>
+								<div class="col-lg-3"> 
+								  <input type="checkbox" id="isPage" checked />
+								</div>
+							  <!-- Buttons -->
+							  <div class="form-group">
+								 <!-- Buttons -->
+								 <div class="col-lg-offset-2 col-lg-9">
+									<button class="btn btn-success" id="gogogo">生成</button>
+								 </div>
+							  </div>
+						  </div>
+						</div><!--end  paddad-->
+			
+					</div>
+				</div>	
+				</div>	
+			</div>
 		</div>
 		
           <div class="row">
