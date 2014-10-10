@@ -40,6 +40,15 @@
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="href="__ROOT__/{:MODULE_PATH}/img/favicon/favicon.png">
+  <script>
+	$(document).ready(function(){
+		$.post('__MODULE__/Index/checkVersion', 
+			function(data){
+				$('#version').html(data);
+			}
+		);
+	});
+  </script>
 </head>
 
 <body>
@@ -52,8 +61,8 @@
         <div class="col-md-4">
           <!-- Logo. -->
           <div class="logo">
-            <h1><a href="#">ThinkphpHelper  V0.3<span class="bold"></span></a></h1>
-            <p class="meta">代码生成工具 </p>
+            <h1><a href="#">ThinkphpHelper  V0.32<span class="bold"></span></a></h1>
+            <p class="meta">代码生成工具　　　　<a href="https://github.com/zhuanqianfish/ThinkphpHelper" id="version"></a></p>
           </div>
           <!-- Logo ends -->
         </div>
@@ -313,8 +322,8 @@ $(function () {
     });
 
 });
-
 /* Curve chart ends */
+
 </script>
 
 </body>
