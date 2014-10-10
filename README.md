@@ -1,5 +1,7 @@
 ThinkphpHelper
 ==============
+![ThinkphpHelper](http://beta1.qiniudn.com/tph03.png)
+
 支持MySQL 和 sqlite数据库，快速构建项目原型，直接生成前后台CRUD代码片段，还可根据需要自行定制代码模板，减少重复劳动。
 
 写这个东西的原因是因为我最近沮丧的发现很多时候我都在做重复的事情，比如重复写最简单的CRUD方法，编写表单，写前台样式表等等。
@@ -16,9 +18,11 @@ ThinkphpHelper诞生至今多谢大家的支持。在这个版本中我放弃了
 
 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 
-项目地址：https://github.com/zhuanqianfish/ThinkphpHelper
+项目地址：[https://github.com/zhuanqianfish/ThinkphpHelper](https://github.com/zhuanqianfish/ThinkphpHelper)
 
-详细使用说明地址（更新帮助至0.3.2）：http://zhuanqianfish.github.io/ThinkphpHelper
+详细使用说明地址（更新帮助至0.3.2）：[http://zhuanqianfish.github.io/ThinkphpHelper](http://zhuanqianfish.github.io/ThinkphpHelper)
+
+示例视频：[http://yun.baidu.com/s/1i39oOjr](http://yun.baidu.com/s/1i39oOjr)
 
 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
