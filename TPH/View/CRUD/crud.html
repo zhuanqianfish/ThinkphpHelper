@@ -1,4 +1,5 @@
 <script type="text/javascript">
+	
 	allPageUrl = '__CONTROLLER__/previewAllPage/';
 	allPageCodeUrl = '__CONTROLLER__/allPageCode/';
 	allCodeUrl = '__CONTROLLER__/allCode/';
@@ -8,6 +9,7 @@
 	editCodeUrl = '__CONTROLLER__/editCode/';
 	deleteCodeUrl = '__CONTROLLER__/deleteCode/';
 	createFlieUrl = '__CONTROLLER__/creatAllFiles/'
+	selectTableName = {$selectTableName};
 	
 	db_prefix = '{$db_prefix}';
 
@@ -51,6 +53,7 @@
 	}
 	
 	jQuery(document).ready(function($) {
+		
 		$('#gogogo').bind("click", function(){
 			table = $('#tables option:selected').val();
 			if(db_prefix != ''){
@@ -61,7 +64,7 @@
 		
 		$('#createFilesBtn').bind("click", function(){
 			moduleName = $('#moduleName option:selected').val();
-			checkedBox = $('input:checked');
+			checkedBox = $('#selectTables input:checked');
 			selectTableName = [];
 			if(db_prefix != ''){
 				checkedBox.each(function(){
@@ -79,7 +82,13 @@
 		$('#isPage').bind("click",function(){
 			$('#isPage').attr("checked") ? $('#isPage').attr("checked", false) :　$('#isPage').attr("checked", true);
 		});
-		$('#pagination').hide();		
+		$('#pagination').hide();
+		
+		if(selectTableName){
+			$.each(selectTableName, function(i, n){
+				$('input[value=' + n + ']').attr("checked",true);
+			})
+		}
 	});
 </script>
 <div class="mainbar">
@@ -127,7 +136,7 @@
 						</div>
 					  </div>
 					  <!-- 数据表 -->
-					  <div class="form-group">
+					  <div class="form-group" id="selectTables">
 						<label class="control-label col-lg-3">数据表:</label>
 						<div class="col-lg-9">                               
 							<volist name="tableNameList" id="table" >

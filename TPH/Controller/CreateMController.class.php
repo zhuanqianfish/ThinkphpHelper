@@ -18,8 +18,14 @@ class CreateMController extends Controller {
 		$this->assign('moduleNameList', $moduleNameList);
 		$layoutNameList = $this->getLayoutTemplateNameList();
 		$this->assign('layoutNameList', $layoutNameList);
+		$this->assign('selectTableName', $this->getSessionTableName());
 		$this->display();
     }
+	
+	public function getSessionTableName(){
+		$selectTableName = implode("','", session('selectTableName'));
+		return "['".$selectTableName."']";
+	}
 	
 	//在指定目录下创建布局模板文件
 	public function creatFiles(){
@@ -50,11 +56,11 @@ class CreateMController extends Controller {
 		$selectTableNameArray = $selectTableName;
 		for($i = 0; $i < count($selectTableNameArray) ;$i++){
 				$menu .='<li class="has_sub"><a href="#"><i class="icon-list-alt"></i> '
-				.$selectTableNameArray[$i]
+				.tableNameToModelName($selectTableNameArray[$i])
 				.'<span class="pull-right"><i class="icon-chevron-right"></i></span></a>';
 			$menu .="\r\n<ul>\r\n";
-			$menu .='<li><a href="__MODULE__/'. $selectTableNameArray[$i]."/all\">管理</a></li>\r\n"; 
-			$menu .='<li><a href="__MODULE__/'. $selectTableNameArray[$i]."/add\">新建</a></li>\r\n</ul>\r\n</li>\r\n";
+			$menu .='<li><a href="__MODULE__/'. tableNameToModelName($selectTableNameArray[$i])."/all\">管理</a></li>\r\n"; 
+			$menu .='<li><a href="__MODULE__/'. tableNameToModelName($selectTableNameArray[$i])."/add\">新建</a></li>\r\n</ul>\r\n</li>\r\n";
 		}
 		$fileContent = str_replace('@menu', $menu, $fileContent);
 		return $fileContent;

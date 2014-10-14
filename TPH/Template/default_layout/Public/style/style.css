@@ -211,7 +211,7 @@ font-size:12px;
 }
 
 .form-horizontal .control-label {
-width: 90px;
+min-width: 90px;
 }
 
 .form-horizontal .controls {

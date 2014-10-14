@@ -12,17 +12,14 @@ class CRUDController extends Controller {
 	public function crud(){	//生成CRUD代码
 		$this->assign('tableNameList', getTableNameList());
 		$this->assign('moduleNameList', getModuleNameList());
-		$this->assign('selectTableName', session('selectTableName'));
+		$this->assign('selectTableName', $this->getSessionTableName());
 		$this->assign('db_prefix',C('DB_PREFIX'));
 		$this->display();
     }
 
 	public function getSessionTableName(){
-		$selectTableName = '';
-		for($i = 0; $i < count(session('selectTableName')); $i++){
-			$selectTableName .= "'".session('selectTableName')[$i]."',";
-		}
-		return $selectTableName;
+		$selectTableName = implode("','", session('selectTableName'));
+		return "['".$selectTableName."']";
 	}
 	
 	public function getPageCode($tableName){	//	分页代码
@@ -51,8 +48,8 @@ class CRUDController extends Controller {
 		foreach($tableInfoArray as $tableInfo){ //拼接循环部分
 			$resultCode .= '<td>{$vo.' .$tableInfo[getColumnNameKey()]. "}</td>\r\n";
 		}
-		$resultCode .= '<td><a href="{:U(\'' .ucfirst($tableName). '/edit\')}?id={$vo.id}">编辑</a> | '	//假定所有表均以id为主键
-					.'<a href="{:U(\'' .ucfirst($tableName).'/delete\')}?id={$vo.id}" onclick=\'return confirm("确定删除吗？")\'>删除</a></td>'
+		$resultCode .= '<td><a href="{:U(\'' .tableNameToModelName($tableName). '/edit\')}?id={$vo.id}">编辑</a> | '	//假定所有表均以id为主键
+					.'<a href="{:U(\'' .tableNameToModelName($tableName).'/delete\')}?id={$vo.id}" onclick=\'return confirm("确定删除吗？")\'>删除</a></td>'
 					."\r\n<tr>\r\n</volist>\r\n</table>\r\n";
 		if($isPage == 'checked'){
 			$resultCode .=	'{$page}';// 赋值分页输出
@@ -81,8 +78,8 @@ class CRUDController extends Controller {
 			foreach($tableInfoArray as $tableInfo){ 
 				$resultCode .= "<td>" .$tableInfo[getColumnNameKey()]. "</td>\r\n";
 			}
-			$resultCode .= '<td><a href="'.U(ucfirst($tableName).'/edit?id='.$i).'">编辑</a> | '	
-					.'<a href="'.U(ucfirst($tableName).'/delete?id='.$i).'" onclick=\'return confirm("确定删除吗？")\'>删除</a></td></tr>'."\r\n";
+			$resultCode .= '<td><a href="'.U(tableNameToModelName($tableName).'/edit?id='.$i).'">编辑</a> | '	
+					.'<a href="'.U(tableNameToModelName($tableName).'/delete?id='.$i).'" onclick=\'return confirm("确定删除吗？")\'>删除</a></td></tr>'."\r\n";
 		}
 		$resultCode .= "</table>\r\n";
 		echo $resultCode;
@@ -108,7 +105,7 @@ class CRUDController extends Controller {
 		$resultCode	.= "	\$this->display();\r\n";
 		$resultCode	.= "}\r\n";
 		$resultCode = str_replace('@tableName', $tableName, $resultCode);
-		$resultCode = str_replace('@TableName', ucfirst($tableName), $resultCode);//修正为驼峰命名，首字母大写
+		$resultCode = str_replace('@TableName', tableNameToModelName($tableName), $resultCode);//修正为驼峰命名，首字母大写
 		return $resultCode;
 	}
 	
@@ -200,7 +197,7 @@ public function add(){
 }
 str;
 		$resultCode = str_replace('@tableName', $tableName, $resultCode);
-		$resultCode = str_replace('@TableName', ucfirst($tableName), $resultCode);//修正为驼峰命名，首字母大写
+		$resultCode = str_replace('@TableName', tableNameToModelName($tableName), $resultCode);//修正为驼峰命名，首字母大写
 		return $resultCode;
 	}
 	
@@ -290,7 +287,7 @@ public function edit(){
 
 str;
 		$resultCode = str_replace('@tableName', $tableName, $resultCode);
-		$resultCode = str_replace('@TableName', ucfirst($tableName), $resultCode);//修正为驼峰命名，首字母大写
+		$resultCode = str_replace('@TableName', tableNameToModelName($tableName), $resultCode);//修正为驼峰命名，首字母大写
 		return $resultCode;
 	}
 	
@@ -314,7 +311,7 @@ public function delete(){
 }
 str;
 		$resultCode = str_replace('@tableName', $tableName, $resultCode);
-		$resultCode = str_replace('@TableName', ucfirst($tableName), $resultCode);//修正为驼峰命名，首字母大写
+		$resultCode = str_replace('@TableName', tableNameToModelName($tableName), $resultCode);//修正为驼峰命名，首字母大写
 		return $resultCode;
 	}
 	
@@ -327,16 +324,16 @@ str;
 	public function creatAllFiles(){
 		$tableName = I('selectTableName');
 		$moduleName = I('moduleName');
-		$controllerPath = APP_PATH. ucfirst($moduleName). "/Controller/";
+		$controllerPath = APP_PATH. tableNameToModelName($moduleName). "/Controller/";
 		
 		for($i = 0;$i < count($tableName); $i++){
 			$_POST['table'] = $tableName[$i];
-			$viewPath = APP_PATH. ucfirst($moduleName). "/View/".ucfirst($tableName[$i])."/";
+			$viewPath = APP_PATH. tableNameToModelName($moduleName). "/View/".tableNameToModelName($tableName[$i])."/";
 			$controllerStr = "<?php\r\n";
 			$controllerStr .= "//由ThinkphpHelper自动生成,请根据需要修改\r\n";
-			$controllerStr .= "namespace ".ucfirst($moduleName)."\Controller;\r\n";
+			$controllerStr .= "namespace ".tableNameToModelName($moduleName)."\Controller;\r\n";
 			$controllerStr .= "use Think\Controller;\r\n\r\n";
-			$controllerStr .= "class ". ucfirst($tableName[$i]) ."Controller extends Controller {\r\n";
+			$controllerStr .= "class ". tableNameToModelName($tableName[$i]) ."Controller extends Controller {\r\n";
 			$controllerStr .= $this->generateAllCode()."\r\n\r\n";
 			$controllerStr .= $this->generateAddCode()."\r\n\r\n";
 			$controllerStr .= $this->generateEditCode()."\r\n\r\n";
@@ -349,7 +346,7 @@ str;
 			$originalEditViewStr = $this->generateEditPage();
 			$editViewStr = $this->makeTemplate("edit.html", "编辑".$tableName[$i], $originalEditViewStr);
 			
-			file_put_contents($controllerPath.ucfirst($tableName[$i])."Controller.class.php", $controllerStr);//生成Controller文件
+			file_put_contents($controllerPath.tableNameToModelName($tableName[$i])."Controller.class.php", $controllerStr);//生成Controller文件
 			FileUtil::createDir($viewPath);
 			file_put_contents($viewPath."all.html", $allViewStr);
 			file_put_contents($viewPath."add.html", $addViewStr);

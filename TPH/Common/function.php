@@ -64,6 +64,7 @@ function getColumnNameKey(){
 	}
 }
 
+//仅获取目录列表
 function getDirList($directory){
 	$files = array();        
 	try {        
@@ -77,4 +78,14 @@ function getDirList($directory){
 		$files[] = $file->getFileName();        
 	}        
 	return $files;  
+}
+
+//把带下划线的表名转换为驼峰命名（首字母大写）
+function tableNameToModelName($tableName){
+	$tempArray = explode('_', $tableName);
+	$result = "";
+	for($i = 0; $i < count($tempArray);$i++){
+		$result .= ucfirst($tempArray[$i]);
+	}
+	return $result;
 }

@@ -1,0 +1,17 @@
+<!--视图关联数据表-->
+<div class="form-group ">
+<form id="viewColum">
+<div class="col-md-11">
+	<label class="control-label col-lg-3">{$label}</label><br>
+	<div class="col-lg-7" style="padding-left:30px;">                               
+		<volist name="tableInfoList" id="table" >
+			<p>
+			<input type="checkbox" name="{$table[$columnNameKey]}" value="{$table[$columnNameKey]}">{$table[$columnNameKey]}</input>
+			别名：<input align="right" id="as_{$table[$columnNameKey]}" type="text" />
+			</p>
+		</volist> 
+	</div>
+	
+</div>
+</form>
+</div>

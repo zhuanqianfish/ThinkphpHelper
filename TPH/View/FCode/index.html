@@ -1,9 +1,7 @@
 <script type="text/javascript">
 db_prefix = '{$db_prefix}';
-selectTableName = {$selectTableName}
 
 function gogogo(moduleName, selectTableName, layoutName){
-	
 	$.post("__CONTROLLER__/creatFiles", {'moduleName' : moduleName, 'selectTableName' : selectTableName, 'layoutName' : layoutName},
 		function(data){
 			$('#msg').html(data);
@@ -28,19 +26,13 @@ jQuery(document).ready(function($) {
 			layoutName = $('#layoutName').val();
 			gogogo(moduleName, selectTableName, layoutName);
 		});	
-		
-		if(selectTableName){
-			$.each(selectTableName, function(i, n){
-				$('input[value=' + n + ']').attr("checked",true);
-			})
-		}
 	});
 
 </script>
 <div class="mainbar">
 	<!-- Page heading -->
 	<div class="page-head">
-	  <h2 class="pull-left"><i class="icon-home"></i>生成模块布局</h2>
+	  <h2 class="pull-left"><i class="icon-home"></i>生成高级表单代码</h2>
 
 	<div class="clearfix"></div>
 	</div>
@@ -56,7 +48,7 @@ jQuery(document).ready(function($) {
 				<div class="widget">
 					<div class="widget-head">
 					  <div class="pull-left" height="80">
-					  生成模块
+						第一步 选择对应的数据表
 					  </div>
 					  <div class="widget-icons pull-right">
 						<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
@@ -66,13 +58,13 @@ jQuery(document).ready(function($) {
 					</div>  
 					<div class="widget-content" >
 					<div class="padd">
-					<p>注：此步骤主要是为了生成模块目录以及布局文件需要有哪些菜单项</p>
+					<p>注：此步骤依赖于模型代码生成，只有先生成对应的模型代码才能使用</p>
                       <div class="form quick-post">
                                       <!-- Edit profile form (not working)-->
                                       <div class="form-horizontal">  
 										<div class="form-group">
 											<div class="form-group">
-												<label class="control-label col-lg-3">目标模块:</label>
+												<label class="control-label col-lg-3"  style="width:120px">目标模块:</label>
 												<div class="col-lg-9">                               
 													<select class="form-control" id="moduleName">
 													  <volist name="moduleNameList" id="moduleName" >
@@ -81,32 +73,24 @@ jQuery(document).ready(function($) {
 													</select> 
 												</div>
 											  </div>   
-											 <!-- Table -->
+											  <!-- Table -->
 											<div class="form-group">
-												<label class="control-label col-lg-3">数据表:</label>
-												<div class="col-lg-9">                               
-													<volist name="tableNameList" id="table" >
-														<input type="checkbox" name="table" value="{$table}" >{$table}</input><br>
-													</volist> 
+												<label class="control-label col-lg-4" style="width:120px">自定义模型:</label>
+												<div class="col-lg-9"> 
+													<select class="form-control" id="tableName">
+														<volist name="tableNameList" id="table" >
+															<option value="{$table}" >{$table}</option>
+														</volist> 
+													</select> 
 												</div>
-											</div>
-											<div class="form-group">
-												<label class="control-label col-lg-3">布局模板:</label>
-												<div class="col-lg-9">                               
-													<select class="form-control" id="layoutName">
-														<volist name="layoutNameList" id="layoutName" >
-															<option value="{$layoutName}">{$layoutName}</option>
-														</volist>
-													</select>  
-												</div>
-											</div>
+											</div> 
 									    </div>    
                                           
                                           <!-- Buttons -->
                                           <div class="form-group">
                                              <!-- Buttons -->
 											 <div class="col-lg-offset-2 col-lg-9">
-												<button class="btn btn-success" id="gogogo">生成</button>
+												<button class="btn btn-success" id="gogogo">读取</button>
 											 </div>
                                           </div>
                                       </div>
