@@ -27,7 +27,7 @@ class IndexController extends Controller {
 	
 	public function checkVersion(){
 		header("Content-type: text/html; charset=utf-8");
-		$version = 0.32;
+		$version = 0.33;
 		$url = 'http://www.weiyunstudio.com/thinkphpHelper/version.php';
 		$newVersion =  (float)file_get_contents($url);
 		if($newVersion > $version){
