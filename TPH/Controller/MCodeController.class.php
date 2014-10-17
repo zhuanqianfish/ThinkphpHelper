@@ -130,9 +130,10 @@ class MCodeController extends Controller {
 		$moduleName =  I('moduleName');
 		$modelName = tableNameToModelName(I('modelName'));
 		$tableName = tableNameToModelName(I('tableName'));
-		$viewModuleOn1 = tableNameToModelName(I('viewModuleOn1'));//表1关联字段
-		$viewModuleOn2 = tableNameToModelName(I('viewModuleOn2'));//表2关联字段
+		$viewModuleOn1 = I('viewModuleOn1');//表1关联字段
+		$viewModuleOn2 = I('viewModuleOn2');//表2关联字段
 		$table1FieldArray = I('table1Field');
+		$joinType = I('joinType');
 		$table1Field = "";
 		for($i = 0; $i < count($table1FieldArray);$i++){
 			$table1Field .= "'".$table1FieldArray[$i]."',";
@@ -157,6 +158,7 @@ class MCodeController extends Controller {
 		$this->assign('table2Field', $table2Field);
 		$this->assign('viewModuleOn1', $viewModuleOn1);
 		$this->assign('viewModuleOn2', $viewModuleOn2);
+		$this->assign('joinType', $joinType);
 		
 		return "<?php\r\n". $this->fetch('generateViewModelCode');
 	}
@@ -170,10 +172,11 @@ class MCodeController extends Controller {
 		C('LAYOUT_ON', false);
 		$modelName =  tableNameToModelName(I('modelName'));
 		$tableName = tableNameToModelName(I('tableName'));
-		$viewModuleOn1 = tableNameToModelName(I('viewModuleOn1'));//表1关联字段
-		$viewModuleOn2 = tableNameToModelName(I('viewModuleOn2'));//表2关联字段
+		$viewModuleOn1 = I('viewModuleOn1');//表1关联字段
+		$viewModuleOn2 = I('viewModuleOn2');//表2关联字段
 		$selectColumName = I('selectColumName');
 		$asColumName = I('asColumName');
+		$joinType = I('joinType');
 		$table2Field = ""; // as代码
 		for($i = 0; $i < count($selectColumName);$i++){
 			$table2Field .= "'".$selectColumName[$i]."'";
@@ -189,6 +192,7 @@ class MCodeController extends Controller {
 		$this->assign('table2Field', $table2Field);
 		$this->assign('viewModuleOn1', $viewModuleOn1);
 		$this->assign('viewModuleOn2', $viewModuleOn2);
+		$this->assign('joinType', $joinType);
 		
 		echo $this->fetch('addViewModelCode');
 	}

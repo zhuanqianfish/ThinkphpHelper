@@ -72,6 +72,7 @@ function getViewCode(){	//生成视图模型代码
 	var moduleName = $('#moduleName').val();
 	var modelName = $('#viewTable1').val();
 	var tableName = $('#viewTable2').val();
+	var joinType = $('#joinType').val();
 	var viewModuleOn1 = $('#viewModuleOn1').val();
 	var viewModuleOn2 = $('#viewModuleOn2').val();
 	var viewTableColum = $('#viewTableColum input:checked');
@@ -88,7 +89,7 @@ function getViewCode(){	//生成视图模型代码
 		asColumName.push($('#as_' + $(this).val()).val());
 	});
 	$.post("__CONTROLLER__/viewModelCode", 
-		{'modelName' : modelName, 'moduleName': moduleName, 'tableName' : tableName, 'table1Field' : table1Field,
+		{'modelName' : modelName, 'moduleName': moduleName, 'tableName' : tableName, 'table1Field' : table1Field, 'joinType' : joinType, 
 		'selectColumName' : selectColumName, 'asColumName' : asColumName, 'viewModuleOn1' : viewModuleOn1, 'viewModuleOn2':viewModuleOn2},
 		function(data){
 			$('#viewCode').html(data);
@@ -99,6 +100,7 @@ function getViewCode(){	//生成视图模型代码
 function addViewCode(){ //添加视图模型代码片段
 	var modelName = $('#viewTable1').val();
 	var tableName = $('#viewTable2').val();
+	var joinType = $('#joinType').val();
 	var viewModuleOn1 = $('#viewModuleOn1').val();
 	var viewModuleOn2 = $('#viewModuleOn2').val();
 	var viewTableColum = $('#viewTableColum input:checked');
@@ -111,7 +113,7 @@ function addViewCode(){ //添加视图模型代码片段
 		asColumName.push($('#as_' + $(this).val()).val());
 	});
 	$.post("__CONTROLLER__/addViewModelCode", 
-		{'modelName' : modelName, 'tableName' : tableName,  'selectColumName' : selectColumName, 
+		{'modelName' : modelName, 'tableName' : tableName,  'selectColumName' : selectColumName, 'joinType' : joinType,
 		'asColumName' : asColumName, 'viewModuleOn1' : viewModuleOn1, 'viewModuleOn2' : viewModuleOn2},
 		function(data){
 			code = $('#viewCode').html().replace("//@more", data);
@@ -162,7 +164,8 @@ jQuery(document).ready(function($) {
 	});
 	
 	$('#tableName1').change(function(){
-		if($('#mapping_type').val() != 'BELONGS_TO'){ //从属于时才使用表1字段作为外键
+		if($('#mapping_type').val() != 'MANY_TO_MANY'){ //从属于时才使用表1字段作为外键
+			$('#relationshipTableInfo').html('');
 			return;
 		}
 		selectTableName = "";
@@ -171,17 +174,14 @@ jQuery(document).ready(function($) {
 		}else{
 			selectTableName = $('#tableName1').val();
 		}
-		$.post("__CONTROLLER__/getTableInfo", {'selectTableName' : selectTableName, 'label' : 'foreign_key:'},
+		$.post("__CONTROLLER__/getTableInfo", {'selectTableName' : selectTableName, 'label' : 'relation_foreign_key:'},
 			function(data){
-				$('#foreignerKeyTableInfo').html(data);
+				$('#relationshipTableInfo').html(data);
 			}
 		);
 	});
 	
 	$('#tableName2').change(function(){
-		if($('#mapping_type').val() == 'BELONGS_TO'){ //从属于时才使用表1字段作为外键
-			return;
-		}
 		selectTableName = "";
 		if(db_prefix != ''){
 			selectTableName = $('#tableName2').val().replace(db_prefix,'');
@@ -195,6 +195,7 @@ jQuery(document).ready(function($) {
 		);
 	});
 	
+	/*
 	$('#tableName3').change(function(){
 		selectTableName = "";
 		if(db_prefix != ''){
@@ -208,6 +209,7 @@ jQuery(document).ready(function($) {
 			}
 		);
 	});
+	*/
 	
 	$('#viewTable1').change(function(){
 		selectTableName = "";
@@ -477,11 +479,24 @@ jQuery(document).ready(function($) {
 									</div>
 								</div>
 								<div class="form-group">
-								 <!-- Buttons -->
-								 <div class="col-lg-offset-2 col-lg-9">
-									<button class="btn btn-success" id="readOnColum">读取关联条件字段</button>
-								 </div>
-							  </div>
+									 <!-- Buttons -->
+									 <div class="col-lg-offset-2 col-lg-9">
+										<button class="btn btn-success" id="readOnColum">读取关联条件字段</button>
+									 </div>
+								</div>
+								
+								<div class="form-group">
+									 <label class="control-label col-lg-4" style="width:120px">JOIN类型:</label>
+									<div class="col-lg-9"> 
+										<select class="form-control" id="joinType">
+											<option value="JOIN">(JOIN)</option>
+											<option value="INNER">INNER</option>
+											<option value="LEFT">LEFT</option>
+											<option value="RIGHT">RIGHT</option>
+											<option value="FULL">FULL</option>
+										</select> 
+									</div>
+								</div>
 							   <hr>
 							  <div class="form-group">
 								<textarea class="form-control" id="viewCode" rows="12"></textarea>

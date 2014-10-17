@@ -5,7 +5,7 @@ use Think\Model\ViewModel;
 class {$modelName}ViewModel extends ViewModel {
    public $viewFields = array(
 	   '{$modelName}'=>array({$table1Field}),
-	   '{$tableName}'=>array({$table2Field}, '_on'=>'{$modelName}.{$viewModuleOn1} = {$tableName}.{$viewModuleOn2}'),
+	   '{$tableName}'=>array({$table2Field}, '_on'=>'{$modelName}.{$viewModuleOn1} = {$tableName}.{$viewModuleOn2}'<if condition="$joinType  neq  'JOIN' ">, '_type'=>'{$joinType}'</if>),
 	   //@more
    ); 
 }
