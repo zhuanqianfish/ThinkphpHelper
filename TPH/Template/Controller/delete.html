@@ -1,0 +1,10 @@
+public function delete(){
+	${$tableName}Model = M('{$tableName}');
+	$id = I('id'); 
+	$flag = ${$tableName}Model->where('id='.$id)->delete();
+	if($flag){
+		$this->success('删除成功', U('{$TableName}/all'));
+	}else{
+		$this->error('删除失败', U('{$TableName}/all'));
+	}
+}

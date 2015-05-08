@@ -1,3 +1,4 @@
+<layout name="default_layout" />
 <script type="text/javascript">
 db_prefix = '{$db_prefix}';
 selectTableName = {$selectTableName}
@@ -75,7 +76,7 @@ jQuery(document).ready(function($) {
 												<label class="control-label col-lg-3">目标模块:</label>
 												<div class="col-lg-9">                               
 													<select class="form-control" id="moduleName">
-													  <volist name="moduleNameList" id="moduleName" >
+														<volist name="moduleNameList" id="moduleName" >
 															<option value="{$moduleName}">{$moduleName}</option>
 														</volist>
 													</select> 
@@ -111,7 +112,6 @@ jQuery(document).ready(function($) {
                                           </div>
                                       </div>
                                     </div><!--end  paddad-->
-			
 					</div>
 				</div>	
 				</div>	

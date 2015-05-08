@@ -1,3 +1,4 @@
+<layout name="default_layout" />
 <script type="text/javascript">
 db_prefix = '{$db_prefix}';
 
@@ -164,7 +165,8 @@ jQuery(document).ready(function($) {
 	});
 	
 	$('#tableName1').change(function(){
-		if($('#mapping_type').val() != 'MANY_TO_MANY'){ //从属于时才使用表1字段作为外键
+		var mappingType = $('#mapping_type').val();
+		if(mappingType != 'MANY_TO_MANY'){ //从属于时才使用表1字段作为外键
 			$('#relationshipTableInfo').html('');
 			return;
 		}
@@ -357,9 +359,6 @@ jQuery(document).ready(function($) {
 											<option value="MANY_TO_MANY">多对多(MANY_TO_MANY)</option>
 										</select> 
 									</div>
-									<label style="padding-left:40px;width:100%">
-									说明：如果选择"BELONGS_TO"关联时foreign_key是从模型数据表读取，其他关联种类则是从对应数据表读取
-									</label>
 								</div>							
 								<hr>
 								<div class="form-group">

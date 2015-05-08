@@ -2,7 +2,7 @@
 use Think\Model;
 
 define(SQLITE_COLUMN_NAME_KEY, 'name');	//sqlite列名键
-define(MYSQL_COLUMN_NAME_KEY, 'COLUMN_NAME');	//mysql列名键
+define(MYSQL_COLUMN_NAME_KEY, 'column_name');	//mysql列名键
 
 function func1(){
 	echo 'this is func1';
@@ -88,4 +88,14 @@ function tableNameToModelName($tableName){
 		$result .= ucfirst($tempArray[$i]);
 	}
 	return $result;
+}
+
+//把带下划线的列名转换为驼峰命名（首字母小写）
+function columNameToVarName($columName){
+	$tempArray = explode('_', $columName);
+	$result = "";
+	for($i = 0; $i < count($tempArray);$i++){
+		$result .= ucfirst($tempArray[$i]);
+	}
+	return lcfirst($result);
 }

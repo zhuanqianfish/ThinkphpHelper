@@ -1,0 +1,13 @@
+<form class="form-horizontal" method="post">
+	<volist name="tableInfoArray" id="tableInfo">
+	<if condition="$tableInfo[$columnNameKey] neq 'id'">
+	<label class="col-sm-2 control-label" for="{$tableInfo[$columnNameKey]}">{$tableInfo[$columnNameKey]}</label>
+	<input type="text" class="form-control" placeholder="{$tableInfo[$columnNameKey]}" name="{$tableInfo[$columnNameKey]}" id="{$tableInfo[$columnNameKey]}"  value="<literal>{$</literal>{$tableName}.{$tableInfo[$columnNameKey]}}" />
+	
+	<else /> <input type="hidden" name="id" value="<literal>{$</literal>{$tableName}.{$tableInfo[$columnNameKey]}}" />
+	
+	</if>
+	</volist>
+	
+	<input type="submit" value="提交" class="btn btn-default" />
+</form>
