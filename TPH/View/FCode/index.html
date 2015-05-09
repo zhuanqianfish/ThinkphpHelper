@@ -56,10 +56,10 @@ function fillCode(){	//填充项目代码片段
 	if($('#formType').val() == 'edit'){
 		switch(fieldType){
 		case 'text':
-			str += '<input type="text" class="form-control" id="' + tableField + '" name="' + tableField + '" value="{$' + tableName + '['+ tableField + ']}" />';
+			str += '<input type="text" class="form-control" id="' + tableField + '" name="' + tableField + '" value="{$' + tableName + "['" + tableField + "']}\" />";
 			break;
 		case 'textarea':
-			str += '<textarea class="form-control" row="12" id="' + tableField + '" name="' + tableField + '" >{$' + tableName + '['+ tableField + ']}</textarea>';
+			str += '<textarea class="form-control" row="12" id="' + tableField + '" name="' + tableField + '" >{$' + tableName + "['" + tableField + "']}\"</textarea>";
 			break;
 		case 'select':
 			str += '<select class="form-control" id="' + tableField + '">'+"\r\n"
@@ -67,7 +67,7 @@ function fillCode(){	//填充项目代码片段
 				+ '	<option value="' + tableField + '">' + tableField + '</option>'+"\r\n"
 				+ '</volist>' + "\r\n"
 				+ '</select>' + "\r\n"
-				+ '<script>$("#' + tableField + '").val({$' + tableName + '['+ tableField + "]})<\/script>";
+				+ '<script>$("#' + tableField + '").val({$' + tableName + "['" + tableField + "']})<\/script>";
 			break;
 		case 'radio':
 			str += '<volist name="' + tableField + 'List" id="' + tableField + '" >'+"\r\n"
@@ -82,13 +82,13 @@ function fillCode(){	//填充项目代码片段
 				+ '<script>$(":checkbox[name='+ tableField + "][value=\'{$"+ tableName + '.'+ tableField + "}\'])" + '.attr("checked","true")'+"<\/script>";
 			break;
 		case 'radio2':
-			str += '<input type="radio" name="' + tableField + '" value="' + labelName + '">';
+			str += '<input type="radio" name="' + tableField + '" value="' + labelName + '">' + "\r\n";
 			break;
 		case 'checkbox2':
-			str += '<input type="checkbox" name="' + tableField + '" value="' + labelName + '">';
+			str += '<input type="checkbox" name="' + tableField + '" value="' + labelName + '">' + "\r\n";
 			break;
 		case 'hidden':
-			str = '<input type="hidden" name="' + tableField + '" value="' + tableField + '">';
+			str = '<input type="hidden" name="' + tableField + '" value="' + tableField + '">' + "\r\n";
 			break;
 		default:
 			break;
@@ -119,13 +119,13 @@ function fillCode(){	//填充项目代码片段
 				+'</volist>';
 			break;
 		case 'radio2':
-			str += '<input type="radio" name="' + tableField + '" value="' + labelName + '">';
+			str += '<input type="radio" name="' + tableField + '" value="' + labelName + '">' + "\r\n";
 			break;
 		case 'checkbox2':
-			str += '<input type="checkbox" name="' + tableField + '" value="' + labelName + '">';
+			str += '<input type="checkbox" name="' + tableField + '" value="' + labelName + '">' + "\r\n";
 			break;
 		case 'hidden':
-			str = '<input type="hidden" name="' + tableField + '" value="' + tableField + '">';
+			str = '<input type="hidden" name="' + tableField + '" value="' + tableField + '">' + "\r\n";
 			break;
 		default:
 			break;
