@@ -80,7 +80,13 @@ newConfigFileStr;
 	
 
 	public function getLayoutTemplateNameList(){
-		$layoutTemplateNameList = FileUtil::getDirList(MODULE_PATH."/Template");
+		$layoutTemplateNameList0 = FileUtil::getDirList(MODULE_PATH."/Template");
+		$layoutTemplateNameList = array();
+		foreach($layoutTemplateNameList0 as $layoutDirName){
+			if(substr($layoutDirName, -6) == 'layout'){	//判断以layout结尾的才是布局文件夹
+				$layoutTemplateNameList[] = $layoutDirName;
+			}
+		}
 		return $layoutTemplateNameList;
 	}
 }
