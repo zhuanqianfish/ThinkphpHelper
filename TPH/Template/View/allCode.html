@@ -12,10 +12,10 @@
 <volist name="tableInfoArray" id="tableInfo">
 <td><literal>{$vo.</literal>{$tableInfo[$columnNameKey]}}</td>
 </volist>
-<td><a href="<literal>{:U('</literal>{$TableName}<literal>/edit')}?id={$vo.id}</literal>">编辑</a> |
-<a href="<literal>{:U('</literal>{$TableName}<literal>/delete')}?id={$vo.id}</literal>" onclick='return confirm("确定删除吗？")'>删除</a>
+<td><a href="<literal>{:U('</literal>{$TableName}<literal>/edit/id/'.$vo[id])}</literal>">编辑</a> |
+<a href="<literal>{:U('</literal>{$TableName}<literal>/delete/id/'.$vo[id])}</literal>" onclick='return confirm("确定删除吗？")'>删除</a>
 </td>
 <tr>
 <literal></volist></literal>
 </table>
-{$page}
+<literal>{$page}</literal>
