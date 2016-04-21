@@ -7,22 +7,22 @@
 namespace TPH\Controller;
 
 /**
- * ²Ù×İÎÄ¼şÀà
+ * æ“çºµæ–‡ä»¶ç±»
  * 
- * Àı×Ó£º
- * FileUtil::createDir('a/1/2/3');                ²âÊÔ½¨Á¢ÎÄ¼ş¼Ğ ½¨Ò»¸öa/1/2/3ÎÄ¼ş¼Ğ
- * FileUtil::createFile('b/1/2/3');               ²âÊÔ½¨Á¢ÎÄ¼ş        ÔÚb/1/2/ÎÄ¼ş¼ĞÏÂÃæ½¨Ò»¸ö3ÎÄ¼ş
- * FileUtil::createFile('b/1/2/3.exe');           ²âÊÔ½¨Á¢ÎÄ¼ş        ÔÚb/1/2/ÎÄ¼ş¼ĞÏÂÃæ½¨Ò»¸ö3.exeÎÄ¼ş
- * FileUtil::copyDir('b','d/e');                  ²âÊÔ¸´ÖÆÎÄ¼ş¼Ğ ½¨Á¢Ò»¸öd/eÎÄ¼ş¼Ğ£¬°ÑbÎÄ¼ş¼ĞÏÂµÄÄÚÈİ¸´ÖÆ½øÈ¥
- * FileUtil::copyFile('b/1/2/3.exe','b/b/3.exe'); ²âÊÔ¸´ÖÆÎÄ¼ş        ½¨Á¢Ò»¸öb/bÎÄ¼ş¼Ğ£¬²¢°Ñb/1/2ÎÄ¼ş¼ĞÖĞµÄ3.exeÎÄ¼ş¸´ÖÆ½øÈ¥
- * FileUtil::moveDir('a/','b/c');                 ²âÊÔÒÆ¶¯ÎÄ¼ş¼Ğ ½¨Á¢Ò»¸öb/cÎÄ¼ş¼Ğ,²¢°ÑaÎÄ¼ş¼ĞÏÂµÄÄÚÈİÒÆ¶¯½øÈ¥£¬²¢É¾³ıaÎÄ¼ş¼Ğ
- * FileUtil::moveFile('b/1/2/3.exe','b/d/3.exe'); ²âÊÔÒÆ¶¯ÎÄ¼ş        ½¨Á¢Ò»¸öb/dÎÄ¼ş¼Ğ£¬²¢°Ñb/1/2ÖĞµÄ3.exeÒÆ¶¯½øÈ¥                   
- * FileUtil::unlinkFile('b/d/3.exe');             ²âÊÔÉ¾³ıÎÄ¼ş        É¾³ıb/d/3.exeÎÄ¼ş
- * FileUtil::unlinkDir('d');                      ²âÊÔÉ¾³ıÎÄ¼ş¼Ğ É¾³ıdÎÄ¼ş¼Ğ
+ * ä¾‹å­ï¼š
+ * FileUtil::createDir('a/1/2/3');                æµ‹è¯•å»ºç«‹æ–‡ä»¶å¤¹ å»ºä¸€ä¸ªa/1/2/3æ–‡ä»¶å¤¹
+ * FileUtil::createFile('b/1/2/3');               æµ‹è¯•å»ºç«‹æ–‡ä»¶        åœ¨b/1/2/æ–‡ä»¶å¤¹ä¸‹é¢å»ºä¸€ä¸ª3æ–‡ä»¶
+ * FileUtil::createFile('b/1/2/3.exe');           æµ‹è¯•å»ºç«‹æ–‡ä»¶        åœ¨b/1/2/æ–‡ä»¶å¤¹ä¸‹é¢å»ºä¸€ä¸ª3.exeæ–‡ä»¶
+ * FileUtil::copyDir('b','d/e');                  æµ‹è¯•å¤åˆ¶æ–‡ä»¶å¤¹ å»ºç«‹ä¸€ä¸ªd/eæ–‡ä»¶å¤¹ï¼ŒæŠŠbæ–‡ä»¶å¤¹ä¸‹çš„å†…å®¹å¤åˆ¶è¿›å»
+ * FileUtil::copyFile('b/1/2/3.exe','b/b/3.exe'); æµ‹è¯•å¤åˆ¶æ–‡ä»¶        å»ºç«‹ä¸€ä¸ªb/bæ–‡ä»¶å¤¹ï¼Œå¹¶æŠŠb/1/2æ–‡ä»¶å¤¹ä¸­çš„3.exeæ–‡ä»¶å¤åˆ¶è¿›å»
+ * FileUtil::moveDir('a/','b/c');                 æµ‹è¯•ç§»åŠ¨æ–‡ä»¶å¤¹ å»ºç«‹ä¸€ä¸ªb/cæ–‡ä»¶å¤¹,å¹¶æŠŠaæ–‡ä»¶å¤¹ä¸‹çš„å†…å®¹ç§»åŠ¨è¿›å»ï¼Œå¹¶åˆ é™¤aæ–‡ä»¶å¤¹
+ * FileUtil::moveFile('b/1/2/3.exe','b/d/3.exe'); æµ‹è¯•ç§»åŠ¨æ–‡ä»¶        å»ºç«‹ä¸€ä¸ªb/dæ–‡ä»¶å¤¹ï¼Œå¹¶æŠŠb/1/2ä¸­çš„3.exeç§»åŠ¨è¿›å»                   
+ * FileUtil::unlinkFile('b/d/3.exe');             æµ‹è¯•åˆ é™¤æ–‡ä»¶        åˆ é™¤b/d/3.exeæ–‡ä»¶
+ * FileUtil::unlinkDir('d');                      æµ‹è¯•åˆ é™¤æ–‡ä»¶å¤¹ åˆ é™¤dæ–‡ä»¶å¤¹
  */
 class FileUtil {
     /**
-     * ½¨Á¢ÎÄ¼ş¼Ğ
+     * å»ºç«‹æ–‡ä»¶å¤¹
      *
      * @param string $aimUrl
      * @return viod
@@ -42,10 +42,10 @@ class FileUtil {
     }
 
     /**
-     * ½¨Á¢ÎÄ¼ş
+     * å»ºç«‹æ–‡ä»¶
      *
      * @param string $aimUrl 
-     * @param boolean $overWrite ¸Ã²ÎÊı¿ØÖÆÊÇ·ñ¸²¸ÇÔ­ÎÄ¼ş
+     * @param boolean $overWrite è¯¥å‚æ•°æ§åˆ¶æ˜¯å¦è¦†ç›–åŸæ–‡ä»¶
      * @return boolean
      */
     function createFile($aimUrl, $overWrite = false) {
@@ -61,11 +61,11 @@ class FileUtil {
     }
 
     /**
-     * ÒÆ¶¯ÎÄ¼ş¼Ğ
+     * ç§»åŠ¨æ–‡ä»¶å¤¹
      *
      * @param string $oldDir
      * @param string $aimDir
-     * @param boolean $overWrite ¸Ã²ÎÊı¿ØÖÆÊÇ·ñ¸²¸ÇÔ­ÎÄ¼ş
+     * @param boolean $overWrite è¯¥å‚æ•°æ§åˆ¶æ˜¯å¦è¦†ç›–åŸæ–‡ä»¶
      * @return boolean
      */
     function moveDir($oldDir, $aimDir, $overWrite = false) {
@@ -98,11 +98,11 @@ class FileUtil {
     }
 
     /**
-     * ÒÆ¶¯ÎÄ¼ş
+     * ç§»åŠ¨æ–‡ä»¶
      *
      * @param string $fileUrl
      * @param string $aimUrl
-     * @param boolean $overWrite ¸Ã²ÎÊı¿ØÖÆÊÇ·ñ¸²¸ÇÔ­ÎÄ¼ş
+     * @param boolean $overWrite è¯¥å‚æ•°æ§åˆ¶æ˜¯å¦è¦†ç›–åŸæ–‡ä»¶
      * @return boolean
      */
     function moveFile($fileUrl, $aimUrl, $overWrite = false) {
@@ -121,7 +121,7 @@ class FileUtil {
     }
 
     /**
-     * É¾³ıÎÄ¼ş¼Ğ
+     * åˆ é™¤æ–‡ä»¶å¤¹
      *
      * @param string $aimDir
      * @return boolean
@@ -148,7 +148,7 @@ class FileUtil {
     }
 
     /**
-     * É¾³ıÎÄ¼ş
+     * åˆ é™¤æ–‡ä»¶
      *
      * @param string $aimUrl
      * @return boolean
@@ -163,11 +163,11 @@ class FileUtil {
     }
 
     /**
-     * ¸´ÖÆÎÄ¼ş¼Ğ
+     * å¤åˆ¶æ–‡ä»¶å¤¹
      *
      * @param string $oldDir
      * @param string $aimDir
-     * @param boolean $overWrite ¸Ã²ÎÊı¿ØÖÆÊÇ·ñ¸²¸ÇÔ­ÎÄ¼ş
+     * @param boolean $overWrite è¯¥å‚æ•°æ§åˆ¶æ˜¯å¦è¦†ç›–åŸæ–‡ä»¶
      * @return boolean
      */
     function copyDir($oldDir, $aimDir, $overWrite = false) {
@@ -196,11 +196,11 @@ class FileUtil {
     }
 
     /**
-     * ¸´ÖÆÎÄ¼ş
+     * å¤åˆ¶æ–‡ä»¶
      *
      * @param string $fileUrl
      * @param string $aimUrl
-     * @param boolean $overWrite ¸Ã²ÎÊı¿ØÖÆÊÇ·ñ¸²¸ÇÔ­ÎÄ¼ş
+     * @param boolean $overWrite è¯¥å‚æ•°æ§åˆ¶æ˜¯å¦è¦†ç›–åŸæ–‡ä»¶
      * @return boolean
      */
     function copyFile($fileUrl, $aimUrl, $overWrite = false) {
@@ -219,7 +219,7 @@ class FileUtil {
     }
 	
 	
-	//ÁĞ³öÎÄ¼şºÍÄ¿Â¼
+	//åˆ—å‡ºæ–‡ä»¶å’Œç›®å½•
 	function getFileList($directory) {        
 		$files = array();        
 		try {        
@@ -234,7 +234,7 @@ class FileUtil {
 		return $files;        
 	}  
 	
-	//½ö½öÁĞ³öÄ¿Â¼
+	//ä»…ä»…åˆ—å‡ºç›®å½•
 	function getDirList($directory){
 		$files = array();        
 		try {        
@@ -250,7 +250,7 @@ class FileUtil {
 		return $files;  
 	}
 	
-	//½ö½öÁĞ³öÎÄ¼ş
+	//ä»…ä»…åˆ—å‡ºæ–‡ä»¶
 	function getOnleFileList($directory){
 		$files = array();        
 		try {        
