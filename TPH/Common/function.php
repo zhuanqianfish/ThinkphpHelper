@@ -45,11 +45,15 @@ function getTableInfoArray($tableName){
 	if($dbType == 'mysql'){
 		$dbName = C('DB_NAME');
 		$result = $Model->query("select * from information_schema.columns where table_schema='".$dbName."' and table_name='".C('DB_PREFIX').$tableName."'");
+		$result = changeColumCase($result); //修正information_schema大小写问题
 		return $result;
 	}else{ //sqlite
 		$result = $Model->query("pragma table_info (".C('DB_PREFIX').$tableName.")");
+		$result = changeColumCase($result); //修正information_schema大小写问题
 		return $result;
 	} 
+	
+	
 	$this->error('数据库类型不支持');
 }
 
@@ -98,4 +102,13 @@ function columNameToVarName($columName){
 		$result .= ucfirst($tempArray[$i]);
 	}
 	return lcfirst($result);
+}
+
+// 转化键名为小写-用于修正mysql information_schema返回键名在不同环境下大小写不同的问题
+//$columInfoArray 返回的表信息
+function changeColumCase($columInfoArray){
+	foreach($columInfoArray as $columInfo){
+		$res[] = array_change_key_case($columInfo, CASE_LOWER);
+	}
+	return $res;
 }
