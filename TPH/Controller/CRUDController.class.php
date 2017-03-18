@@ -55,7 +55,6 @@ class CRUDController extends Controller {
 	
 	//列出所有记录页面，读取并填充数据
 	public function previewAllPage(){ 
-
 		$tableName = I('table'); 
 		$Model = M($tableName);
 		$resultCode = "<table class=\"table table-striped table-bordered table-hover\">\r\n<thead>\r\n<tr>\r\n";
@@ -191,11 +190,11 @@ class CRUDController extends Controller {
 			$controllerStr .= $this->generateDeleteCode()."\r\n\r\n}";
 			
 			$originalAllViewStr = $this->generateAllPageCode();
-			$allViewStr = $this->makeViewTemplate("all.html", "管理".$tableName[$i], $originalAllViewStr);
+			$allViewStr = $this->makeViewTemplate("all.html", $tableName[$i], $originalAllViewStr);
 			$originalAddViewStr = $this->generateAddPage();
-			$addViewStr = $this->makeViewTemplate("add.html", "新建".$tableName[$i], $originalAddViewStr);
+			$addViewStr = $this->makeViewTemplate("add.html", $tableName[$i], $originalAddViewStr);
 			$originalEditViewStr = $this->generateEditPage();
-			$editViewStr = $this->makeViewTemplate("edit.html", "编辑".$tableName[$i], $originalEditViewStr);
+			$editViewStr = $this->makeViewTemplate("edit.html", $tableName[$i], $originalEditViewStr);
 			
 			file_put_contents($controllerPath.tableNameToModelName($tableName[$i])."Controller.class.php", $controllerStr);//生成Controller文件
 			FileUtil::createDir($viewPath);
@@ -206,11 +205,10 @@ class CRUDController extends Controller {
 		echo "生成完成。";
 	}
 	
-	
 	//解析前台View模板
-	public function makeViewTemplate($templateFileName, $operateTitle, $content){
+	public function makeViewTemplate($templateFileName, $tableName, $content){
 		$templateFilePath = MODULE_PATH. "Template/View/" .$templateFileName;
-		$this->assign('operateTitle', $operateTitle);
+		$this->assign('tableName', $tableName);
 		$this->assign('content', $content);
 		$fileContent = $this->fetch($templateFilePath);
 		return $fileContent;
@@ -219,8 +217,9 @@ class CRUDController extends Controller {
 	//解析后台Controller模板
 	public function makeControllerTemplate($templateFileName){
 		$templateFilePath = MODULE_PATH. "Template/Controller/" .$templateFileName;
-		$this->assign('operateTitle', $operateTitle);
 		$fileContent = $this->fetch($templateFilePath);
 		return $fileContent;
 	}
+	
+	
 }

@@ -22,12 +22,15 @@ class IndexController extends Controller {
     }
 
 	public function test(){
-		$this->display();
+		$dbDict = C('DB_FIELD_DICT');
+		dump($dbDict);
+		dump($dbDict['article']['title']['asName']);
+		$this->display(); 
 	}
 
 	public function checkVersion(){	//检查代码版本
 		header("Content-type: text/html; charset=utf-8");
-		$version = 0.343;
+		$version = C('VERSION');
 		$url = 'http://zhuanqianfish.github.io/ThinkphpHelper/version.txt';
 		$newVersion =  (float)file_get_contents($url);
 		if($newVersion > $version){

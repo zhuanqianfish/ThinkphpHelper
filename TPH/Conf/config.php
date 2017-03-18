@@ -1,4 +1,6 @@
 <?php
 return array(
-	//'配置项'=>'配置值'
+	'VERSION'	=> 0.35,	//版本号
+	'LOAD_EXT_CONFIG' => 'dict', 
+		
 );

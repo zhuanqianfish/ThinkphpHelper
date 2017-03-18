@@ -112,3 +112,27 @@ function changeColumCase($columInfoArray){
 	}
 	return $res;
 }
+
+
+//解析字段中文名
+//tableName	表名
+//fieldName	字段名
+function pressFieldDict($tableName, $fieldName){
+	$dbDect = C('DB_FIELD_DICT');
+	if($dbDect[$tableName][$fieldName]){
+		if(is_array($dbDect[$tableName][$fieldName])){
+			return $dbDect[$tableName][$fieldName]['asName'];
+		}else{
+			return $dbDect[$tableName][$fieldName];
+		}
+	}else{
+		return $fieldName;
+	}
+}
+
+
+//解析表中文名
+function pressTableDict($tableName){
+	$dbDect = C('DB_TABLE_DICT');
+	return $dbDect[$tableName] ? $dbDect[$tableName] : $tableName;
+}
