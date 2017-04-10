@@ -1,0 +1,60 @@
+<layout name="default_layout" />
+<!-- Main bar -->
+<style>
+.mainbar{
+font-size:14px;
+padding:10px;
+}
+
+p{
+	line-height:30px;
+}
+</style>
+<div class="mainbar">
+
+<h1>帮助</h1>
+<a href="http://weiyunstudio.qiniudn.com/1.png"><img class="alignnone" src="http://weiyunstudio.qiniudn.com/1.png" alt="" /></a>
+
+<p>测试中我使用的是Sqlite数据库，复制数据库文件到项目目录下，如使用Mysql数据库可以省略此步骤。</p><br>
+
+<a href="http://weiyunstudio.qiniudn.com/1.png"><img class="alignnone" src="http://weiyunstudio.qiniudn.com/2.png" alt="" /></a>
+
+<p>将TPH文件夹复制到项目目录下。</p><br>
+
+<a href="http://weiyunstudio.qiniudn.com/1.png"><img class="alignnone" src="http://weiyunstudio.qiniudn.com/3.png" alt="" /></a>
+
+<p>修改项目配置文件，主要是配置数据库信息。</p><br>
+
+<a href="http://weiyunstudio.qiniudn.com/1.png"><img class="alignnone" src="http://weiyunstudio.qiniudn.com/4.png" alt="" /></a>
+
+<p>访问一下TPH，应该看到以上界面</p><br>
+
+<a href="http://weiyunstudio.qiniudn.com/1.png"><img class="alignnone" src="http://weiyunstudio.qiniudn.com/5.png" alt="" /></a>
+
+<p>点击“生成模块选项”选择好目标模块，把需要生成的表名打上勾，点击生成。成功后，会有提示生成路径。此步骤主要是为了生成布局文件。</p><br>
+
+<a href="http://weiyunstudio.qiniudn.com/1.png"><img class="alignnone" src="http://weiyunstudio.qiniudn.com/6.png" alt="" /></a>
+
+<p>点击“生成CRUD代码”，注意选择和上一步相同的数据表，点击生成文件。</p><br>
+
+<a href="http://weiyunstudio.qiniudn.com/1.png"><img class="alignnone" src="http://weiyunstudio.qiniudn.com/7.png" alt="" /></a>
+
+<p>修改Index控制器下的index方法内容为：$this-&gt;show();如图</p><br>
+
+<a href="http://weiyunstudio.qiniudn.com/1.png"><img class="alignnone" src="http://weiyunstudio.qiniudn.com/8.png" alt="" /></a>
+
+<p>再次访问你的项目，have fun.</p><br>
+
+&nbsp;
+
+&nbsp;
+
+<p>注：0.34版本之后的前台、后台代码都是根据TPH/Template文件夹下的文件生成的。你可以通过修改代码模板来创建适合自己需求的代码生成器。<br>
+具体来说，View文件夹下对应的是前台代码，前台代码分两种，code结尾表示是代码片段，它被用于替换前台布局代码中{$content}的部分。<br>
+Controller文件夹放置的是控制器代码模板。<br>
+以layout结尾的文件夹都被认为是布局模板，布局模板文件夹下必须有一个名为layout.html的布局文件，布局模板文件夹的所有内容将会在"生成布局文件"这一步被复制到相应模块的View文件夹下。
+
+</p><br>
+
+</div>   
+  

@@ -1,0 +1,12 @@
+<div class="form-group">
+<form id="viewTableColum">
+<div class="col-md-6">
+	<label class="control-label col-lg-3">{$label}</label><br>
+	<div class="col-lg-7" style="padding-left:30px;">                               
+		<volist name="tableInfoList" id="table" >
+			<input type="checkbox" value="{$table[$columnNameKey]}">{$table[$columnNameKey]}</input><br>
+		</volist> 
+	</div>
+</div>
+</form>
+</div>

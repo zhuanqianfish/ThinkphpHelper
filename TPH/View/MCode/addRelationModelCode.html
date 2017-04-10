@@ -1,0 +1,14 @@
+'{$className}'  =>  array(
+			'mapping_type'      =>  self::{$mappingType},
+			'class_name'        =>  '{$className}',
+<if condition="$mappingName != '' ">			
+　　　　　　　'mapping_name'      =>  '{$mappingName}',
+</if>
+
+			'foreign_key'       =>  '{$foreignKey}',
+<if condition="$relationForeignKey != '' ">			
+　　　　　　　'relation_foreign_key'  =>  '{$relationForeignKey}',
+			'relation_table'    =>  '{$relationTable}' //此处应显式定义中间表名称，且不能使用C函数读取表前缀
+</if>		
+		),
+		//@more

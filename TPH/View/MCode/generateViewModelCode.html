@@ -1,0 +1,11 @@
+//由ThinkphpHelper自动生成,请根据需要修改
+namespace {$moduleName}\Model;
+use Think\Model\ViewModel;
+
+class {$modelName}ViewModel extends ViewModel {
+   public $viewFields = array(
+	   '{$modelName}'=>array({$table1Field}),
+	   '{$tableName}'=>array({$table2Field}, '_on'=>'{$modelName}.{$viewModuleOn1} = {$tableName}.{$viewModuleOn2}'<if condition="$joinType  neq  'JOIN' ">, '_type'=>'{$joinType}'</if>),
+	   //@more
+   ); 
+}

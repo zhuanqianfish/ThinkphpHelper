@@ -1,6 +1,8 @@
 ThinkphpHelper
 ==============
-支持MySQL 和 sqlite数据库，快速生成前后台CRUD代码片段，减少重复劳动。而且只有一个文件，轻巧方便。
+![ThinkphpHelper](http://beta1.qiniudn.com/tph03.png)
+
+支持MySQL 和 sqlite数据库，快速构建项目原型，直接生成前后台CRUD代码片段，还可根据需要自行定制代码模板，减少重复劳动。
 
 写这个东西的原因是因为我最近沮丧的发现很多时候我都在做重复的事情，比如重复写最简单的CRUD方法，编写表单，写前台样式表等等。
 
@@ -8,24 +10,19 @@ Thinkphp对于后台操作的支持已经非常强大，再加上最近非常流
 
 我希望它操作足够简单，让人一看就懂，对MySql和Sqlite数据库都能够稳定生成CRUD代码就好，还如果还能顺便生成一些符合Bootstrap框架的View代码就更好啦。
 
-经过了大概十几个小时的奋斗，ThinkphpHelper诞生啦！
+ThinkphpHelper诞生至今多谢大家的支持。在这个版本中我放弃了单文件的形式，以便实现更多想法。你可以看到现在界面更漂亮了，功能也更强大了。这个版本最大的亮点就是支持直接生成文件，除了数据库外，你只需要写不超过5行代码就可以快速构建出一个原型系统。我建议你可以根据你的需要自行修改Template文件夹下的模板，使之更符合你的项目需求。
 
-它只有一个文件，支持MySQL 和 sqlite数据库，快速生成前后台CRUD代码片段，减少重复劳动。而且只有一个文件，轻巧方便。
-
-你只需要配置好数据库信息后把它放到你项目文件的任意一个Controller目录中，然后像这样调用它：http://[你的项目地址]/index.php/[模块名]/ThinkphpHelper
-
-我把所有的样式表都写到了这个文件中，使它方便你复制粘贴到任何Thinkphp项目中，其中用到的Bootstrap和jquery的相关文件是读取网络上的CDN，所以使用它的时候最好保证你的网络畅通，如果你没有网络的话，可以自行修改相关的地址。
-
-注意，它只是生成代码片段，所有相应的文件还是需要你自己亲手创建。使用之前一定要准备好你的数据库以及数据库里的数据表，不过聪明的你一定知道它是怎么用的对吧？
+注意，在使用之前一定要准备好你的数据库以及数据库里的数据表，并且配置好你的模块，不过聪明的你一定知道它是怎么用的对吧？
 
 最新版目前已经支持Thinkphp3.2.2
-由于3.2.2更新幅度较大，以后对Thinkphp3.1.x的支持不再更新，未来也会考虑加入直接生成文件的功能。
 
 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 
-项目地址：https://github.com/zhuanqianfish/ThinkphpHelper
+项目地址：[https://github.com/zhuanqianfish/ThinkphpHelper](https://github.com/zhuanqianfish/ThinkphpHelper)
 
-详细使用说明地址：http://zhuanqianfish.github.io/ThinkphpHelper
+详细使用说明地址（更新帮助至0.3.2）：[http://zhuanqianfish.github.io/ThinkphpHelper](http://zhuanqianfish.github.io/ThinkphpHelper)
+
+示例视频：[http://yun.baidu.com/s/1i39oOjr](http://yun.baidu.com/s/1i39oOjr)
 
 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 

@@ -1,0 +1,17 @@
+public function edit(){
+	${$tableName}Model = M('{$TableName}');
+	if(IS_POST){
+		${$tableName}Model ->create();
+		$flag = ${$tableName}Model ->save();
+		if($flag){
+			$this->success('编辑成功',U('{$TableName}/all')); 
+		}else{
+			$this->error('编辑失败',U('{$TableName}/all')); 
+		}
+	}else{
+		$id = I('id'); 
+		${$tableName} = ${$tableName}Model->find($id);
+		$this->assign('{$tableName}', ${$tableName});
+		$this->display();
+	}
+}

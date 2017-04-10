@@ -1,0 +1,14 @@
+public function add(){
+	if(IS_POST){
+		${$tableName}Model = M('{$TableName}');
+		${$tableName}Model ->create();
+		$flag = ${$tableName}Model ->add();
+		if($flag){
+			$this->success('新建成功',U('{$TableName}/all')); 
+		}else{
+			$this->error('新建失败',U('{$TableName}/all')); 
+		}
+	}else{
+		$this->display(); 
+	}
+}
