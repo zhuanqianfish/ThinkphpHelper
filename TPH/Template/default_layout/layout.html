@@ -4,9 +4,9 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <!-- Title and other stuffs -->
-  <title>[项目名]</title> 
-  <meta name="keywords" content="ThinkphpHelper,Thinkphp代码自动生成" />
-  <meta name="description" content="ThinkphpHelper,Thinkphp代码自动生成工具" />
+  <title>{:C('PROJECT_NAME')}</title> 
+  <meta name="keywords" content="{:C('PROJECT_KEYWORD')}" />
+  <meta name="description" content="{:C('PROJECT_DESCRIPTION')}" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="sjj">
   <script src="__ROOT__/{:MODULE_PATH}/View/Public/js/jquery.js"></script> <!-- jQuery -->
@@ -52,8 +52,8 @@
         <div class="col-md-4">
           <!-- Logo. -->
           <div class="logo">
-            <h1><a href="__MODULE__ ">[项目名]<span class="bold"></span></a></h1>
-            <p class="meta">[项目描述]</p>
+            <h1><a href="__MODULE__ ">{:C('PROJECT_NAME')}<span class="bold"></span></a></h1>
+            <p class="meta">{:C('PROJECT_DESCRIPTION')}</p>
           </div>
           <!-- Logo ends -->
         </div>
@@ -100,7 +100,7 @@
     <div class="row">
       <div class="col-md-12">
             <!-- Copyright info -->
-            <p class="copy">Copyright &copy; 2012 | <a href="#">Your Site</a> </p>
+            <p class="copy">Copyright &copy; 2012-2018 | <a href="#">Your Site</a> </p>
       </div>
     </div>
   </div>

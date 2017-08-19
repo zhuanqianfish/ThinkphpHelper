@@ -2,7 +2,8 @@
 <thead>
 <tr>	
 <volist name="tableInfoArray" id="tableInfo">
-	<th><center>{$tableInfo[$columnNameKey]}</center></th>
+	<th><center>{:pressFieldDict($tableName, $tableInfo[$columnNameKey])}</center></th>
+	
 </volist>
 <td>操作</td>
 </tr>
@@ -11,6 +12,7 @@
 <tr>
 <volist name="tableInfoArray" id="tableInfo">
 <td><literal>{$vo.</literal>{$tableInfo[$columnNameKey]}}</td>
+
 </volist>
 <td><a href="<literal>{:U(MODULE_NAME.'/</literal>{$TableName}<literal>/edit/id/'.$vo[id])}</literal>">编辑</a> |
 <a href="<literal>{:U(MODULE_NAME.'/</literal>{$TableName}<literal>/delete/id/'.$vo[id])}</literal>" onclick='return confirm("确定删除吗？")'>删除</a>

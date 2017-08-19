@@ -2,7 +2,7 @@
 	<volist name="tableInfoArray" id="tableInfo">
 	<if condition="$tableInfo[$columnNameKey] neq 'id'">
 	<div class="form-group">
-		<label class="col-sm-2 control-label" for="{$tableInfo[$columnNameKey]}">{$tableInfo[$columnNameKey]}</label>
+		<label class="col-sm-2 control-label" for="{$tableInfo[$columnNameKey]}">{:pressFieldDict($tableName, $tableInfo[$columnNameKey])}</label>
 		<div class="col-md-6">
 			<input type="text" class="form-control" placeholder="{$tableInfo[$columnNameKey]}" name="{$tableInfo[$columnNameKey]}" id="{$tableInfo[$columnNameKey]}"  value="<literal>{$</literal>{$tableName}.{$tableInfo[$columnNameKey]}}" />
 		</div>
