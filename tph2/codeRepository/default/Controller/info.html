@@ -1,0 +1,6 @@
+    //id单个查询
+    public function info(){
+        ${$tableName} = $this->model->info($this->request);
+        $this->assign('{$tableName}', ${$tableName});
+        return $this->fetch();
+    }

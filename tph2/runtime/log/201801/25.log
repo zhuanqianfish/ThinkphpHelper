@@ -1,0 +1,63 @@
+---------------------------------------------------------------
+[ 2018-01-25T10:43:43+08:00 ] 127.0.0.1 127.0.0.1 GET /tph2/
+[ info ] tp5.me/tph2/ [运行时间：0.042671s][吞吐率：23.44req/s] [内存消耗：1,216.15kb] [文件加载：43]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=219482112',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->index[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ VIEW ] template/\help.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-25T10:43:44+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/Index/checkVersion.html
+[ info ] tp5.me/tph2/Index/checkVersion.html [运行时间：0.674369s][吞吐率：1.48req/s] [内存消耗：1,105.41kb] [文件加载：38]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'Index',
+    2 => 'checkVersion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->checkVersion[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ LOG ] INIT File

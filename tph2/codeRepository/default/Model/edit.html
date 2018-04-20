@@ -1,0 +1,4 @@
+//修改
+public function edit($request){
+    return $this->allowField(true)->save($request->param(),['id' => $request->param('id')]);
+}

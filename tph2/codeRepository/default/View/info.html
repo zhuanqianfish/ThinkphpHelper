@@ -1,0 +1,19 @@
+<form class="form-horizontal" method="post">
+	{volist name="tableInfoArray" id="tableInfo"}
+	{if condition="$tableInfo[$columnNameKey] neq 'id'"}
+	<div class="form-group">
+		<label class="col-sm-2 control-label" for="{$tableInfo[$columnNameKey]}">{$tableInfo[$columnNameKey]}</label>
+		<div class="col-md-6">
+			<input type="text" class="form-control" placeholder="{$tableInfo[$columnNameKey]}" name="{$tableInfo[$columnNameKey]}" id="{$tableInfo[$columnNameKey]}"  value="<literal>{$</literal>{$tableName}.{$tableInfo[$columnNameKey]}}" />
+		</div>
+	</div>
+	<else /> <input type="hidden" name="id" value="<literal>{$</literal>{$tableName}.{$tableInfo[$columnNameKey]}}" />
+	
+	{/if}
+	{/volist}
+	<div class="form-group">
+		<div class="col-md-2 col-md-offset-2">
+			<button type="button" onclick="javascript:history.back();"  class="btn btn-default">返回</button>
+		</div>
+	</div>
+</form>

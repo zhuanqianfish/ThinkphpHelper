@@ -1,0 +1,21 @@
+
+//由ThinkphpHelper自动生成,请根据需要修改
+namespace {:C('targetConfig.app_namespace')}\{$moduleName}\controller;
+
+use think\Controller;
+
+class {:tableNameToModelName($tableName)} extends Controller{
+	protected $model = null;
+
+	public function _initialize(){	//初始化
+		$this->model = new \{:C('targetConfig.app_namespace')}\{$moduleName}\model\{:tableNameToModelName($tableName)};
+	}
+	{include file="test" /}
+	
+	{include file="add" /}
+	{include file="edit" /}
+	{include file="delete" /}
+	{include file="delList" /}
+	{include file="info" /}
+	{include file="getList" /}
+}

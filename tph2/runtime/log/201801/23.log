@@ -1,0 +1,1527 @@
+---------------------------------------------------------------
+[ 2018-01-23T13:47:46+08:00 ] 127.0.0.1 127.0.0.1 GET /tph2/
+[ info ] tp5.me/tph2/ [运行时间：0.035151s][吞吐率：28.45req/s] [内存消耗：1,343.73kb] [文件加载：45]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->index[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ VIEW ] template/\help.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-23T13:47:47+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/Index/checkVersion.html
+[ info ] tp5.me/tph2/Index/checkVersion.html [运行时间：0.579442s][吞吐率：1.73req/s] [内存消耗：1,105.97kb] [文件加载：38]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'Index',
+    2 => 'checkVersion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->checkVersion[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-23T13:47:47+08:00 ] 127.0.0.1 127.0.0.1 GET /tph2/ProjectConfig/index
+[ info ] tp5.me/tph2/ProjectConfig/index [运行时间：0.039116s][吞吐率：25.57req/s] [内存消耗：1,719.49kb] [文件加载：48]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'ProjectConfig',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://tp5.me/tph2/',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\ProjectConfig->index[ D:\WWW\tp5\public\tph2\application\tph2\controller\ProjectConfig.php ]
+[ info ] [ DB ] INIT sqlite
+[ info ] [ VIEW ] template/ProjectConfig\index.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+  2 => 'configList',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005542s ] sqlite:./db/tph.db
+[ sql ] [ SQL ] PRAGMA table_info( config ) [ RunTime:0.003602s ]
+[ sql ] [ SQL ] SELECT * FROM config [ RunTime:0.000056s ]
+---------------------------------------------------------------
+[ 2018-01-23T13:47:48+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/Index/checkVersion.html
+[ info ] tp5.me/tph2/Index/checkVersion.html [运行时间：0.344250s][吞吐率：2.90req/s] [内存消耗：1,105.98kb] [文件加载：38]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'Index',
+    2 => 'checkVersion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/ProjectConfig/index',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->checkVersion[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-23T13:47:48+08:00 ] 127.0.0.1 127.0.0.1 GET /tph2/ProjectConfig/formConfig
+[ info ] tp5.me/tph2/ProjectConfig/formConfig [运行时间：0.060692s][吞吐率：16.48req/s] [内存消耗：1,777.20kb] [文件加载：48]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'ProjectConfig',
+    2 => 'formConfig',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://tp5.me/tph2/ProjectConfig/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\ProjectConfig->formConfig[ D:\WWW\tp5\public\tph2\application\tph2\controller\ProjectConfig.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] template/ProjectConfig\formConfig.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+  2 => 'tableList',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010139s ] mysql:host=127.0.0.1;port=3306;dbname=mytest;charset=utf8
+[ sql ] [ SQL ] select table_name from information_schema.tables where table_schema='mytest' and table_type='base table' [ RunTime:0.011320s ]
+---------------------------------------------------------------
+[ 2018-01-23T13:47:49+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/Index/checkVersion.html
+[ info ] tp5.me/tph2/Index/checkVersion.html [运行时间：0.333495s][吞吐率：3.00req/s] [内存消耗：1,105.99kb] [文件加载：38]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'Index',
+    2 => 'checkVersion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/ProjectConfig/formConfig',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->checkVersion[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-23T13:47:49+08:00 ] 127.0.0.1 127.0.0.1 GET /tph2/CreateLayout
+[ info ] tp5.me/tph2/CreateLayout [运行时间：0.046273s][吞吐率：21.61req/s] [内存消耗：1,929.76kb] [文件加载：51]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'CreateLayout',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://tp5.me/tph2/ProjectConfig/formConfig',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\CreateLayout->index[ D:\WWW\tp5\public\tph2\application\tph2\controller\CreateLayout.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] template/CreateLayout\index.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+  2 => 'db_prefix',
+  3 => 'tableNameList',
+  4 => 'moduleNameList',
+  5 => 'layoutNameList',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010373s ] mysql:host=127.0.0.1;port=3306;dbname=mytest;charset=utf8
+[ sql ] [ SQL ] select table_name from information_schema.tables where table_schema='mytest' and table_type='base table' [ RunTime:0.000753s ]
+---------------------------------------------------------------
+[ 2018-01-23T13:47:49+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/Index/checkVersion.html
+[ info ] tp5.me/tph2/Index/checkVersion.html [运行时间：0.306713s][吞吐率：3.26req/s] [内存消耗：1,105.98kb] [文件加载：38]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'Index',
+    2 => 'checkVersion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/CreateLayout',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->checkVersion[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-23T13:47:50+08:00 ] 127.0.0.1 127.0.0.1 GET /tph2/ProjectConfig/index
+[ info ] tp5.me/tph2/ProjectConfig/index [运行时间：0.029620s][吞吐率：33.76req/s] [内存消耗：1,719.66kb] [文件加载：48]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'ProjectConfig',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://tp5.me/tph2/CreateLayout',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\ProjectConfig->index[ D:\WWW\tp5\public\tph2\application\tph2\controller\ProjectConfig.php ]
+[ info ] [ DB ] INIT sqlite
+[ info ] [ VIEW ] template/ProjectConfig\index.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+  2 => 'configList',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000317s ] sqlite:./db/tph.db
+[ sql ] [ SQL ] PRAGMA table_info( config ) [ RunTime:0.000343s ]
+[ sql ] [ SQL ] SELECT * FROM config [ RunTime:0.000056s ]
+---------------------------------------------------------------
+[ 2018-01-23T13:47:50+08:00 ] 127.0.0.1 127.0.0.1 GET /tph2/ProjectConfig/formConfig
+[ info ] tp5.me/tph2/ProjectConfig/formConfig [运行时间：0.038360s][吞吐率：26.07req/s] [内存消耗：1,777.20kb] [文件加载：48]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'ProjectConfig',
+    2 => 'formConfig',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://tp5.me/tph2/ProjectConfig/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\ProjectConfig->formConfig[ D:\WWW\tp5\public\tph2\application\tph2\controller\ProjectConfig.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] template/ProjectConfig\formConfig.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+  2 => 'tableList',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.009916s ] mysql:host=127.0.0.1;port=3306;dbname=mytest;charset=utf8
+[ sql ] [ SQL ] select table_name from information_schema.tables where table_schema='mytest' and table_type='base table' [ RunTime:0.001733s ]
+---------------------------------------------------------------
+[ 2018-01-23T13:47:50+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/Index/checkVersion.html
+[ info ] tp5.me/tph2/Index/checkVersion.html [运行时间：0.297179s][吞吐率：3.36req/s] [内存消耗：1,105.98kb] [文件加载：38]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'Index',
+    2 => 'checkVersion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/ProjectConfig/index',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->checkVersion[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-23T13:47:51+08:00 ] 127.0.0.1 127.0.0.1 GET /tph2/CreateLayout
+[ info ] tp5.me/tph2/CreateLayout [运行时间：0.038788s][吞吐率：25.78req/s] [内存消耗：1,792.39kb] [文件加载：49]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'CreateLayout',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://tp5.me/tph2/ProjectConfig/formConfig',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\CreateLayout->index[ D:\WWW\tp5\public\tph2\application\tph2\controller\CreateLayout.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] template/CreateLayout\index.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+  2 => 'db_prefix',
+  3 => 'tableNameList',
+  4 => 'moduleNameList',
+  5 => 'layoutNameList',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010601s ] mysql:host=127.0.0.1;port=3306;dbname=mytest;charset=utf8
+[ sql ] [ SQL ] select table_name from information_schema.tables where table_schema='mytest' and table_type='base table' [ RunTime:0.000693s ]
+---------------------------------------------------------------
+[ 2018-01-23T13:47:51+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/Index/checkVersion.html
+[ info ] tp5.me/tph2/Index/checkVersion.html [运行时间：0.314033s][吞吐率：3.18req/s] [内存消耗：1,105.99kb] [文件加载：38]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'Index',
+    2 => 'checkVersion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/ProjectConfig/formConfig',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->checkVersion[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-23T13:47:51+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/Index/checkVersion.html
+[ info ] tp5.me/tph2/Index/checkVersion.html [运行时间：0.334764s][吞吐率：2.99req/s] [内存消耗：1,105.98kb] [文件加载：38]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'Index',
+    2 => 'checkVersion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/CreateLayout',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->checkVersion[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-23T13:47:53+08:00 ] 127.0.0.1 127.0.0.1 GET /tph2/ProjectConfig/index
+[ info ] tp5.me/tph2/ProjectConfig/index [运行时间：0.025810s][吞吐率：38.74req/s] [内存消耗：1,719.66kb] [文件加载：48]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'ProjectConfig',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://tp5.me/tph2/CreateLayout',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\ProjectConfig->index[ D:\WWW\tp5\public\tph2\application\tph2\controller\ProjectConfig.php ]
+[ info ] [ DB ] INIT sqlite
+[ info ] [ VIEW ] template/ProjectConfig\index.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+  2 => 'configList',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000249s ] sqlite:./db/tph.db
+[ sql ] [ SQL ] PRAGMA table_info( config ) [ RunTime:0.000175s ]
+[ sql ] [ SQL ] SELECT * FROM config [ RunTime:0.000049s ]
+---------------------------------------------------------------
+[ 2018-01-23T13:47:53+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/Index/checkVersion.html
+[ info ] tp5.me/tph2/Index/checkVersion.html [运行时间：0.344343s][吞吐率：2.90req/s] [内存消耗：1,105.98kb] [文件加载：38]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'Index',
+    2 => 'checkVersion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/ProjectConfig/index',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->checkVersion[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-23T13:47:54+08:00 ] 127.0.0.1 127.0.0.1 GET /tph2/ProjectConfig/formConfig
+[ info ] tp5.me/tph2/ProjectConfig/formConfig [运行时间：0.028814s][吞吐率：34.71req/s] [内存消耗：1,777.20kb] [文件加载：48]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'ProjectConfig',
+    2 => 'formConfig',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://tp5.me/tph2/ProjectConfig/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\ProjectConfig->formConfig[ D:\WWW\tp5\public\tph2\application\tph2\controller\ProjectConfig.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] template/ProjectConfig\formConfig.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+  2 => 'tableList',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000717s ] mysql:host=127.0.0.1;port=3306;dbname=mytest;charset=utf8
+[ sql ] [ SQL ] select table_name from information_schema.tables where table_schema='mytest' and table_type='base table' [ RunTime:0.000715s ]
+---------------------------------------------------------------
+[ 2018-01-23T13:47:54+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/Index/checkVersion.html
+[ info ] tp5.me/tph2/Index/checkVersion.html [运行时间：0.360763s][吞吐率：2.77req/s] [内存消耗：1,105.99kb] [文件加载：38]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'Index',
+    2 => 'checkVersion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/ProjectConfig/formConfig',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->checkVersion[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-23T13:47:56+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/ProjectConfig/getTableInfo.html
+[ info ] tp5.me/tph2/ProjectConfig/getTableInfo.html [运行时间：0.028627s][吞吐率：34.93req/s] [内存消耗：1,711.32kb] [文件加载：48]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'ProjectConfig',
+    2 => 'getTableInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/ProjectConfig/formConfig',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '20',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+  'tableName' => 'test_group',
+)
+[ info ] [ RUN ] app\tph2\Controller\ProjectConfig->getTableInfo[ D:\WWW\tp5\public\tph2\application\tph2\controller\ProjectConfig.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT sqlite
+[ info ] [ DB ] INIT sqlite
+[ info ] [ VIEW ] template/ProjectConfig\formField.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+  2 => 'fieldName',
+  3 => 'findex',
+) ]
+[ info ] [ VIEW ] template/ProjectConfig\formField.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+  2 => 'fieldName',
+  3 => 'findex',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000490s ] mysql:host=127.0.0.1;port=3306;dbname=mytest;charset=utf8
+[ sql ] [ SQL ] select * from information_schema.columns where table_schema='mytest' and table_name='test_group' [ RunTime:0.003811s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000163s ] sqlite:./db/tph.db
+[ sql ] [ SQL ] PRAGMA table_info( table_field ) [ RunTime:0.000183s ]
+[ sql ] [ SQL ] SELECT * FROM table_field WHERE  field_name = 'id'  AND table_name = 'group' LIMIT 1 [ RunTime:0.000114s ]
+[ sql ] [ SQL ] SELECT * FROM table_field WHERE  field_name = 'name'  AND table_name = 'group' LIMIT 1 [ RunTime:0.000082s ]
+---------------------------------------------------------------
+[ 2018-01-23T13:48:16+08:00 ] 127.0.0.1 127.0.0.1 GET /tph2/ViewCode
+[ info ] tp5.me/tph2/ViewCode [运行时间：0.035373s][吞吐率：28.27req/s] [内存消耗：1,973.16kb] [文件加载：51]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'ViewCode',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://tp5.me/tph2/ProjectConfig/formConfig',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\ViewCode->index[ D:\WWW\tp5\public\tph2\application\tph2\controller\ViewCode.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] template/ViewCode\index.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+  2 => 'db_prefix',
+  3 => 'tableNameList',
+  4 => 'moduleNameList',
+  5 => 'themeList',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002389s ] mysql:host=127.0.0.1;port=3306;dbname=mytest;charset=utf8
+[ sql ] [ SQL ] select table_name from information_schema.tables where table_schema='mytest' and table_type='base table' [ RunTime:0.000693s ]
+---------------------------------------------------------------
+[ 2018-01-23T13:48:16+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/Index/checkVersion.html
+[ info ] tp5.me/tph2/Index/checkVersion.html [运行时间：0.401969s][吞吐率：2.49req/s] [内存消耗：1,105.98kb] [文件加载：38]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'Index',
+    2 => 'checkVersion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/ViewCode',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->checkVersion[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-23T13:49:25+08:00 ] 127.0.0.1 127.0.0.1 GET /tph2/ControllerCode
+[ info ] tp5.me/tph2/ControllerCode [运行时间：0.045696s][吞吐率：21.88req/s] [内存消耗：1,994.57kb] [文件加载：50]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'ControllerCode',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://tp5.me/tph2/ViewCode',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\ControllerCode->index[ D:\WWW\tp5\public\tph2\application\tph2\controller\ControllerCode.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] template/ControllerCode\index.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+  2 => 'tableNameList',
+  3 => 'moduleNameList',
+  4 => 'selectTableName',
+  5 => 'db_prefix',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.009488s ] mysql:host=127.0.0.1;port=3306;dbname=mytest;charset=utf8
+[ sql ] [ SQL ] select table_name from information_schema.tables where table_schema='mytest' and table_type='base table' [ RunTime:0.000630s ]
+---------------------------------------------------------------
+[ 2018-01-23T13:49:25+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/Index/checkVersion.html
+[ info ] tp5.me/tph2/Index/checkVersion.html [运行时间：0.344700s][吞吐率：2.90req/s] [内存消耗：1,106.14kb] [文件加载：38]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'Index',
+    2 => 'checkVersion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0; PHPSESSID=n04tbc3d2ao8m6sra9sslcjff1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/ControllerCode',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->checkVersion[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-23T13:49:32+08:00 ] 127.0.0.1 127.0.0.1 GET /tph2/WedgitCode/menu
+[ info ] tp5.me/tph2/WedgitCode/menu [运行时间：0.038949s][吞吐率：25.67req/s] [内存消耗：1,946.01kb] [文件加载：51]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'WedgitCode',
+    2 => 'menu',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0; PHPSESSID=n04tbc3d2ao8m6sra9sslcjff1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://tp5.me/tph2/ControllerCode',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\WedgitCode->menu[ D:\WWW\tp5\public\tph2\application\tph2\controller\WedgitCode.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] template/WedgitCode\menu.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+  2 => 'db_prefix',
+  3 => 'tableNameList',
+  4 => 'moduleNameList',
+  5 => 'layoutNameList',
+  6 => 'menuList',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010357s ] mysql:host=127.0.0.1;port=3306;dbname=mytest;charset=utf8
+[ sql ] [ SQL ] select table_name from information_schema.tables where table_schema='mytest' and table_type='base table' [ RunTime:0.001110s ]
+---------------------------------------------------------------
+[ 2018-01-23T13:49:33+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/Index/checkVersion.html
+[ info ] tp5.me/tph2/Index/checkVersion.html [运行时间：0.346226s][吞吐率：2.89req/s] [内存消耗：1,106.14kb] [文件加载：38]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'Index',
+    2 => 'checkVersion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0; PHPSESSID=n04tbc3d2ao8m6sra9sslcjff1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/WedgitCode/menu',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->checkVersion[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-23T13:49:34+08:00 ] 127.0.0.1 127.0.0.1 GET /tph2/CreateLayout
+[ info ] tp5.me/tph2/CreateLayout [运行时间：0.039057s][吞吐率：25.60req/s] [内存消耗：1,792.41kb] [文件加载：49]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'CreateLayout',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0; PHPSESSID=n04tbc3d2ao8m6sra9sslcjff1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://tp5.me/tph2/WedgitCode/menu',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\CreateLayout->index[ D:\WWW\tp5\public\tph2\application\tph2\controller\CreateLayout.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] template/CreateLayout\index.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+  2 => 'db_prefix',
+  3 => 'tableNameList',
+  4 => 'moduleNameList',
+  5 => 'layoutNameList',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011452s ] mysql:host=127.0.0.1;port=3306;dbname=mytest;charset=utf8
+[ sql ] [ SQL ] select table_name from information_schema.tables where table_schema='mytest' and table_type='base table' [ RunTime:0.000613s ]
+---------------------------------------------------------------
+[ 2018-01-23T13:49:34+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/Index/checkVersion.html
+[ info ] tp5.me/tph2/Index/checkVersion.html [运行时间：0.336354s][吞吐率：2.97req/s] [内存消耗：1,106.13kb] [文件加载：38]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'Index',
+    2 => 'checkVersion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0; PHPSESSID=n04tbc3d2ao8m6sra9sslcjff1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/CreateLayout',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->checkVersion[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-23T13:49:34+08:00 ] 127.0.0.1 127.0.0.1 GET /tph2/WedgitCode/menu
+[ info ] tp5.me/tph2/WedgitCode/menu [运行时间：0.031044s][吞吐率：32.21req/s] [内存消耗：1,799.66kb] [文件加载：49]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'WedgitCode',
+    2 => 'menu',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0; PHPSESSID=n04tbc3d2ao8m6sra9sslcjff1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://tp5.me/tph2/CreateLayout',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\WedgitCode->menu[ D:\WWW\tp5\public\tph2\application\tph2\controller\WedgitCode.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] template/WedgitCode\menu.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+  2 => 'db_prefix',
+  3 => 'tableNameList',
+  4 => 'moduleNameList',
+  5 => 'layoutNameList',
+  6 => 'menuList',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000652s ] mysql:host=127.0.0.1;port=3306;dbname=mytest;charset=utf8
+[ sql ] [ SQL ] select table_name from information_schema.tables where table_schema='mytest' and table_type='base table' [ RunTime:0.000793s ]
+---------------------------------------------------------------
+[ 2018-01-23T13:49:35+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/Index/checkVersion.html
+[ info ] tp5.me/tph2/Index/checkVersion.html [运行时间：0.296545s][吞吐率：3.37req/s] [内存消耗：1,106.14kb] [文件加载：38]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'Index',
+    2 => 'checkVersion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0; PHPSESSID=n04tbc3d2ao8m6sra9sslcjff1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/WedgitCode/menu',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->checkVersion[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-23T13:49:35+08:00 ] 127.0.0.1 127.0.0.1 GET /tph2/ViewCode
+[ info ] tp5.me/tph2/ViewCode [运行时间：0.039073s][吞吐率：25.59req/s] [内存消耗：1,815.05kb] [文件加载：49]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'ViewCode',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0; PHPSESSID=n04tbc3d2ao8m6sra9sslcjff1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://tp5.me/tph2/WedgitCode/menu',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\ViewCode->index[ D:\WWW\tp5\public\tph2\application\tph2\controller\ViewCode.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] template/ViewCode\index.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+  2 => 'db_prefix',
+  3 => 'tableNameList',
+  4 => 'moduleNameList',
+  5 => 'themeList',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010247s ] mysql:host=127.0.0.1;port=3306;dbname=mytest;charset=utf8
+[ sql ] [ SQL ] select table_name from information_schema.tables where table_schema='mytest' and table_type='base table' [ RunTime:0.000714s ]
+---------------------------------------------------------------
+[ 2018-01-23T13:49:35+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/Index/checkVersion.html
+[ info ] tp5.me/tph2/Index/checkVersion.html [运行时间：0.303139s][吞吐率：3.30req/s] [内存消耗：1,106.13kb] [文件加载：38]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'Index',
+    2 => 'checkVersion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0; PHPSESSID=n04tbc3d2ao8m6sra9sslcjff1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/ViewCode',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->checkVersion[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-23T13:49:35+08:00 ] 127.0.0.1 127.0.0.1 GET /tph2/ControllerCode
+[ info ] tp5.me/tph2/ControllerCode [运行时间：0.026196s][吞吐率：38.17req/s] [内存消耗：1,816.27kb] [文件加载：48]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'ControllerCode',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0; PHPSESSID=n04tbc3d2ao8m6sra9sslcjff1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://tp5.me/tph2/ViewCode',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\ControllerCode->index[ D:\WWW\tp5\public\tph2\application\tph2\controller\ControllerCode.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] template/ControllerCode\index.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+  2 => 'tableNameList',
+  3 => 'moduleNameList',
+  4 => 'selectTableName',
+  5 => 'db_prefix',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000566s ] mysql:host=127.0.0.1;port=3306;dbname=mytest;charset=utf8
+[ sql ] [ SQL ] select table_name from information_schema.tables where table_schema='mytest' and table_type='base table' [ RunTime:0.000730s ]
+---------------------------------------------------------------
+[ 2018-01-23T13:49:36+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/Index/checkVersion.html
+[ info ] tp5.me/tph2/Index/checkVersion.html [运行时间：0.317911s][吞吐率：3.15req/s] [内存消耗：1,106.14kb] [文件加载：38]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'Index',
+    2 => 'checkVersion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0; PHPSESSID=n04tbc3d2ao8m6sra9sslcjff1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/ControllerCode',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->checkVersion[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-23T13:49:37+08:00 ] 127.0.0.1 127.0.0.1 GET /tph2/ModelCode
+[ info ] tp5.me/tph2/ModelCode [运行时间：0.041155s][吞吐率：24.30req/s] [内存消耗：1,984.67kb] [文件加载：50]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'ModelCode',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0; PHPSESSID=n04tbc3d2ao8m6sra9sslcjff1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://tp5.me/tph2/ControllerCode',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\ModelCode->index[ D:\WWW\tp5\public\tph2\application\tph2\controller\ModelCode.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] template/\ModelCode\index.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+  2 => 'db_prefix',
+  3 => 'tableNameList',
+  4 => 'moduleNameList',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010759s ] mysql:host=127.0.0.1;port=3306;dbname=mytest;charset=utf8
+[ sql ] [ SQL ] select table_name from information_schema.tables where table_schema='mytest' and table_type='base table' [ RunTime:0.000714s ]
+---------------------------------------------------------------
+[ 2018-01-23T13:49:37+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/Index/checkVersion.html
+[ info ] tp5.me/tph2/Index/checkVersion.html [运行时间：0.308033s][吞吐率：3.25req/s] [内存消耗：1,106.13kb] [文件加载：38]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'Index',
+    2 => 'checkVersion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0; PHPSESSID=n04tbc3d2ao8m6sra9sslcjff1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/ModelCode',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->checkVersion[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-23T13:49:44+08:00 ] 127.0.0.1 127.0.0.1 GET /tph2/ProjectConfig/index
+[ info ] tp5.me/tph2/ProjectConfig/index [运行时间：0.024953s][吞吐率：40.08req/s] [内存消耗：1,719.69kb] [文件加载：48]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'ProjectConfig',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0; PHPSESSID=n04tbc3d2ao8m6sra9sslcjff1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://tp5.me/tph2/ModelCode',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\ProjectConfig->index[ D:\WWW\tp5\public\tph2\application\tph2\controller\ProjectConfig.php ]
+[ info ] [ DB ] INIT sqlite
+[ info ] [ VIEW ] template/ProjectConfig\index.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+  2 => 'configList',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000670s ] sqlite:./db/tph.db
+[ sql ] [ SQL ] PRAGMA table_info( config ) [ RunTime:0.000226s ]
+[ sql ] [ SQL ] SELECT * FROM config [ RunTime:0.000057s ]
+---------------------------------------------------------------
+[ 2018-01-23T13:49:44+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/Index/checkVersion.html
+[ info ] tp5.me/tph2/Index/checkVersion.html [运行时间：0.333912s][吞吐率：2.99req/s] [内存消耗：1,106.14kb] [文件加载：38]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'Index',
+    2 => 'checkVersion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0; PHPSESSID=n04tbc3d2ao8m6sra9sslcjff1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/ProjectConfig/index',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->checkVersion[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-23T13:49:45+08:00 ] 127.0.0.1 127.0.0.1 GET /tph2/ProjectConfig/formConfig
+[ info ] tp5.me/tph2/ProjectConfig/formConfig [运行时间：0.023767s][吞吐率：42.08req/s] [内存消耗：1,777.48kb] [文件加载：48]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'ProjectConfig',
+    2 => 'formConfig',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0; PHPSESSID=n04tbc3d2ao8m6sra9sslcjff1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://tp5.me/tph2/ProjectConfig/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\ProjectConfig->formConfig[ D:\WWW\tp5\public\tph2\application\tph2\controller\ProjectConfig.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] template/ProjectConfig\formConfig.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+  2 => 'tableList',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000671s ] mysql:host=127.0.0.1;port=3306;dbname=mytest;charset=utf8
+[ sql ] [ SQL ] select table_name from information_schema.tables where table_schema='mytest' and table_type='base table' [ RunTime:0.000778s ]
+---------------------------------------------------------------
+[ 2018-01-23T13:49:45+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/Index/checkVersion.html
+[ info ] tp5.me/tph2/Index/checkVersion.html [运行时间：0.320706s][吞吐率：3.12req/s] [内存消耗：1,106.15kb] [文件加载：38]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'Index',
+    2 => 'checkVersion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0; PHPSESSID=n04tbc3d2ao8m6sra9sslcjff1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/ProjectConfig/formConfig',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->checkVersion[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-23T13:49:46+08:00 ] 127.0.0.1 127.0.0.1 GET /tph2/ProjectConfig/index
+[ info ] tp5.me/tph2/ProjectConfig/index [运行时间：0.025286s][吞吐率：39.55req/s] [内存消耗：1,719.70kb] [文件加载：48]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'ProjectConfig',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0; PHPSESSID=n04tbc3d2ao8m6sra9sslcjff1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://tp5.me/tph2/ProjectConfig/formConfig',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\ProjectConfig->index[ D:\WWW\tp5\public\tph2\application\tph2\controller\ProjectConfig.php ]
+[ info ] [ DB ] INIT sqlite
+[ info ] [ VIEW ] template/ProjectConfig\index.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+  2 => 'configList',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000162s ] sqlite:./db/tph.db
+[ sql ] [ SQL ] PRAGMA table_info( config ) [ RunTime:0.000166s ]
+[ sql ] [ SQL ] SELECT * FROM config [ RunTime:0.000051s ]
+---------------------------------------------------------------
+[ 2018-01-23T13:49:46+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/Index/checkVersion.html
+[ info ] tp5.me/tph2/Index/checkVersion.html [运行时间：0.340967s][吞吐率：2.93req/s] [内存消耗：1,106.14kb] [文件加载：38]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'Index',
+    2 => 'checkVersion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0; PHPSESSID=n04tbc3d2ao8m6sra9sslcjff1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/ProjectConfig/index',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->checkVersion[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-23T13:49:47+08:00 ] 127.0.0.1 127.0.0.1 GET /tph2/ProjectConfig/formConfig
+[ info ] tp5.me/tph2/ProjectConfig/formConfig [运行时间：0.033459s][吞吐率：29.89req/s] [内存消耗：1,777.48kb] [文件加载：48]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'ProjectConfig',
+    2 => 'formConfig',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0; PHPSESSID=n04tbc3d2ao8m6sra9sslcjff1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://tp5.me/tph2/ProjectConfig/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\ProjectConfig->formConfig[ D:\WWW\tp5\public\tph2\application\tph2\controller\ProjectConfig.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] template/ProjectConfig\formConfig.html [ array (
+  0 => 'pk',
+  1 => 'trueTable',
+  2 => 'tableList',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010289s ] mysql:host=127.0.0.1;port=3306;dbname=mytest;charset=utf8
+[ sql ] [ SQL ] select table_name from information_schema.tables where table_schema='mytest' and table_type='base table' [ RunTime:0.000607s ]
+---------------------------------------------------------------
+[ 2018-01-23T13:49:47+08:00 ] 127.0.0.1 127.0.0.1 POST /tph2/Index/checkVersion.html
+[ info ] tp5.me/tph2/Index/checkVersion.html [运行时间：0.350906s][吞吐率：2.85req/s] [内存消耗：1,106.15kb] [文件加载：38]
+[ info ] [ LANG ] D:\WWW\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'tph2'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'tph2',
+    1 => 'Index',
+    2 => 'checkVersion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=219482112; pgv_si=s1872943104; thinkphp_show_page_trace=0|0; PHPSESSID=n04tbc3d2ao8m6sra9sslcjff1',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://tp5.me/tph2/ProjectConfig/formConfig',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.2372.400 QQBrowser/9.5.11096.400',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://tp5.me',
+  'accept' => '*/*',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'tp5.me',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\tph2\Controller\Index->checkVersion[ D:\WWW\tp5\public\tph2\application\tph2\controller\Index.php ]
+[ info ] [ LOG ] INIT File

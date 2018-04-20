@@ -1,0 +1,20 @@
+
+<form class="form-horizontal" method="post">
+	{volist name="tableInfoArray" id="tableInfo"}
+	{if condition="$tableInfo[$columnNameKey] neq 'id'"}
+	<div class="form-group">
+		<label class="col-md-2 control-label" for="{$tableInfo[$columnNameKey]}">{:pressFieldDict($tableName, $tableInfo[$columnNameKey])}</label>
+		<div class="col-md-6">
+			<input type="text" class="form-control" placeholder="{:pressFieldDict($tableName, $tableInfo[$columnNameKey])}"
+				 name="{$tableInfo[$columnNameKey]}" id="{$tableInfo[$columnNameKey]}" />
+		</div>
+	</div>
+	{/if}
+	{/volist}
+	
+	<div class="form-group">
+		<div class="col-md-2 col-md-offset-2">
+			<input type="submit" value="提交" class="btn btn-default" />
+		</div>
+	</div>
+</form>

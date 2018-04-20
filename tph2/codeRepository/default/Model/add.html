@@ -1,0 +1,4 @@
+//新增
+public function add($request){
+    return $this->data($request->param())->allowField(true)->save();
+}

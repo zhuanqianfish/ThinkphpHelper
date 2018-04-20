@@ -1,0 +1,5 @@
+//批量删除
+public function delList($request){
+    $condition = $request->request('condition');
+    return $this->destroy(json_decode($condition));
+}
