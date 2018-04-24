@@ -24,14 +24,28 @@ class ViewCode extends Base {
 	
 	//一键生成表单文件
 	public function generateAllView(){
-		$tableName = I('tableName');
-		$formController = I('formController');
-		$defaultActionList = ['add','edit','getList'];
-		$msg = '';
-		foreach($defaultActionList as $acton){
-			$msg .= $this->createViewFile($acton).'<br>';
+		$defaultActionList = ['add','edit','getList']; //默认生成增，改，查
+		$moduleName = I('moduleName');
+		$tableNameList = I('selectTableName');
+		$modelPath = TARGET_PROJECT_PATH.$moduleName.DS.'/view/';
+		$res = '';
+		foreach($tableNameList as $tableName){
+			$tableName = getTableName($tableName);
+			if(!file_exists($modelPath)){
+				FileUtil::createDir($modelPath);
+			}
+			if(!file_exists($modelPath.DS. $tableName.DS)){
+				FileUtil::createDir($modelPath.DS.$tableName.DS);
+			}
+
+			foreach($defaultActionList as $actionName){
+				$code = $this->generateViewCode($actionName, $tableName);
+				$filePath = $modelPath. $tableName .DS. $actionName.".html";
+				file_put_contents($filePath, $code);
+				$res .= '生成成功，生成路径为：'.$filePath."<br>";
+			}
 		}
-		return $msg;
+		return $res;
 	}
 
 	//生成前台布局文件
@@ -59,11 +73,11 @@ class ViewCode extends Base {
 
 
 	//生成视图代码
-	public function generateViewCode($actionName = null){
-		$tableName = getTableName(I('tableName'));
+	public function generateViewCode($actionName = null, $tableName = null){
+		$tableName = $tableName ? $tableName : getTableName(I('tableName'));
 		$moduleName = I('moduleName');
-		$controllerName = I('controllerName');
-		$tableInfoArray = getTableInfoArray(I('tableName'));
+		$controllerName = $tableName;
+		$tableInfoArray = getTableInfoArray($tableName);
 		
 		
 		$columnNameKey = getColumnNameKey();
@@ -73,10 +87,12 @@ class ViewCode extends Base {
 		$this->assign('tableInfoArray', $tableInfoArray);
 		$this->assign('columnNameKey', $columnNameKey);
 
+
 		$theme = I('theme');//代码风格
 		$actionName = $actionName ? $actionName : I('actionName');
 		$templateBasePath = CODE_REPOSITORY.DS. $theme ."/view/";	//代码所在文件夹
 		$template = file_get_contents($templateBasePath . $actionName. '.html');	//读取模板
+		
 		$resCode =  $this->display($template,[],[],['view_path'=>C('codeLib').'/View/']);
 		return $resCode;
 	}
@@ -95,6 +111,7 @@ class ViewCode extends Base {
 		$actionName = $actionName ? $actionName : I('actionName');		
 		$code = $this->generateViewCode($actionName);
 		$filePath = $modelPath. $tableName .DS. $actionName.".html";
+
 		file_put_contents($filePath, $code);
 		return '生成成功，生成路径为：'.$filePath;
 	}
