@@ -1,0 +1,5 @@
+//id单个查询
+public function info($request){
+    $id = $request->param('id');		
+    return $this->where('{$pk|default="id"}', $id)->find();
+}

@@ -14,7 +14,7 @@ function createFiles(moduleName, selectTableName){
 //一键生成模型代码文件
 function createModelFile(){
 	var url = "{:APP_NAME}/ModelCode/createModelFile";
-	moduleName = $('#moduleName option:selected').val();
+	moduleName = $('#moduleName').val();
 			checkedBox = $('#selectTables input:checked');
 			selectTableName = [];
 			if(db_prefix != ''){
@@ -63,11 +63,8 @@ function createModelFile(){
 										<div class="form-group">
 											<label class="control-label col-lg-3" for="title">选择模块</label>
 											<div class="col-lg-6"> 
-											<select class="form-control" id="moduleName">
-											{volist name="moduleNameList" id="moduleName" }
-												<option value="{$moduleName}">{$moduleName}</option>
-												{/volist}
-											</select> 
+													<input  id="moduleName" name="moduleName" value="{$moduleName}" disabled="disabled" class="form-control" type="text">   
+
 											</div>
 											</div>
 											<!-- 数据表 -->

@@ -57,23 +57,15 @@ $(function(){
 							<div class="form-horizontal">  
 								<div class="form-group">
 									<label class="control-label col-lg-2">目标模块:</label>
-									<div class="col-lg-6">                               
-										<select class="form-control" id="moduleName">
-											{volist name="moduleNameList" id="moduleName" }
-												<option value="{$moduleName}">{$moduleName}</option>
-											{/volist}
-										</select> 
+									<div class="col-lg-6">       
+										<input  id="moduleName" value="{$moduleName}" disabled="disabled" class="form-control" type="text">                            
 									</div>
 								</div>   
-								<!-- Table -->
+								<!-- 风格模板 -->
 								<div class="form-group">
 									<label class="control-label col-lg-2">风格模板:</label>
-									<div class="col-lg-6">                               
-										<select class="form-control" id="layoutName">
-											{volist name="layoutNameList" id="layoutName" }
-												<option value="{$layoutName}">{$layoutName}</option>
-											{/volist}
-										</select>  
+									<div class="col-lg-6">  
+										<input  id="layoutName" value="{$layoutName}" disabled="disabled" class="form-control" type="text">                            
 									</div>
 								</div>
 	

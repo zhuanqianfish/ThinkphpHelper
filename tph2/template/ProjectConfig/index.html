@@ -34,18 +34,69 @@
 
                 <!-- Widget content -->
                 <div class="widget-content">
-                  <div class="padd">
+                  <div class="form-horizontal">
                     <form id="form1" method="post">
                         {volist name="configList" id="config"}
-                        <p>
-                            <span>{$config.title}:</span>
-                            <input type="text" id="{$config.name}" name="{$config.name}" value="{$config.value}" style="width:50%" >
-                            <span >{$config.description}</span>
+                        <!--废弃
+                            <p>
+                            <input type="hidden" id="{$config.name}" name="{$config.name}" value="{$config.value}" style="width:50%" >
                         </p>
+                        -->
                         {/volist}
-                        <p>
-                            <button type="button" onclick="save()" class="btn btn-primary">确定</button>
-                        </p>
+                        <br>
+                        <br>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">项目名称:</label>
+                            <div class="col-lg-6">                               
+                               <input name="projectName" class="form-control" value="项目名" type="text">
+                            </div>
+                            <span class="col-lg-4"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">目标模块:</label>
+                            <div class="col-lg-6">  
+                            <select class="form-control" name="moduleName" id="moduleName">
+                                {volist name="moduleNameList" id="moduleName" }
+                                    <option value="{$moduleName}">{$moduleName}</option>
+                                {/volist}
+                            </select> 
+                            </div> 
+                            
+                            <span class="col-lg-4">目标模块名称</span>
+                        </div> 
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">风格模板:</label>
+                            <div class="col-lg-6">                               
+                                <select class="form-control"  name="theme"  id="layoutName">
+                                    {volist name="layoutNameList" id="layoutName" }
+                                        <option value="{$layoutName}">{$layoutName}</option>
+                                    {/volist}
+                                </select>  
+                            </div>
+                            <span class="col-lg-4">默认前端代码模板</span>
+                        </div> 
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">后端代码库:</label>
+                            <div class="col-lg-6">                               
+                                <select class="form-control" name="codelib" id="codelib">
+                                    {volist name="codelibNameList" id="codelibName" }
+                                        <option value="{$codelibName}">{$codelibName}</option>
+                                    {/volist}
+                                </select>  
+                            </div>
+                            <span class="col-lg-4"></span>
+                        </div> 
+
+
+                        <div class="form-group">
+                             <label class="control-label col-lg-2"> </label>
+                            <div class="col-lg-6 ">          
+                                <button type="button" onclick="save()" class="btn btn-primary">确定</button>
+                            </div>
+                        </div>
                     </form>
                     
                 </div>

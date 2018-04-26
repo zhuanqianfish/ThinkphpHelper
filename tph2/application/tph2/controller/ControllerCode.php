@@ -15,7 +15,9 @@ class ControllerCode extends Base {
 		$this->assign('moduleNameList', getModuleNameList());
 		$this->assign('selectTableName', $this->getSessionTableName());
 		$this->assign('db_prefix',C('database.prefix'));
-		return $this->fetch('ControllerCode/index');
+		$moduleName = getDbConfig('moduleName');
+		$this->assign('moduleName', $moduleName);
+		return $this->fetch('ControllerCode'.DS.'index');
     }
 
 
@@ -25,14 +27,17 @@ class ControllerCode extends Base {
 		$moduleName = I('moduleName');
 		$this->assign('tableName', $tableName);
 		$this->assign('moduleName', $moduleName);
-		$template = file_get_contents(C('codeLib').'\Controller\controller.html');//读取模板.
-		return PHP_HEAD . $this->display($template,[],[],['view_path'=>C('codeLib').'/Controller/']);
+		$codelibName = getDbConfig('codeLib') == '' ? 'default' : getDbConfig('codeLib');
+		dump($codelibName);
+		$codeBasePath = CODE_REPOSITORY.DS. $codelibName .DS;
+		$template = file_get_contents($codeBasePath.'Controller'.DS.'controller.html');//读取模板.
+		return PHP_HEAD . $this->display($template,[],[],['view_path'=>$codeBasePath.'Controller'.DS]);
 	}
 
 	//生成控制器文件
 	public function generateControllerFile(){
 		$moduleName = I('moduleName');		
-		$modelPath = TARGET_PROJECT_PATH.$moduleName.'/controller/';
+		$modelPath = TARGET_PROJECT_PATH.$moduleName.DS.'controller'.DS;
 		$tableName = getTableName(I('tableName'));
 		if(!file_exists($modelPath)){
 			FileUtil::createDir($modelPath);
@@ -206,9 +211,11 @@ class ControllerCode extends Base {
 	public function makeViewTemplate($actionName = null, $moduleName=null, $theme='default'){
 		$actionName = $actionName ? $actionName : I('actionName');
 		$moduleName = $moduleName ? $moduleName :I('moduleName');
-		$templateBasePath = CODE_REPOSITORY.DS. $theme ."/View/";	//代码所在文件夹
+		$templateBasePath = CODE_REPOSITORY.DS. $theme .DS. "View".DS;	//代码所在文件夹
 		$template = file_get_contents($templateBasePath . $actionName.".html");	//读取模板
-		$resCode =  $this->display($template,[],[],['view_path'=>C('codeLib').'/View/']);
+		$codelibName = getDbConfig('codeLib') == '' ? 'default' : getDbConfig('codeLib');
+		$codeBasePath = CODE_REPOSITORY.DS. $codelibName .DS;
+		$resCode =  $this->display($template,[],[],['view_path'=>$codeBasePath. 'View'.DS ]);
 		return $resCode;
 	}
 	
@@ -217,9 +224,11 @@ class ControllerCode extends Base {
 	public function makeControllerTemplate($actionName = null, $moduleName=null, $theme='default'){
 		$actionName = $actionName ? $actionName : I('actionName');
 		$moduleName = $moduleName ? $moduleName :I('moduleName');
-		$templateBasePath = CODE_REPOSITORY.DS. $theme ."/Controller/";	//代码所在文件夹
+		$templateBasePath = CODE_REPOSITORY.DS. $theme .DS. "Controller".DS;	//代码所在文件夹
 		$template = file_get_contents($templateBasePath . $actionName.".html");	//读取模板
-		$resCode =  $this->display($template,[],[],['view_path'=>C('codeLib').'/View/']);
+		$codelibName = getDbConfig('codeLib') == '' ? 'default' : getDbConfig('codeLib');
+		$codeBasePath = CODE_REPOSITORY.DS. $codelibName .DS;
+		$resCode =  $this->display($template,[],[],['view_path'=>$codeBasePath. 'View'.DS]);
 		return $resCode;
 	}
 	

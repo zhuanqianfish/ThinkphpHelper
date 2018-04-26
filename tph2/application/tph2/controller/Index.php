@@ -11,16 +11,16 @@ class Index extends Base{
 
 	public function index()
 	{
-		return $this->fetch("\help");
+		return $this->fetch(DS."help");
     }
 
 	public function ui()
 	{
-		return $this->fetch("\ui");
+		return $this->fetch(DS."ui");
     }
 
 	public function help(){
-		return $this->fetch("\help");
+		return $this->fetch(DS."help");
     }
 
 	public function test(){

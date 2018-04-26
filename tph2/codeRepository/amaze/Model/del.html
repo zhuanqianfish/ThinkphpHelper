@@ -1,0 +1,5 @@
+//删除
+public function del($request){
+    $id = $request->param('id');
+    return $this->where('{$pk|default="id"}',  $id)->delete();
+}

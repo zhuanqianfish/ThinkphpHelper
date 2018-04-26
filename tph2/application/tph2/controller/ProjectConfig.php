@@ -12,15 +12,25 @@ class ProjectConfig extends Base{
 	public function index(){
 		if(IS_POST()){
 			tphDB('config')->where('name', 'theme')->update(['value'=>I('post.theme')]);
-			tphDB('config')->where('name', 'codelib')->update(['value'=>I('post.codelib')]);
+			tphDB('config')->where('name', 'codeLib')->update(['value'=>I('post.codelib')]);
 			tphDB('config')->where('name', 'projectName')->update(['value'=>I('post.projectName')]);
 			tphDB('config')->where('name', 'projectPath')->update(['value'=>I('post.projectPath')]);
 			tphDB('config')->where('name', 'projectPublicPath')->update(['value'=>I('post.projectPublicPath')]);
+			tphDB('config')->where('name', 'moduleName')->update(['value'=>I('post.moduleName')]);
 			return $this->success('更新成功');
 		}else{
 			$configList = tphDB('config')->select();
 			$this->assign('configList', $configList);
-			return $this->fetch('ProjectConfig/index');
+			$this->assign('db_prefix',C('database.prefix'));
+			$tableNameList = getTableNameList();
+			$this->assign('tableNameList', $tableNameList);
+			$moduleNameList = getModuleNameList();
+			$this->assign('moduleNameList', $moduleNameList);
+			$layoutNameList = getThemeList();
+			$this->assign('layoutNameList', $layoutNameList);
+			$codelibNameList = getCodelibList();
+			$this->assign('codelibNameList', $codelibNameList);
+			return $this->fetch('ProjectConfig'.DS.'index');
 		}
 	}
 	
@@ -47,11 +57,12 @@ class ProjectConfig extends Base{
 			tphDB('config')->where('name', 'projectName')->update(['value'=>I('post.projectName')]);
 			tphDB('config')->where('name', 'projectPath')->update(['value'=>I('post.projectPath')]);
 			tphDB('config')->where('name', 'projectPublicPath')->update(['value'=>I('post.projectPublicPath')]);
+			
 			return $this->success('更新成功');
 		}else{
 			$tableList = getTableNameList();
 			$this->assign('tableList', $tableList);			
-			return $this->fetch('ProjectConfig/formConfig');
+			return $this->fetch('ProjectConfig'.DS.'formConfig');
 		}
 	}
 
@@ -67,7 +78,7 @@ class ProjectConfig extends Base{
 			
 			$this->assign('fieldName', $tableInfo['column_name']);
 			$this->assign('findex', $findex);
-			$str .= $this->fetch('ProjectConfig/formField')."\r\n";
+			$str .= $this->fetch('ProjectConfig'.DS.'formField')."\r\n";
 			$findex++;
 		}
 		return $str;

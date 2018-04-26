@@ -3,9 +3,9 @@
 <script type="text/javascript">
 var db_prefix = '{$db_prefix}';
 
-function gogogo(moduleName, selectTableName, layoutName, menuName, saveFile){
+function gogogo(moduleName, selectTableName, layoutName, codelibName, menuName, saveFile){
 	$.post("{:url(CONTROLLER_NAME.'/creatFiles')}", {'moduleName' : moduleName,'selectTableName' : selectTableName, 
-			 'theme' : layoutName, 'menuName':menuName, 'saveFileName':saveFile},
+			 'theme' : layoutName, 'codelib':codelibName, 'menuName':menuName, 'saveFileName':saveFile},
 		function(data){
 			$('#msg').html(data);
 		}
@@ -28,12 +28,13 @@ $(function(){
 		var selectTableName = [];
 		var saveFile = $('#saveFileName').val();
 		var menuName = $('#menuName').val();
+		var codelibName = $('#codelibName').val();
 		checkedBox.each(function(){
 			selectTableName.push($(this).val());
 		});
 		layoutName = $('#layoutName').val();
 		console.log(selectTableName);
-		gogogo(moduleName, selectTableName, layoutName, menuName, saveFile);
+		gogogo(moduleName, selectTableName, layoutName,codelibName, menuName, saveFile);
 	});	
 	
 	
@@ -71,19 +72,15 @@ $(function(){
                       <div class="form quick-post">
 							<!-- Edit profile form (not working)-->
 							<div class="form-horizontal">  
-								<div class="form-group">
-									<label class="control-label col-lg-2">目标模块:</label>
-									<div class="col-lg-6">                               
-										<select class="form-control" id="moduleName">
-											{volist name="moduleNameList" id="moduleName" }
-												<option value="{$moduleName}">{$moduleName}</option>
-											{/volist}
-										</select> 
-									</div>
-								</div>   
+									<div class="form-group">
+										<label class="control-label col-lg-2">目标模块:</label>
+										<div class="col-lg-6">       
+											<input  id="moduleName" value="{$moduleName}" disabled="disabled" class="form-control" type="text">                            
+										</div>
+									</div>  
 									<!-- Table -->
 								<div class="form-group">
-									<label class="control-label col-lg-2">数据表:</label>
+									<label class="control-label col-lg-3">数据表:</label>
 									<div class="col-lg-6">                               
 										{volist name="tableNameList" id="table" }
 											<input type="checkbox" name="table" value="{$table}" >{$table}</input><br>
@@ -91,17 +88,22 @@ $(function(){
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="control-label col-lg-2">风格模板:</label>
-									<div class="col-lg-6">                               
-										<select class="form-control" id="layoutName" onchange="readMenuList()">
-											{volist name="layoutNameList" id="themeName" }
-												<option value="{$themeName}">{$themeName}</option>
-											{/volist}
-										</select>  
+									<label class="control-label col-lg-3">风格模板:</label>
+									<div class="col-lg-6">  
+										<input  id="layoutName" value="{$layoutName}" disabled="disabled" class="form-control" type="text">                            
 									</div>
 								</div>
+
 								<div class="form-group">
-									<label class="control-label col-lg-2">菜单模板:</label>
+									<label class="control-label col-lg-3">代码模板:</label>
+									<div class="col-lg-6">  
+										<input  id="codelibName" value="{$codelibName}" disabled="disabled" class="form-control" type="text">                            
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<label class="control-label col-lg-3">菜单模板:</label>
 									<div class="col-lg-6">                               
 										<select class="form-control" id="menuName">
 											{volist name="menuList" id="menu" }
@@ -114,7 +116,7 @@ $(function(){
 								<!-- Buttons -->
 								<div class="form-group">
 									<!-- Buttons -->
-									<label class="control-label col-lg-2">保存文件名:</label>
+									<label class="control-label col-lg-3">保存文件名:</label>
 									<div class="col-lg-6">
 									<p>
 										<input class="form-control"  name="saveFileName" id="saveFileName" type="text" value="menu1" placeholder="（不加后缀）">

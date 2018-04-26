@@ -183,6 +183,19 @@ function getThemeList(){
 }
 
 
+//读取后端风格模板文件夹列表
+function getCodelibList(){
+	$codelibNameList0 = FileUtil::getDirList(__ROOT__. DS .CODE_REPOSITORY);
+	$codelibDirNameList = array();
+	foreach($codelibNameList0 as $codelibDirName){
+		if(substr($codelibDirName, -5) != 'theme'){	//判断以layout结尾的才是布局文件夹
+			$codelibDirNameList[] = $codelibDirName;
+		}
+	}
+	return $codelibDirNameList;
+}
+
+
 //获取以特定字符串结尾的文件列表
 //rootDir: 读取的目录
 //fileEdn: 文件结尾（不含后缀）

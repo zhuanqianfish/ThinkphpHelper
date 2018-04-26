@@ -1,0 +1,23 @@
+//由ThinkphpHelper自动生成,请根据需要修改
+namespace {:C('targetConfig.app_namespace')}\{$moduleName}\model;
+
+use think\Model;
+
+class {:tableNameToModelName($tableName)} extends Model {
+	{if condition="$pk"}
+	// 设置数据库主键字段
+	protected $pk = '{$pk}';
+	{/if}
+
+	{if condition="$trueTable"}
+	// 设置当前模型对应的完整数据表名称
+	protected $table = '{$trueTable}';
+	{/if}
+	{include file="add" /}
+	{include file="edit" /}
+	{include file="del" /}
+	{include file="delList" /}
+	{include file="info" /}
+	{include file="getList" /}
+
+}	

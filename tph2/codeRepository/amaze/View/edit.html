@@ -1,0 +1,22 @@
+<form class="am-form tpl-form-border-form" method="post">
+	{volist name="tableInfoArray" id="tableInfo"}
+	{if condition="$tableInfo[$columnNameKey] neq 'id'"}
+	<div class="am-form-group">
+			<label for="{$tableInfo[$columnNameKey]}" class="am-u-sm-12 am-form-label am-text-left">{:pressFieldDict($tableName, $tableInfo[$columnNameKey])}
+					<span class="tpl-form-line-small-title">{$tableInfo[$columnNameKey]}</span></label>
+			<div class="am-u-sm-12">
+					<input type="text" class="tpl-form-input am-margin-top-xs" id="{$tableInfo[$columnNameKey]}" name="{$tableInfo[$columnNameKey]}" 
+						placeholder="请输入{:pressFieldDict($tableName, $tableInfo[$columnNameKey])}"  value="{literal}{${/literal}{$tableName}.{$tableInfo[$columnNameKey]}}" />
+					<small></small>
+			</div>
+	</div>
+	{else /} 
+	<input type="hidden" name="id" value="{literal}{${/literal}{$tableName}.{$tableInfo[$columnNameKey]}}" />
+	{/if}
+	{/volist}
+	<div class="am-form-group">
+			<div class="am-u-sm-12 am-u-sm-push-12">
+					<button type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
+			</div>
+	</div>
+</form>

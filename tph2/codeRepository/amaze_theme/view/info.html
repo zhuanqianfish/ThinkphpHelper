@@ -1,0 +1,18 @@
+{literal}{extend name="layout" /}{/literal}
+{literal}{block name="content"}{/literal}
+<div class="row">
+		<div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+				<div class="widget am-cf">
+						<div class="widget-head am-cf">
+								<div class="widget-title am-fl">详情{$tableName|pressTableDict}</div>
+								<div class="widget-function am-fr">
+										<a href="javascript:;" class="am-icon-cog"></a>
+								</div>
+						</div>
+						<div class="widget-body am-fr">
+								{include file="info" /}
+						</div>
+				</div>
+		</div>
+</div>
+{literal}{/block}{/literal}

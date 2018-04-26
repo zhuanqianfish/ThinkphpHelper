@@ -14,24 +14,23 @@ class CreateLayout extends Base {
 		$this->assign('db_prefix',C('database.prefix'));
 		$tableNameList = getTableNameList();
 		$this->assign('tableNameList', $tableNameList);
-		$moduleNameList = getModuleNameList();
-		$this->assign('moduleNameList', $moduleNameList);
-		$layoutNameList = getThemeList();
-		$this->assign('layoutNameList', $layoutNameList);
-		return $this->fetch('CreateLayout/index');
+		$moduleName = getDbConfig('moduleName');
+		$this->assign('moduleName', $moduleName);
+		$layoutName = getDbConfig('theme') == '' ? 'mac_theme' : getDbConfig('theme');
+		$this->assign('layoutName', $layoutName);
+		return $this->fetch('CreateLayout'.DS.'index');
     }
 	
 	
 	//在指定目录下创建布局模板文件
 	public function creatFiles(){
 		$moduleName = I('moduleName');
-		$selectTableName = I('selectTableName');
 		$layoutName = I('layoutName');
 		$modulePath = TARGET_PROJECT_PATH. $moduleName;
-		$layoutPath	= $modulePath. '/view/';
+		$layoutPath	= $modulePath. DS.'view'.DS;
 		$themePath = __ROOT__ .DS.CODE_REPOSITORY.DS. $layoutName.DS;
-		if(!file_exists(TARGET_PROJECT_PATH.$moduleName.'/view')){	//先创建view文件夹
-			FileUtil::createDir(TARGET_PROJECT_PATH.$moduleName.'/view');	
+		if(!file_exists(TARGET_PROJECT_PATH.$moduleName.DS. 'view')){	//先创建view文件夹
+			FileUtil::createDir(TARGET_PROJECT_PATH.$moduleName.DS. 'view');	
 		}
 		
 		$publicViewFileList = getFileListEndWith($themePath.'view', 'view.html');
@@ -44,7 +43,7 @@ class CreateLayout extends Base {
 			echo $publicViewFile.' 视图公共文件写入成功，路径：'. $layoutPath .'<br>';
 		}
 		
-		FileUtil::copyDir(__ROOT__ .DS.CODE_REPOSITORY.DS. $layoutName.'/public', TARGET_PUBLIC_PATH, true);	//复制public到发布目录
+		FileUtil::copyDir(__ROOT__ .DS.CODE_REPOSITORY.DS. $layoutName.DS. 'public', TARGET_PUBLIC_PATH, true);	//复制public到发布目录
 		echo $layoutName. '/public/ 公共文件发布目录成功，路径：'. TARGET_PUBLIC_PATH .'<br>';
 	}
 	

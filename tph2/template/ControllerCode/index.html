@@ -76,7 +76,7 @@
 		});
 		
 		$('#createFilesBtn').bind("click", function(){
-			moduleName = $('#moduleName option:selected').val();
+			moduleName = $('#moduleName').val();
 			checkedBox = $('#selectTables input:checked');
 			selectTableName = [];
 			if(db_prefix != ''){
@@ -134,13 +134,9 @@
                   <div class="padd">
                     <form class="form-horizontal">
 					<div class="form-group">
-						<label class="control-label col-lg-3" for="title">选择模块</label>
-						<div class="col-lg-6"> 
-						 <select class="form-control" id="moduleName">
-						 {volist name="moduleNameList" id="moduleName" }
-							<option value="{$moduleName}">{$moduleName}</option>
-							{/volist}
-						</select> 
+						<label class="control-label col-lg-3" for="title">目标模块</label>
+						<div class="col-lg-6">  
+            <input  id="moduleName" name="moduleName" value="{$moduleName}" disabled="disabled" class="form-control" type="text">   
 						</div>
 					  </div>
 					  <!-- 数据表 -->

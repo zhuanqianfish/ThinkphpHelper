@@ -14,13 +14,15 @@ class WedgitCode extends Base {
 		$this->assign('db_prefix',C('database.prefix'));
 		$tableNameList = getTableNameList();
 		$this->assign('tableNameList', $tableNameList);
-		$moduleNameList = getModuleNameList();
-		$this->assign('moduleNameList', $moduleNameList);
-		$layoutNameList = getThemeList();
-		$this->assign('layoutNameList', $layoutNameList);
+		$moduleName = getDbConfig('moduleName');
+		$this->assign('moduleName', $moduleName);
+		$layoutName = getDbConfig('theme') == '' ? 'mac_theme' : getDbConfig('theme');
+		$this->assign('layoutName', $layoutName);
+		$codelibName = getDbConfig('codeLib') == '' ? 'default' : getDbConfig('codeLib');
+		$this->assign('codelibName', $codelibName);
 		$menuList = $this->getMenuFileList();
 		$this->assign('menuList', $menuList);
-		return $this->fetch('WedgitCode/menu');
+		return $this->fetch('WedgitCode'.DS.'menu');
     }
 	
 	//在指定目录下创建菜单文件
@@ -29,8 +31,8 @@ class WedgitCode extends Base {
 		$layoutName = I('layoutName');
 		$modulePath = TARGET_PROJECT_PATH. $moduleName;
 		$themePath = __ROOT__ .DS.CODE_REPOSITORY.DS. $layoutName.DS;
-		if(!file_exists(TARGET_PROJECT_PATH.$moduleName.'/view')){//先创建view文件夹
-			FileUtil::createDir(TARGET_PROJECT_PATH.$moduleName.'/view');	
+		if(!file_exists(TARGET_PROJECT_PATH.$moduleName.DS.'view')){//先创建view文件夹
+			FileUtil::createDir(TARGET_PROJECT_PATH.$moduleName.DS.'view');	
 		}
 		foreach(I('selectTableName') as $selectTableName){
 			$tableNameList[] = getTableName($selectTableName);
@@ -38,11 +40,12 @@ class WedgitCode extends Base {
 		$this->assign('menuList', $tableNameList);
 		$this->assign('moduleName', $moduleName);
 		$theme = I('theme'); //代码风格
-		$templateBasePath = CODE_REPOSITORY.DS. $theme ."/view/";
+		$templateBasePath = CODE_REPOSITORY.DS. $theme .DS."view".DS;
+		$codeBasePath = CODE_REPOSITORY.DS. I('codelib') .DS;
 		$wedgitName = I('menuName');
 		$saveFileName = I('saveFileName').'.html';
-		$template = file_get_contents($templateBasePath . $wedgitName);//读取模板
-		$resCode =  $this->display($template,[],[],['view_path'=>C('codeLib').'/View/']);
+		$template = file_get_contents($templateBasePath . $wedgitName);	//读取模板
+		$resCode =  $this->display($template,[],[],['view_path'=>$codeBasePath.'View'.DS]);
 		$filePath = $modulePath .DS.'view'.DS. $saveFileName;
 		file_put_contents($filePath, $resCode);
 		echo $wedgitName.' 写入菜单成功，路径：'. $filePath .'<br>';

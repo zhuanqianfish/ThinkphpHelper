@@ -7,7 +7,7 @@ db_prefix = '{$db_prefix}';
 //一键生成
 function generateAllView(){
 	var theme = $('#theme').val();
-	var module = $('#module').val();
+	var module = $('#moduleName').val();
 	var checkedBox = $('#selectTables  input:checked');
 	var selectTableName = [];
 	if(db_prefix != ''){
@@ -98,11 +98,7 @@ jQuery(document).ready(function($) {
 							<div class="form-group">
 								<label class="control-label col-md-3" style="width:120px">目标模块:</label>
 								<div class="col-md-3">
-									<select class="form-control" id="module">
-										{volist name="moduleNameList" id="moduleName"}
-										<option value="{$moduleName}">{$moduleName}</option>
-										{/volist}	
-									</select>
+									<input  id="moduleName" value="{$moduleName}" disabled="disabled" class="form-control" type="text">                            
 								</div>
 
 								<label class="control-label col-md-3"  style="width:120px">前端风格:</label>
@@ -173,13 +169,9 @@ jQuery(document).ready(function($) {
 								<div class="form-horizontal">
 							<div class="form-group">
 								<div class="form-group">
-									<label class="control-label col-md-3" style="width:120px">目标模块:</label>
-									<div class="col-md-3">
-										<select class="form-control" id="module2">
-											{volist name="moduleNameList" id="moduleName"}
-											<option value="{$moduleName}">{$moduleName}</option>
-											{/volist}	
-										</select>
+									<label class="control-label col-lg-2">目标模块:</label>
+									<div class="col-lg-6">       
+										<input  id="module2" value="{$moduleName}" disabled="disabled" class="form-control" type="text">                            
 									</div>
 	
 									<label class="control-label col-md-3"  style="width:120px">前端风格:</label>

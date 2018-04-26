@@ -21,8 +21,9 @@ class ModelCode extends Base {
 		$this->assign('tableNameList', $tableNameList);
 		$moduleNameList = getModuleNameList();
 		$this->assign('moduleNameList', $moduleNameList);
-
-		return $this->fetch('\ModelCode\index'); 
+		$moduleName = getDbConfig('moduleName');
+		$this->assign('moduleName', $moduleName);
+		return $this->fetch(DS.'ModelCode'.DS.'index'); 
 	}
 	
 	//手动模型代码生成页
@@ -32,8 +33,9 @@ class ModelCode extends Base {
 		$this->assign('tableNameList', $tableNameList);
 		$moduleNameList = getModuleNameList();
 		$this->assign('moduleNameList', $moduleNameList);
-
-		return $this->fetch('\ModelCode\index2'); 
+		$moduleName = getDbConfig('moduleName');
+		$this->assign('moduleName', $moduleName);
+		return $this->fetch(DS.'ModelCode'.DS.'index2'); 
 	}
 
 	//生成模型代码源码
@@ -42,8 +44,10 @@ class ModelCode extends Base {
 		$moduleName = I('moduleName');
 		$this->assign('tableName', $tableName);
 		$this->assign('moduleName', $moduleName);
-		$template = file_get_contents(C('codeLib').'\Model\model.html');//读取模板
-		return PHP_HEAD . $this->display($template,[],[],['view_path'=>C('codeLib').'/Model/']);
+		$codelibName = getDbConfig('codeLib') == '' ? 'default' : getDbConfig('codeLib');
+		$codeBasePath = CODE_REPOSITORY.DS. $codelibName .DS;
+		$template = file_get_contents($codeBasePath.'Model'.DS.'model.html');//读取模板
+		return PHP_HEAD . $this->display($template,[],[],['view_path'=>$codeBasePath.'Model'.DS]);
 	}
 
 	//一键生成所有代码对应的文件，
@@ -51,7 +55,7 @@ class ModelCode extends Base {
 		$tableNameList = I('selectTableName');
 		$moduleName = I('moduleName');
 		$res = '';
-		for($i = 0;$i < count($tableNameList); $i++){
+		for($i = 0; $i < count($tableNameList); $i++){
 			Request::instance()->post(['tableName'=> $tableNameList[$i]]);
 			$res .= $this->createModelFile()."<br>";
 		}
@@ -61,7 +65,7 @@ class ModelCode extends Base {
 	//生成单个文件
 	public function generateModelFile(){
 		$moduleName = I('moduleName');		
-		$modelPath = TARGET_PROJECT_PATH.$moduleName.'/controller/';
+		$modelPath = TARGET_PROJECT_PATH.$moduleName.DS.'controller'.DS;
 		$tableName = getTableName(I('tableName'));
 		if(!file_exists($modelPath)){
 			FileUtil::createDir($modelPath);
@@ -75,7 +79,7 @@ class ModelCode extends Base {
 	//生成模型文件
 	public function createModelFile(){
 		$moduleName = I('moduleName');
-		$modelPath = TARGET_PROJECT_PATH.$moduleName.'/model/';
+		$modelPath = TARGET_PROJECT_PATH.$moduleName.DS.'model'.DS;
 		$tableName = getTableName(I('tableName'));
 		if(!file_exists($modelPath)){
 			FileUtil::createDir($modelPath);
@@ -87,7 +91,7 @@ class ModelCode extends Base {
 	}
 
 
-	////////////////////////////////////////////////////////////////////
+	/////////////////2018-4/////////////////////////////////
 	//生成模型增删改查代码
 	public function createModelCRUDCode(){
 		$tableName = getTableName(I('tableName'));
@@ -123,7 +127,7 @@ class ModelCode extends Base {
 		$this->assign('className', $className);
 		$this->assign('relationTable', $relationTable);
 		
-		return "<?php\r\n". $this->fetch('\ModelCode\generateRelationshipModelCode');
+		return "<?php\r\n". $this->fetch(DS.'ModelCode'.DS.'generateRelationshipModelCode');
 	}
 	
 	//添加关联代码片段
@@ -143,14 +147,14 @@ class ModelCode extends Base {
 		$this->assign('className', $className);
 		$this->assign('relationTable', $relationTable);
 		
-		return $this->fetch('\ModelCode\addRelationModelCode');
+		return $this->fetch(DS.'ModelCode'.DS.'addRelationModelCode');
 	}
 	
 	//写入关联模型文件
 	public function createRelationshipModelFile(){
 		$modelName = I('modelName');
 		$moduleName = I('moduleName');
-		$modelPath = APP_PATH.$moduleName.'/Model/';
+		$modelPath = APP_PATH.$moduleName.DS.'Model'.DS;
 		$code = htmlspecialchars_decode(I('code'));
 		file_put_contents($modelPath.tableNameToModelName($modelName)."Model.class.php", $code);
 		echo '生成成功，生成路径为：'.$modelPath;
@@ -165,7 +169,7 @@ class ModelCode extends Base {
 		$this->assign('columnNameKey', $columnNameKey);
 		$tableInfoList = getTableInfoArray($selectTableName);
 		$this->assign('tableInfoList', $tableInfoList);
-		return $this->fetch('\ModelCode\getTableInfo');
+		return $this->fetch(DS.'ModelCode'.DS.'getTableInfo');
 		
 	}
 	
@@ -178,7 +182,7 @@ class ModelCode extends Base {
 		$this->assign('columnNameKey', $columnNameKey);
 		$tableInfoList = getTableInfoArray($selectTableName);
 		$this->assign('tableInfoList', $tableInfoList);
-		return $this->fetch('\ModelCode\getViewTableInfo');
+		return $this->fetch(DS.'ModelCode'.DS.'getViewTableInfo');
 		
 		
 	}
@@ -192,7 +196,7 @@ class ModelCode extends Base {
 		$this->assign('columnNameKey', $columnNameKey);
 		$tableInfoList = getTableInfoArray($selectTableName);
 		$this->assign('tableInfoList', $tableInfoList);
-		return $this->fetch('\ModelCode\getViewTableInfo2');
+		return $this->fetch(DS.'ModelCode'.DS.'getViewTableInfo2');
 		
 	}
 	
@@ -203,7 +207,7 @@ class ModelCode extends Base {
 		$this->assign('columnNameKey', $columnNameKey);
 		$tableInfoList = getTableInfoArray($selectTableName);
 		$this->assign('tableInfoList', $tableInfoList);
-		return $this->fetch('\ModelCode\viewModuleOn');
+		return $this->fetch(DS.'ModelCode'.DS.'viewModuleOn');
 		
 	}
 	
@@ -243,7 +247,7 @@ class ModelCode extends Base {
 		$this->assign('viewModuleOn2', $viewModuleOn2);
 		$this->assign('joinType', $joinType);
 		
-		return "<?php\r\n". $this->fetch('\ModelCode\generateViewModelCode');
+		return "<?php\r\n". $this->fetch(DS.'ModelCode'.DS.'generateViewModelCode');
 	}
 	
 	public function viewModelCode(){
@@ -277,14 +281,14 @@ class ModelCode extends Base {
 		$this->assign('viewModuleOn2', $viewModuleOn2);
 		$this->assign('joinType', $joinType);
 		
-		$this->fetch('\ModelCode\addViewModelCode');
+		$this->fetch(DS.'ModelCode'.DS.'addViewModelCode');
 	}
 	
 	//写入视图模型文件
 	public function createViewModelFile(){
 		$modelName = I('modelName');
 		$moduleName = I('moduleName');
-		$modelPath = APP_PATH.$moduleName.'/Model/';
+		$modelPath = APP_PATH.$moduleName.DS.'Model'.DS;
 		$code = htmlspecialchars_decode(I('code'));
 		file_put_contents($modelPath.tableNameToModelName($modelName)."ViewModel.class.php", $code);
 		echo '生成成功，生成路径为：'.$modelPath;

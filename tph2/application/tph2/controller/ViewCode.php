@@ -15,8 +15,8 @@ class ViewCode extends Base {
 		$this->assign('db_prefix',C('database.prefix'));
 		$tableNameList = getTableNameList();
 		$this->assign('tableNameList', $tableNameList);
-		$moduleNameList = getModuleNameList();
-		$this->assign('moduleNameList', $moduleNameList);
+		$moduleName = getDbConfig('moduleName');
+		$this->assign('moduleName', $moduleName);
 		$themeList = getThemeList();
 		$this->assign('themeList', $themeList);
 		return $this->fetch('ViewCode/index');
@@ -27,7 +27,7 @@ class ViewCode extends Base {
 		$defaultActionList = ['add','edit','getList']; //默认生成增，改，查
 		$moduleName = I('moduleName');
 		$tableNameList = I('selectTableName');
-		$modelPath = TARGET_PROJECT_PATH.$moduleName.DS.'/view/';
+		$modelPath = TARGET_PROJECT_PATH.$moduleName.DS.'view'.DS;
 		$res = '';
 		foreach($tableNameList as $tableName){
 			$tableName = getTableName($tableName);
@@ -54,16 +54,19 @@ class ViewCode extends Base {
 		$theme = I('theme');//代码风格
 		$layoutListStr = I('layoutList');
 		$layoutList = explode(',', $layoutListStr);
-		$modelPath = TARGET_PROJECT_PATH.$moduleName.DS.'/view/';
+		$modelPath = TARGET_PROJECT_PATH.$moduleName.DS.'view'.DS;
 		if(!file_exists($modelPath)){
 			FileUtil::createDir($modelPath);			
 		}
 		$this->assign('moduleName', $moduleName);
-		$templateBasePath = CODE_REPOSITORY.DS. $theme ."/view/";
+		$templateBasePath = CODE_REPOSITORY.DS. $theme.DS.'view'.DS;
 		$res = '';
+		$codelibName = getDbConfig('codeLib') == '' ? 'default' : getDbConfig('codeLib');
+		$codeBasePath = CODE_REPOSITORY.DS. $codelibName .DS;
+
 		foreach($layoutList as $layoutName){
 			$template = file_get_contents($templateBasePath . $layoutName. '.html');//读取模板
-			$resCode =  $this->display($template,[],[],['view_path'=>C('codeLib').'/View/']);
+			$resCode =  $this->display($template,[],[],['view_path'=>$codeBasePath.'View'.DS]);
 			$filePath = $modelPath.$layoutName.".html";
 			file_put_contents($filePath, $resCode);
 			$res .= '生成成功，生成路径为：'.$filePath.'<br>';
@@ -77,9 +80,7 @@ class ViewCode extends Base {
 		$tableName = $tableName ? $tableName : getTableName(I('tableName'));
 		$moduleName = I('moduleName');
 		$controllerName = $tableName;
-		$tableInfoArray = getTableInfoArray($tableName);
-		
-		
+		$tableInfoArray = getTableInfoArray($tableName);	
 		$columnNameKey = getColumnNameKey();
 		$this->assign('tableName', $tableName);
 		$this->assign('controllerName', $controllerName);
@@ -87,13 +88,13 @@ class ViewCode extends Base {
 		$this->assign('tableInfoArray', $tableInfoArray);
 		$this->assign('columnNameKey', $columnNameKey);
 
-
 		$theme = I('theme');//代码风格
 		$actionName = $actionName ? $actionName : I('actionName');
-		$templateBasePath = CODE_REPOSITORY.DS. $theme ."/view/";	//代码所在文件夹
+		$templateBasePath = CODE_REPOSITORY.DS. $theme .DS."view".DS;	//代码所在文件夹
+		$codelibName = getDbConfig('codeLib') == '' ? 'default' : getDbConfig('codeLib');
+		$codeBasePath = CODE_REPOSITORY.DS. $codelibName .DS;
 		$template = file_get_contents($templateBasePath . $actionName. '.html');	//读取模板
-		
-		$resCode =  $this->display($template,[],[],['view_path'=>C('codeLib').'/View/']);
+		$resCode =  $this->display($template,[],[],['view_path'=>$codeBasePath.'View'.DS]);
 		return $resCode;
 	}
 
@@ -101,7 +102,7 @@ class ViewCode extends Base {
 	public function createViewFile($actionName = null){
 		$moduleName = I('moduleName');
 		$tableName = getTableName(I('tableName'));
-		$modelPath = TARGET_PROJECT_PATH.$moduleName.DS.'/view/';
+		$modelPath = TARGET_PROJECT_PATH.$moduleName.DS.'view'.DS;
 		if(!file_exists($modelPath)){
 			FileUtil::createDir($modelPath);			
 		}
