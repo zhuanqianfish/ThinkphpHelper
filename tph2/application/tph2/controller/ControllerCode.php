@@ -28,7 +28,6 @@ class ControllerCode extends Base {
 		$this->assign('tableName', $tableName);
 		$this->assign('moduleName', $moduleName);
 		$codelibName = getDbConfig('codeLib') == '' ? 'default' : getDbConfig('codeLib');
-		dump($codelibName);
 		$codeBasePath = CODE_REPOSITORY.DS. $codelibName .DS;
 		$template = file_get_contents($codeBasePath.'Controller'.DS.'controller.html');//读取模板.
 		return PHP_HEAD . $this->display($template,[],[],['view_path'=>$codeBasePath.'Controller'.DS]);
