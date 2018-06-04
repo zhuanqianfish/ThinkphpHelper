@@ -29,6 +29,8 @@ TPH2的设计思路是根据数据库信息用模板引擎解析“代码模板�
 
 ThinkphpHelper遵循Apache2开源协议发布，并提供免费使用。
 
+[支持TPH发展，支付宝或微信捐赠](http://zhuanqianfish.github.io/ThinkphpHelper/donation.html)
+
 =============================================
 
 更新日志：
