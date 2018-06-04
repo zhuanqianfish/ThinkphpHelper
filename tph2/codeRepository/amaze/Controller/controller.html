@@ -10,7 +10,7 @@ class {:tableNameToModelName($tableName)} extends Controller{
 	public function _initialize(){	//初始化
 		$this->model = new \{:C('targetConfig.app_namespace')}\{$moduleName}\model\{:tableNameToModelName($tableName)};
 	}
-	{include file="test" /}
+	{include file="index" /}
 	{include file="add" /}
 	{include file="edit" /}
 	{include file="delete" /}
