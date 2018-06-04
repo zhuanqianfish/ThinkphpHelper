@@ -2,7 +2,7 @@
 
 return [
     //tph设置
-	'VERSION'	=> 2.10,	//版本号
+	'VERSION'	=> 2.20,	//版本号
     'codeLib'   =>  CODE_REPOSITORY.DS.'default',   //代码模板仓库
     'bluemap'   =>  'bluemap',  //代码蓝图文件夹
     // +----------------------------------------------------------------------
