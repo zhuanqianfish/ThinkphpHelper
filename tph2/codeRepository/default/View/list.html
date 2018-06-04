@@ -1,0 +1,22 @@
+<table class="table table-striped table-bordered table-hover">
+<thead>
+<tr>
+{volist name="tableInfoArray" id="tableInfo"}
+	<th><center>{$tableInfo[$columnNameKey]}</center></th>
+{/volist}
+<td>操作</td>
+</tr>
+</thead>
+{literal}{volist name="{/literal}{$tableName}{literal}List" id="vo"}{/literal}
+<tr>
+{volist name="tableInfoArray" id="tableInfo"}
+<td>{literal}{$vo.{/literal}{$tableInfo[$columnNameKey]}}</td>
+
+{/volist}
+<td><a href="{literal}{:url({/literal}'{$tableName}{literal}/edit', ['id'=>$vo['id']])}{/literal}">编辑</a> |
+<a href="{literal}{:url({/literal}'{$tableName}{literal}/delete', ['id'=>$vo['id']])}{/literal}" onclick='return confirm("确定删除吗？")'>删除</a>
+</td>
+<tr>
+{literal}{/volist}{/literal}
+</table>
+{literal}{${/literal}{$tableName}List->render()}

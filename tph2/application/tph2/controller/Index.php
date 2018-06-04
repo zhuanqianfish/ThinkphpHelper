@@ -24,7 +24,7 @@ class Index extends Base{
     }
 
 	public function test(){
-		echo tph2test();
+		 return tph2test();
 	}
 
 	public function checkVersion(){	//检查代码版本

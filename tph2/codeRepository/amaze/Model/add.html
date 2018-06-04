@@ -1,4 +1,10 @@
 //新增
 public function add($request){
-    return $this->data($request->param())->allowField(true)->save();
+    $data = $request->param();
+    foreach($data as $key=>$val){
+        if(is_array($val)){    //处理checkbox情况
+            $data[$key] = implode(",", $val);
+        }
+    }
+    return $this->data($data)->allowField(true)->save();
 }

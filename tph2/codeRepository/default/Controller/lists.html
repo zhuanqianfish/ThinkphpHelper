@@ -1,0 +1,6 @@
+	//列表
+	public function list(){
+		${$tableName}List = $this->model->getList($this->request, 12);	
+		$this->assign('{$tableName}List', ${$tableName}List);
+		return $this->fetch();
+	}

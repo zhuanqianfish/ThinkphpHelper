@@ -73,12 +73,17 @@ class ProjectConfig extends Base{
 		$str = '';
 		$findex = 0;
 		foreach($tableinfoArray as $tableInfo){
-			$record = tphDB('table_field')->connect('tphdb')->where('field_name', $tableInfo['column_name'])
-					->where('table_name', $tableName)->find();
-			
+			$record = tphDB('table_field')->where('field_name', $tableInfo['column_name'])
+					->where('table_name','tp_'.$tableName)->find();
+
 			$this->assign('fieldName', $tableInfo['column_name']);
 			$this->assign('findex', $findex);
-			$str .= $this->fetch('ProjectConfig'.DS.'formField')."\r\n";
+			if($record){
+				$this->assign('record', $record);
+				$str .= $this->fetch('ProjectConfig'.DS.'formFieldEdit')."\r\n";
+			}else{
+				$str .= $this->fetch('ProjectConfig'.DS.'formField')."\r\n";
+			}
 			$findex++;
 		}
 		return $str;

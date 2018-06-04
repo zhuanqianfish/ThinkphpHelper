@@ -1,5 +1,5 @@
 //列表
-public function getList($request, $itemNum = 12){	//每页显示12条数据
+public function ($request, $itemNum = 12){	//每页显示12条数据
     $condition = $request->param('condition');
     return $this->where(json_decode($condition))->paginate($itemNum);
 }

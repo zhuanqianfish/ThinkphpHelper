@@ -143,32 +143,81 @@ function changeColumCase($columInfoArray){
 }
 
 
-//解析字段中文名
+//解析字段中文名 注意：仅为了兼容，以后不再试用
 //tableName	表名
 //fieldName	字段名
 function pressFieldDict($tableName, $fieldName){
-	$dbDect = C('dict.DB_FIELD_DICT');
-	if(array_key_exists($tableName, $dbDect) && array_key_exists($fieldName, $dbDect[$tableName])){
-		if(is_array($dbDect[$tableName][$fieldName])){
-			return $dbDect[$tableName][$fieldName]['asName'];
-		}else{
-			return $dbDect[$tableName][$fieldName];
-		}
-	}else{
-		return $fieldName;
-	}
+	return getFieldTitle($tableName, $fieldName);
 }
 
 
-//解析表中文名
+//解析表中文名  注意：仅为了兼容，以后不再使用
 function pressTableDict($tableName){
-	$dbDect = C('dict.DB_TABLE_DICT');
-	if(array_key_exists($tableName, $dbDect)){
-		return $dbDect[$tableName];
-	}
-	return  $tableName;
+	return getTableTitle($tableName);
 }
 
+//从数据库解析中文表名
+function getTableTitle($tableName){
+	$tableName = C('database.prefix').$tableName;
+	$tableinfo = tphDB('table_info')->where('name',$tableName)->find();
+	if(isset($tableinfo['title'])){
+		return $tableinfo['title'];
+	}
+	return $tableName;
+}
+
+//从数据库解析中文字段名
+function getFieldTitle($tableName, $fieldName){
+	$tableName = C('database.prefix').$tableName;
+	$fieldinfo = tphDB('table_field')->where('table_name',$tableName)
+									->where('field_name',$fieldName)
+									->find();
+	if(isset($fieldinfo['title'])){
+		return $fieldinfo['title'];
+	}
+	return $fieldName;
+}
+
+//根据定义的字段输入类型选择
+//$tableName:表名
+//$fieldName字段名
+//$theme 风格库名称
+//$folder 代码片段所在文件夹
+//值（编辑时页面使用）
+function pressInputTypeTemplate($tableName, $fieldName, $value=null, $codeLib=null, $folder="Form/"){
+	$tableName = C('database.prefix').$tableName;
+	if($codeLib == null){
+		$codeLib = getDbConfig('codeLib');
+	}
+	$templateBasePath = BASE_PATH.DS.CODE_REPOSITORY.DS. $codeLib .DS."view".DS;	//代码所在文件夹
+	$fieldinfo = tphDB('table_field')->where('table_name',$tableName)
+									->where('field_name',$fieldName)
+									->find();
+	if(isset($fieldinfo['input_type'])){
+		if(file_exists($templateBasePath.$folder.$fieldinfo['input_type'].".html")){
+			return $templateBasePath.$folder.$fieldinfo['input_type'].".html";
+		}else{
+			return $templateBasePath.$folder."text.html";//默认返回文本
+		}
+	}
+	return  $templateBasePath.$folder."text.html";
+}
+
+
+if (!function_exists('testView')) {
+    /**
+     * 渲染模板输出
+     * @param string    $template 模板文件
+     * @param array     $vars 模板变量
+     * @param integer   $code 状态码
+     * @param callable  $filter 内容过滤
+     * @return \think\response\View
+     */
+    function testView($template = '', $vars = [], $code = 200)
+    {
+        return \think\Response::create($template, 'view', $code)->assign($vars);
+    }
+}
 
 //读取前端风格模板文件夹列表
 function getThemeList(){
@@ -210,3 +259,20 @@ function getFileListEndWith($rootDir, $fileEnd){
 	}
 	return $fileNameList;
 } 
+
+//获取表单输入选项列表
+//$tableName 表名
+//$fieldName 字段名
+//是否为列表类型 是则返回以‘#’分隔的数组
+function getInputOption($tableName, $fieldName, $isList=false){
+	$resStr = tphDB('table_field')->where('table_name', C('database.prefix').$tableName)
+				->where('field_name', $fieldName)->value('input_value');
+	if($isList){
+		return  explode('#', $resStr);
+	}
+	return $resStr;
+}
+
+function tph2test(){
+	return  dump(getInputOption('admin_node','name', true));
+}

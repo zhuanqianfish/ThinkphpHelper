@@ -2,12 +2,10 @@
 	{volist name="tableInfoArray" id="tableInfo"}
 	{if condition="$tableInfo[$columnNameKey] neq 'id'"}
 	<div class="am-form-group">
-			<label for="{$tableInfo[$columnNameKey]}" class="am-u-sm-12 am-form-label am-text-left">{:pressFieldDict($tableName, $tableInfo[$columnNameKey])}
+			<label for="{$tableInfo[$columnNameKey]}" class="am-u-sm-12 am-form-label am-text-left">{:getFieldTitle($tableName, $tableInfo[$columnNameKey])}
 					<span class="tpl-form-line-small-title">{$tableInfo[$columnNameKey]}</span></label>
 			<div class="am-u-sm-12">
-					<input type="text" class="tpl-form-input am-margin-top-xs" id="{$tableInfo[$columnNameKey]}" name="{$tableInfo[$columnNameKey]}" 
-						placeholder="请输入{:pressFieldDict($tableName, $tableInfo[$columnNameKey])}">
-					<small></small>
+					{$tableInfo['input']}
 			</div>
 	</div>
 	{/if}

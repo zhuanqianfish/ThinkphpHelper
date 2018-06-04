@@ -1,0 +1,18 @@
+{php}
+$optionList = getInputOption($tableName, $tableInfo[$columnNameKey], true);
+{/php}
+{literal}
+    {php}
+        $valueList = []; 
+        if(null !== isset(${/literal}{$tableName}['{$tableInfo[$columnNameKey]}'] {literal}) ){
+            $valueList = explode("#op#", ${/literal}{$tableName}['{$tableInfo[$columnNameKey]}']{literal});
+        }
+    {/php}
+{/literal}
+{volist name="optionList" id="option"}
+<span>{$option}</span>
+<input type="checkbox" value="{$option}" 
+    {literal}{if condition="isset(${/literal}{$tableName}.{$tableInfo[$columnNameKey]} {literal} ) and in_array({/literal}'{$option}', $valueList) {literal}"}
+            checked="checked"{/if}{/literal}
+    class="tpl-form-input am-margin-top-xs" name="{$tableInfo[$columnNameKey]}[]">
+{/volist}

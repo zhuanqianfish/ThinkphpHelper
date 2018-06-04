@@ -2,11 +2,11 @@ $(function() {
     // 读取body data-type 判断是哪个页面然后执行相应页面方法，方法在下面。
     var dataType = $('body').attr('data-type');
     console.log(dataType);
-    for (key in pageData) {
-        if (key == dataType) {
-            pageData[key]();
-        }
-    }
+    // for (key in pageData) {
+    //     if (key == dataType) {
+    //         pageData[key]();
+    //     }
+    // }
     //     // 判断用户是否已有自己选择的模板风格
     //    if(storageLoad('SelcetColor')){
     //      $('body').attr('class',storageLoad('SelcetColor').Color)
@@ -28,7 +28,7 @@ $(function() {
     //     }
 })
 
-
+ /*
 // 页面数据
 var pageData = {
     // ===============================================
@@ -45,7 +45,7 @@ var pageData = {
         // ==========================
         // 百度图表A http://echarts.baidu.com/
         // ==========================
-
+       
         var echartsA = echarts.init(document.getElementById('tpl-echarts'));
         option = {
             tooltip: {
@@ -309,6 +309,7 @@ var pageData = {
     }
 }
 
+*/
 
 // 风格切换
 
@@ -362,4 +363,4 @@ $('.sidebar-nav-sub-title').on('click', function() {
     $(this).siblings('.sidebar-nav-sub').slideToggle(80)
         .end()
         .find('.sidebar-nav-sub-ico').toggleClass('sidebar-nav-sub-ico-rotate');
-})
+});

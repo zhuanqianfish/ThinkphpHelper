@@ -1,0 +1,66 @@
+{extend name="default_layout" /}
+{block name="content"}
+
+<div class="mainbar">
+	<!-- Page heading -->
+	<div class="page-head">
+	  <h2 class="pull-left"><i class="icon-home"></i>权限管理</h2>
+
+	<div class="clearfix"></div>
+	</div>
+	<!-- Page heading ends -->
+	<!-- Matter -->
+	<div class="matter">
+		<div class="container">
+			<div class="row">
+			<div class="col-md-6">
+				<div class="widget">
+					<div class="widget-head">
+					  <div class="pull-left" height="80">
+					  安装配置
+					  </div>
+					  <div class="widget-icons pull-right">
+						<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+						<a href="#" class="wclose"><i class="icon-remove"></i></a>
+					  </div>  
+					  <div class="clearfix"></div>
+					</div>  
+					<div class="widget-content" >
+					<div class="padd">
+                      <div class="form quick-post">
+							<!-- Edit profile form (not working)-->
+							<div class="form-horizontal">  
+									<div class="form-group">
+										<label class="control-label col-lg-2">目标模块:</label>
+										<div class="col-lg-6">       
+											<input  id="moduleName" value="{$moduleName}" disabled="disabled" class="form-control" type="text">                            
+										</div>
+									</div>  
+								<!-- Buttons -->
+								<div class="form-group">
+									<!-- Buttons -->
+									<div class="col-lg-6 col-md-offset-2">   
+									<p>
+									<button type="button" class="btn btn-success" onclick="init('auth')" >生成</button>
+									</p>
+									</div>
+								</div>
+							</div>
+						</div><!--end  paddad-->
+					</div>
+				</div>	
+				</div>	
+			</div>
+		</div>
+		 <div id="msg"></div> 
+		</div><!-- container Graph end -->
+	</div>
+</div>
+
+<script>
+	//初始化，复制文件，创建数据库等
+	function init(){
+		
+	}
+</script>
+{/block}

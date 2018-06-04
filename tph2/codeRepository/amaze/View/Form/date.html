@@ -1,0 +1,14 @@
+
+<input type="text"
+	value="{literal}{if condition="isset(${/literal}{$tableName}.{$tableInfo[$columnNameKey]}{literal})"}{${/literal}{$tableName}.{$tableInfo[$columnNameKey]}{literal}}{/if}"{/literal}
+	class=" am-margin-top-xs" id="{$tableInfo[$columnNameKey]}" name="{$tableInfo[$columnNameKey]}" id="{$tableInfo[$columnNameKey]}"
+	placeholder="请输入{:getFieldTitle($tableName, $tableInfo[$columnNameKey])}">
+
+	<script>
+		$(function(){
+			$('#{$tableInfo[$columnNameKey]}').datetimepicker({
+				language:  'zh-CN',
+				format: 'yyyy-mm-dd hh:ii:ss'
+			});
+		})
+	</script>

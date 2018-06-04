@@ -1,0 +1,58 @@
+<div class="widget-body  am-fr">
+	<div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+		<div class="am-form-group">
+			<div class="am-btn-toolbar">
+				<div class="am-btn-group am-btn-group-xs">
+					<a class="am-btn am-btn-default am-btn-success" href="{literal}{:url({/literal}'{$tableName}{literal}/add')}{/literal}">
+						<span class="am-icon-plus"></span> 新增
+					</a>
+					<!--
+					<button type="button" class="am-btn am-btn-default am-btn-secondary"><span class="am-icon-save"></span> 保存</button>
+					<button type="button" class="am-btn am-btn-default am-btn-warning"><span class="am-icon-archive"></span> 审核</button>
+					<button type="button" class="am-btn am-btn-default am-btn-danger"><span class="am-icon-trash-o"></span> 删除</button>
+					-->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="am-u-sm-12">
+		<table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">
+				<thead>
+					<tr>
+						{volist name="tableInfoArray" id="tableInfo"}
+						<th>{$tableInfo[$columnNameKey]}</th>
+						{/volist}
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+						{literal}{volist name="{/literal}{$tableName}{literal}List" id="vo"}{/literal}
+						<tr class="gradeX">
+								{volist name="tableInfoArray" id="tableInfo"}
+								<td>{literal}{$vo.{/literal}{$tableInfo[$columnNameKey]}}</td>
+								{/volist}
+								<td>
+										<div class="tpl-table-black-operation">
+												<a  href="{literal}{:url({/literal}'{$tableName}{literal}/edit', ['id'=>$vo['id']])}{/literal}">
+													<i class="am-icon-pencil"></i> 编辑
+												</a>
+												<a href="{literal}{:url({/literal}'{$tableName}{literal}/delete', ['id'=>$vo['id']])}{/literal}" onclick='return confirm("确定删除吗？")' class="tpl-table-black-operation-del">
+													<i class="am-icon-trash"></i> 删除
+												</a>
+										</div>
+								</td>
+						</tr>
+						{literal}{/volist}{/literal}
+						<!-- more data -->
+				</tbody>
+		</table>
+	</div>
+	<div class="am-u-lg-12 am-cf">
+
+			<div class="am-fr">
+					<ul class="am-pagination tpl-pagination">
+							{literal}{${/literal}{$tableName}List->render()}
+					</ul>
+			</div>
+	</div>
+</div>

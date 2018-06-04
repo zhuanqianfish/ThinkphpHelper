@@ -1,0 +1,28 @@
+<tr>
+    <td> <span>字段：{$fieldName} <input type="hidden" name="form[{$findex}][field_name]" value="{$fieldName}" > </span> </td>
+    <td> <input class="form-control" type="text" name="form[{$findex}][title]" placeholder="中文描述" value="{$record.title}"> </td>
+    <td> <select class="form-control" name="form[{$findex}][input_type]" id="">
+        <option {if condition="$record.input_type eq 'text'"}selected="selected"{/if} value="text">text</option>
+        <option {if condition="$record.input_type eq 'select'"}selected="selected"{/if} value="select">select</option>
+        <option {if condition="$record.input_type eq 'radio'"}selected="selected"{/if} value="radio">radio</option>
+        <option {if condition="$record.input_type eq 'checkbox'"}selected="selected"{/if} value="checkbox">checkbox</option>
+        <option {if condition="$record.input_type eq 'textarea'"}selected="selected"{/if} value="textarea">textarea</option>
+        <option {if condition="$record.input_type eq 'password'"}selected="selected"{/if} value="password">password</option>
+        <option {if condition="$record.input_type eq 'number'"}selected="selected"{/if} value="number">number</option>
+        <option {if condition="$record.input_type eq 'date'"}selected="selected"{/if} value="date">date</option>
+    </select> </td>
+    <td> <input class="form-control" type="text" name="form[{$findex}][input_value]" value="{$record.input_value}" placeholder="选项值，以#分隔"> </td>
+    <td> <input class="form-control" type="text" name="form[{$findex}][default_value]"  value="{$record.input_value}" placeholder="默认值"> </td>
+    <td> <input class="form-control" type="checkbox" name="form[{$findex}][is_search]"  {if condition="$record.is_search eq 'on'"}checked="checked"{/if} > </td>
+    <td> <input class="form-control" type="checkbox" name="form[{$findex}][is_not_null]" {if condition="$record.is_not_null eq 'on'"}checked="checked"{/if}  > </td>
+    <td><select class="form-control" name="form[{$findex}][searche_type]" id="">
+            <option {if condition="$record.searche_type eq 'text'"}checked="checked"{/if} value="text">text</option>
+            <option {if condition="$record.searche_type eq 'select'"}checked="checked"{/if} value="select">select</option>
+            <option {if condition="$record.searche_type eq 'date'"}checked="checked"{/if} value="date">date</option>
+    </select> </td>
+    <td><input class="form-control" type="checkbox" name="form[{$findex}][is_sort]" {if condition="$record.is_sort eq 'on'"}checked="checked"{/if}  >
+    <td><input class="form-control" type="text" name="form[{$findex}][v_datatype]"  value="{$record.v_datatype}" placeholder="正则或预定义规则"> </td>
+    <td><input class="form-control" type="text" name="form[{$findex}][v_nullmsg]" value="{$record.v_nullmsg}" placeholder="必填项为空时提示"> </td>
+    <td><input class="form-control" type="text" name="form[{$findex}][v_errormsg]" value="{$record.v_errormsg}" placeholder="格式错误时提示"> </td>
+    <th><a href="javascript:alert('功能开发中，敬请期待')">高级选项</a></th>
+</tr>

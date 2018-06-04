@@ -3,7 +3,7 @@
 		if($this->request->isPost()){
 			$flag = $this->model->edit($this->request);
 			if($flag){
-				$this->success('编辑成功', url('getList'));
+				$this->success('编辑成功', url('lists'));
 			}else{
 				$this->error('编辑失败');
 			}

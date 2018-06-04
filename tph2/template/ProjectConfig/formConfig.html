@@ -7,6 +7,10 @@
     #fieldsTable th{
         text-align: center;
     }
+    input[type="checkbox"]{
+        width: 20px;
+        height: 20px;
+    }
 </style>
 <div class="mainbar">
 	    <!-- Page heading -->
@@ -80,9 +84,9 @@
                 <!-- Widget content -->
                 <div class="widget-content">
                     <div class="padd">
-                    <form id="form2" method="post" action="saveTableConfig">
+                    <form id="form2" class="form-inline" method="post" action="saveTableConfig">
                         <input type="hidden" id="table_name" name="table_name" value="">
-                        <table id="fieldsTable">
+                        <table class="table table-hover table-condensed" id="fieldsTable" >
                             <thead>
                                 <th>字段名</th>
                                 <th>中文描述</th>
@@ -92,10 +96,11 @@
                                 <th>作为搜索条件</th>
                                 <th>必填</th>
                                 <th>搜索类型</th>
-                                <th>作为搜索条件</th>
+                                <th>可排序</th>
                                 <th>验证规则</th>
                                 <th>必填为空提示</th>
                                 <th>格式错误提示</th>
+                                <th>高级选项</th>
                             </thead>
                             <tbody>
                             </tbody>
@@ -104,7 +109,6 @@
                             <button class="btn btn-primary">确定</button>
                         </p>
                     </form>
-                    
                 </div>
                 <!-- Widget ends -->
                 <!-- Widget footer -->

@@ -10,6 +10,7 @@ use Think\Model;
 
 //生成模块
 class WedgitCode extends Base {
+	//菜单管理
     public function menu(){
 		$this->assign('db_prefix',C('database.prefix'));
 		$tableNameList = getTableNameList();
@@ -23,7 +24,24 @@ class WedgitCode extends Base {
 		$menuList = $this->getMenuFileList();
 		$this->assign('menuList', $menuList);
 		return $this->fetch('WedgitCode'.DS.'menu');
-    }
+	}
+	
+	//权限管理
+	public function authManage(){
+		$this->assign('db_prefix',C('database.prefix'));
+		$tableNameList = getTableNameList();
+		$this->assign('tableNameList', $tableNameList);
+		$moduleName = getDbConfig('moduleName');
+		$this->assign('moduleName', $moduleName);
+		$layoutName = getDbConfig('theme') == '' ? 'mac_theme' : getDbConfig('theme');
+		$this->assign('layoutName', $layoutName);
+		$codelibName = getDbConfig('codeLib') == '' ? 'default' : getDbConfig('codeLib');
+		$this->assign('codelibName', $codelibName);
+		$menuList = $this->getMenuFileList();
+		$this->assign('menuList', $menuList);
+		
+		return $this->fetch('WedgitCode'.DS.'authManage');
+	}
 	
 	//在指定目录下创建菜单文件
 	public function creatFiles(){

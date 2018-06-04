@@ -24,7 +24,7 @@ class ViewCode extends Base {
 	
 	//一键生成表单文件
 	public function generateAllView(){
-		$defaultActionList = ['add','edit','getList']; //默认生成增，改，查
+		$defaultActionList = ['add','edit','lists']; //默认生成增，改，查
 		$moduleName = I('moduleName');
 		$tableNameList = I('selectTableName');
 		$modelPath = TARGET_PROJECT_PATH.$moduleName.DS.'view'.DS;
@@ -80,14 +80,15 @@ class ViewCode extends Base {
 		$tableName = $tableName ? $tableName : getTableName(I('tableName'));
 		$moduleName = I('moduleName');
 		$controllerName = $tableName;
-		$tableInfoArray = getTableInfoArray($tableName);	
 		$columnNameKey = getColumnNameKey();
+		$tableInfoArray = getTableInfoArray($tableName);
+		//dump($columnNameKey);die;
+		$tableInfoArray = $this->fillFormInputList($tableName, $tableInfoArray, $columnNameKey);
 		$this->assign('tableName', $tableName);
 		$this->assign('controllerName', $controllerName);
 		$this->assign('moduleName', $moduleName);
 		$this->assign('tableInfoArray', $tableInfoArray);
 		$this->assign('columnNameKey', $columnNameKey);
-
 		$theme = I('theme');//代码风格
 		$actionName = $actionName ? $actionName : I('actionName');
 		$templateBasePath = CODE_REPOSITORY.DS. $theme .DS."view".DS;	//代码所在文件夹
@@ -95,6 +96,7 @@ class ViewCode extends Base {
 		$codeBasePath = CODE_REPOSITORY.DS. $codelibName .DS;
 		$template = file_get_contents($templateBasePath . $actionName. '.html');	//读取模板
 		$resCode =  $this->display($template,[],[],['view_path'=>$codeBasePath.'View'.DS]);
+		
 		return $resCode;
 	}
 
@@ -127,5 +129,18 @@ class ViewCode extends Base {
 			$str .= '<option value="'.$tableInfo[$columnNameKey].'" >'.$tableInfo[$columnNameKey]."</option>\r\n";
 		}
 		echo $str;
+	}
+
+	//由于{input}标签无法识别变量，需要预先加载输入组件模板
+	protected function fillFormInputList($tableName, $tableInfoArray, $columnNameKey){
+		$resStr = null;
+		for($i = 0; $i < count($tableInfoArray); $i++){
+			$this->assign('tableInfo',$tableInfoArray[$i]);
+			$this->assign('tableName',$tableName);
+			$this->assign('columnNameKey',$columnNameKey);
+			$tfile = pressInputTypeTemplate($tableName, $tableInfoArray[$i][$columnNameKey]);
+			$tableInfoArray[$i]['input'] = $this->display(file_get_contents($tfile));
+		}
+		return $tableInfoArray;
 	}
 }

@@ -210,7 +210,7 @@ class ControllerCode extends Base {
 	public function makeViewTemplate($actionName = null, $moduleName=null, $theme='default'){
 		$actionName = $actionName ? $actionName : I('actionName');
 		$moduleName = $moduleName ? $moduleName :I('moduleName');
-		$templateBasePath = CODE_REPOSITORY.DS. $theme .DS. "View".DS;	//代码所在文件夹
+		$templateBasePath = CODE_REPOSITORY.DS. $theme .DS. "view".DS;	//代码所在文件夹
 		$template = file_get_contents($templateBasePath . $actionName.".html");	//读取模板
 		$codelibName = getDbConfig('codeLib') == '' ? 'default' : getDbConfig('codeLib');
 		$codeBasePath = CODE_REPOSITORY.DS. $codelibName .DS;

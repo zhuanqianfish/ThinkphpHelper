@@ -1,0 +1,6 @@
+{php} $optionList = getInputOption($tableName, $tableInfo[$columnNameKey], true); {/php}
+<select  class="tpl-form-input am-margin-top-xs" id="{$tableInfo[$columnNameKey]}" name="{$tableInfo[$columnNameKey]}">
+    {volist name="optionList" id="option"}
+    <option value="{$option}">{$option}</option>
+    {/volist}
+</select>

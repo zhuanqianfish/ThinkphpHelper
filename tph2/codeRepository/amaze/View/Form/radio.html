@@ -1,0 +1,8 @@
+{php} $optionList = getInputOption($tableName, $tableInfo[$columnNameKey], true); {/php}
+{volist name="optionList" id="option"}
+<span>{$option}</span>
+<input type="radio" value="{$option}" 
+    {literal}{if condition="isset(${/literal}{$tableName}.{$tableInfo[$columnNameKey]}{literal}) and ${/literal}{$tableName}.{$tableInfo[$columnNameKey]} {literal}eq {/literal} '{$option}' {literal}"}
+    checked="checked"{/if}{/literal}
+    class="am-radio-inline am-margin-top-xs" name="{$tableInfo[$columnNameKey]}">
+{/volist}
