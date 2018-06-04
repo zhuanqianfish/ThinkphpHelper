@@ -3,7 +3,7 @@
 {volist name="menuList" id="menuItem"}
 	<li class="sidebar-nav-link">
 		<a href="{literal}{:url(\\think\\Request::instance()->module().'{/literal}/{:tableNameToModelName($menuItem)}/lists')}">
-				<i class="am-icon-wpforms sidebar-nav-link-logo"></i>{:tableNameToModelName($menuItem)}
+				<i class="am-icon-wpforms sidebar-nav-link-logo"></i>{:getTableTitle($menuItem)}
 		</a>
 	</li>
 {/volist}

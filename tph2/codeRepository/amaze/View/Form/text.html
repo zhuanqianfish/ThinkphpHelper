@@ -1,4 +1,4 @@
 <input type="text" 
-	value="{literal}{if condition="isset(${/literal}{$tableName}.{$tableInfo[$columnNameKey]}{literal})"}{${/literal}{$tableName}.{$tableInfo[$columnNameKey]}{literal}}"{/if}{/literal}
+	value="{literal}{if condition="isset(${/literal}{$tableName}.{$tableInfo[$columnNameKey]}{literal})"}{${/literal}{$tableName}.{$tableInfo[$columnNameKey]}{literal}}{/if}"{/literal}
 	class="tpl-form-input am-margin-top-xs" id="{$tableInfo[$columnNameKey]}" name="{$tableInfo[$columnNameKey]}" 
 	placeholder="请输入{:getFieldTitle($tableName, $tableInfo[$columnNameKey])}">

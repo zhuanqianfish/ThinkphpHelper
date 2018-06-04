@@ -20,7 +20,7 @@
 				<thead>
 					<tr>
 						{volist name="tableInfoArray" id="tableInfo"}
-						<th>{$tableInfo[$columnNameKey]}</th>
+						<th>{:getFieldTitle($tableName, $tableInfo[$columnNameKey])}</th>
 						{/volist}
 						<th>操作</th>
 					</tr>

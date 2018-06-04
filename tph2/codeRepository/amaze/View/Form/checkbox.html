@@ -4,7 +4,7 @@ $optionList = getInputOption($tableName, $tableInfo[$columnNameKey], true);
 {literal}
     {php}
         $valueList = []; 
-        if(null !== isset(${/literal}{$tableName}['{$tableInfo[$columnNameKey]}'] {literal}) ){
+        if(isset(${/literal}{$tableName}['{$tableInfo[$columnNameKey]}'] {literal}) ){
             $valueList = explode("#op#", ${/literal}{$tableName}['{$tableInfo[$columnNameKey]}']{literal});
         }
     {/php}

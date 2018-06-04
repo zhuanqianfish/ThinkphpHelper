@@ -1,5 +1,5 @@
-//列表
-public function lists($request, $itemNum = 12){	//每页显示12条数据
-    $condition = $request->param('condition');
-    return $this->where(json_decode($condition))->paginate($itemNum);
-}
+    //列表
+    public function lists($request, $itemNum = 12){	//每页显示12条数据
+        $condition = $request->param('condition');
+        return $this->where(json_decode($condition))->paginate($itemNum);
+    }

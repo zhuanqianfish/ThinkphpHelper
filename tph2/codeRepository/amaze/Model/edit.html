@@ -1,10 +1,10 @@
-//修改
-public function edit($request){
-    $data = $request->param();
-    foreach($data as $key=>$val){
-        if(is_array($val)){    //处理checkbox情况
-            $data[$key] = implode("#op#", $val);
+    //修改
+    public function edit($request){
+        $data = $request->param();
+        foreach($data as $key=>$val){
+            if(is_array($val)){    //处理checkbox情况
+                $data[$key] = implode("#op#", $val);
+            }
         }
+        return $this->allowField(true)->save($data, ['id' => $data['id']]);
     }
-    return $this->allowField(true)->save($data, ['id' => $data['id']]);
-}
