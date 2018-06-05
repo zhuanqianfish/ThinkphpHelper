@@ -15,12 +15,6 @@ define('APP_NAME', '/tph2');
 
 define('__ROOT__',  dirname(__FILE__));	
 
-//目标项目路径(根据需求修改)
-define('TARGET_PROJECT_PATH', __DIR__.'/../../application/');
-
-//目标发布路径(根据需要修改)
-define('TARGET_PUBLIC_PATH', __DIR__.'/../../public/');
-
 //目标发布名称(用于生成后的前端模板，例如项目入口发布到二级目录需要修改此项)
 define('TARGET_PUBLIC_NAME', '/');
 

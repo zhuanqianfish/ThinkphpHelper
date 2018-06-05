@@ -7,6 +7,10 @@ define('SQLITE_COLUMN_NAME_KEY', 'name');	//sqlite列名键
 define('MYSQL_COLUMN_NAME_KEY', 'column_name');	//mysql列名键
 define('PHP_HEAD', "<?php\r\n");	//php文件头，放模板中会被解析
 
+//设置TPH的数据库定义
+$tphDbConfig = include_once(APP_PATH.'tphdbconfig.php');
+\think\Config::set('tphdb', $tphDbConfig);
+
 //转换带前缀的表名
 //tableName:带前缀的表名
 //首字母大写
@@ -62,7 +66,7 @@ function getTableNameList(){
 //读取项目目录下的文件夹，供用户选择哪个才是module目录
 function getModuleNameList(){
 	$ignoreList = C('tphconfig.ignoreList');
-	$allFileList = getDirList(TARGET_PROJECT_PATH);
+	$allFileList = getDirList(BASE_PATH.getDbConfig('projectPath'));
 	return array_diff($allFileList, $ignoreList);
 }
 

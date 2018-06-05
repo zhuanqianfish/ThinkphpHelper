@@ -47,10 +47,10 @@ class WedgitCode extends Base {
 	public function creatFiles(){
 		$moduleName = I('moduleName');
 		$layoutName = I('layoutName');
-		$modulePath = TARGET_PROJECT_PATH. $moduleName;
+		$modulePath = BASE_PATH.getDbConfig('projectPath'). $moduleName;
 		$themePath = __ROOT__ .DS.CODE_REPOSITORY.DS. $layoutName.DS;
-		if(!file_exists(TARGET_PROJECT_PATH.$moduleName.DS.'view')){//先创建view文件夹
-			FileUtil::createDir(TARGET_PROJECT_PATH.$moduleName.DS.'view');	
+		if(!file_exists(BASE_PATH.getDbConfig('projectPath').$moduleName.DS.'view')){//先创建view文件夹
+			FileUtil::createDir(BASE_PATH.getDbConfig('projectPath').$moduleName.DS.'view');	
 		}
 		foreach(I('selectTableName') as $selectTableName){
 			$tableNameList[] = getTableName($selectTableName);

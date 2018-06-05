@@ -26,11 +26,11 @@ class CreateLayout extends Base {
 	public function creatFiles(){
 		$moduleName = I('moduleName');
 		$layoutName = I('layoutName');
-		$modulePath = TARGET_PROJECT_PATH. $moduleName;
+		$modulePath = BASE_PATH.getDbConfig('projectPath'). $moduleName;
 		$layoutPath	= $modulePath. DS.'view'.DS;
 		$themePath = __ROOT__ .DS.CODE_REPOSITORY.DS. $layoutName.DS;
-		if(!file_exists(TARGET_PROJECT_PATH.$moduleName.DS. 'view')){	//先创建view文件夹
-			FileUtil::createDir(TARGET_PROJECT_PATH.$moduleName.DS. 'view');	
+		if(!file_exists(BASE_PATH.getDbConfig('projectPath').$moduleName.DS. 'view')){	//先创建view文件夹
+			FileUtil::createDir(BASE_PATH.getDbConfig('projectPath').$moduleName.DS. 'view');	
 		}
 		
 		$publicViewFileList = getFileListEndWith($themePath.'view', 'view.html');
@@ -43,8 +43,8 @@ class CreateLayout extends Base {
 			echo $publicViewFile.' 视图公共文件写入成功，路径：'. $layoutPath .'<br>';
 		}
 		
-		FileUtil::copyDir(__ROOT__ .DS.CODE_REPOSITORY.DS. $layoutName.DS. 'public', TARGET_PUBLIC_PATH, true);	//复制public到发布目录
-		echo $layoutName. '/public/ 公共文件发布目录成功，路径：'. TARGET_PUBLIC_PATH .'<br>';
+		FileUtil::copyDir(__ROOT__ .DS.CODE_REPOSITORY.DS. $layoutName.DS. 'public', getDbConfig('projectPublicPath'), true);	//复制public到发布目录
+		echo $layoutName. '/public/ 公共文件发布目录成功，路径：'. getDbConfig('projectPublicPath') .'<br>';
 	}
 	
 }

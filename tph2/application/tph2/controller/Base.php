@@ -19,14 +19,10 @@ class Base extends Controller{
 		define('MODULE_PATH', __ROOT__);	//模块路径
 		
 		//动态读取目标项目配置
-		$targetConfig =  include_once(TARGET_PROJECT_PATH.'config.php');		
-		$dbConfig = include_once(TARGET_PROJECT_PATH.'database.php');
+		$targetConfig =  include_once(BASE_PATH.getDbConfig('projectPath').'config.php');		
+		$dbConfig = include_once(BASE_PATH.getDbConfig('projectPath').'database.php');
 		config('targetConfig', $targetConfig);
 		config('database', $dbConfig);
-
-		//设置TPH的数据库定义
-		$tphDbConfig = include_once(APP_PATH.'tphdbconfig.php');
-		config('tphdb', $tphDbConfig);
 
 		//向代码模板注册一些默认的变量
 		$this->assign('pk', null);	//modelCode 主键

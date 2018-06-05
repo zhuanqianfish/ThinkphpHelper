@@ -36,7 +36,7 @@ class ControllerCode extends Base {
 	//生成控制器文件
 	public function generateControllerFile(){
 		$moduleName = I('moduleName');		
-		$modelPath = TARGET_PROJECT_PATH.$moduleName.DS.'controller'.DS;
+		$modelPath = BASE_PATH.getDbConfig('projectPath').$moduleName.DS.'controller'.DS;
 		$tableName = getTableName(I('tableName'));
 		if(!file_exists($modelPath)){
 			FileUtil::createDir($modelPath);

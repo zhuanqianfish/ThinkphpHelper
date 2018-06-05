@@ -65,7 +65,7 @@ class ModelCode extends Base {
 	//生成单个文件
 	public function generateModelFile(){
 		$moduleName = I('moduleName');		
-		$modelPath = TARGET_PROJECT_PATH.$moduleName.DS.'controller'.DS;
+		$modelPath = BASE_PATH.getDbConfig('projectPath').$moduleName.DS.'controller'.DS;
 		$tableName = getTableName(I('tableName'));
 		if(!file_exists($modelPath)){
 			FileUtil::createDir($modelPath);
@@ -79,7 +79,7 @@ class ModelCode extends Base {
 	//生成模型文件
 	public function createModelFile(){
 		$moduleName = I('moduleName');
-		$modelPath = TARGET_PROJECT_PATH.$moduleName.DS.'model'.DS;
+		$modelPath = BASE_PATH.getDbConfig('projectPath').$moduleName.DS.'model'.DS;
 		$tableName = getTableName(I('tableName'));
 		if(!file_exists($modelPath)){
 			FileUtil::createDir($modelPath);

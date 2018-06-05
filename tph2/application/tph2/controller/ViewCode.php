@@ -27,7 +27,7 @@ class ViewCode extends Base {
 		$defaultActionList = ['add','edit','lists']; //默认生成增，改，查
 		$moduleName = I('moduleName');
 		$tableNameList = I('selectTableName');
-		$modelPath = TARGET_PROJECT_PATH.$moduleName.DS.'view'.DS;
+		$modelPath = BASE_PATH.getDbConfig('projectPath').$moduleName.DS.'view'.DS;
 		$res = '';
 		foreach($tableNameList as $tableName){
 			$tableName = getTableName($tableName);
@@ -54,7 +54,7 @@ class ViewCode extends Base {
 		$theme = I('theme');//代码风格
 		$layoutListStr = I('layoutList');
 		$layoutList = explode(',', $layoutListStr);
-		$modelPath = TARGET_PROJECT_PATH.$moduleName.DS.'view'.DS;
+		$modelPath = BASE_PATH.getDbConfig('projectPath').$moduleName.DS.'view'.DS;
 		if(!file_exists($modelPath)){
 			FileUtil::createDir($modelPath);			
 		}
@@ -104,7 +104,7 @@ class ViewCode extends Base {
 	public function createViewFile($actionName = null){
 		$moduleName = I('moduleName');
 		$tableName = getTableName(I('tableName'));
-		$modelPath = TARGET_PROJECT_PATH.$moduleName.DS.'view'.DS;
+		$modelPath = BASE_PATH.getDbConfig('projectPath').$moduleName.DS.'view'.DS;
 		if(!file_exists($modelPath)){
 			FileUtil::createDir($modelPath);			
 		}
