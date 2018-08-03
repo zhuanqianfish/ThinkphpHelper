@@ -43,7 +43,7 @@ class CreateLayout extends Base {
 			echo $publicViewFile.' 视图公共文件写入成功，路径：'. $layoutPath .'<br>';
 		}
 		
-		FileUtil::copyDir(__ROOT__ .DS.CODE_REPOSITORY.DS. $layoutName.DS. 'public', getDbConfig('projectPublicPath'), true);	//复制public到发布目录
+		FileUtil::copyDir(__ROOT__ .DS.CODE_REPOSITORY.DS. $layoutName.DS. 'public', BASE_PATH.getDbConfig('projectPublicPath'), true);	//复制public到发布目录
 		echo $layoutName. '/public/ 公共文件发布目录成功，路径：'. getDbConfig('projectPublicPath') .'<br>';
 	}
 	
