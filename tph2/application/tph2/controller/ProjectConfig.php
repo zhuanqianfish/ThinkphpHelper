@@ -5,7 +5,7 @@
 //	sjj zhuanqianfish@gmail.com
 //	2014年9月18日
 namespace app\tph2\Controller;
-use \think\Controller;
+use think\Controller;
 
 class ProjectConfig extends Base{
 

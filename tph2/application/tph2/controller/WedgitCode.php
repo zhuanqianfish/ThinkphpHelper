@@ -5,8 +5,8 @@
 //	sjj zhuanqianfish@gmail.com
 //	2014年9月18日
 namespace app\tph2\Controller;
-use Think\Controller;
-use Think\Model;
+use think\Controller;
+use think\Model;
 
 //生成模块
 class WedgitCode extends Base {

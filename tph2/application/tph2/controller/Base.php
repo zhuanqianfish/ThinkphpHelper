@@ -5,8 +5,8 @@
 //	sjj zhuanqianfish@gmail.com
 //	2014年9月18日
 namespace app\tph2\Controller;
-use \think\Controller;
-use \think\Request;
+use think\Controller;
+use think\Request;
 
 class Base extends Controller{
 	public function _initialize()

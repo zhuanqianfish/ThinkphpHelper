@@ -7,10 +7,10 @@
 //	sjj zhuanqianfish@gmail.com
 //	2014年9月18日
 namespace app\tph2\Controller;
-use Think\Controller; 
+use think\Controller; 
 use	app\tph2\Controller\FileUtil;
-use Think\Request;
-use Think\Model;
+use think\Request;
+use think\Model;
 
 class ModelCode extends Base {
 

@@ -5,9 +5,9 @@
 //	sjj zhuanqianfish@gmail.com
 //	2014年9月18日
 namespace app\tph2\Controller;
-use Think\Controller;
-use Think\Model;
-use Think\Request;
+use think\Controller;
+use think\Model;
+use think\Request;
 
 class ControllerCode extends Base {
 	public function index(){	//生成CRUD代码
