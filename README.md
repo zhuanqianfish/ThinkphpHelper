@@ -1,7 +1,7 @@
 ThinkphpHelper 
 =============================================
 
-thinkphp代码生成器-2.10	对应Thinkphp版本：5.0.23
+thinkphp代码生成器-2.21	对应Thinkphp版本：5.0.23
 
 ![ThinkphpHelper](http://weiyunstudio.qiniudn.com/tph2.jpg)
 
@@ -20,7 +20,7 @@ ThinkphpHelper诞生至今多谢大家的支持。在这个版本中我放弃了
 TPH2是针对Thinkphp5开发的版本，原本的TPH继续支持Thinkphp3。在TP5下，只要先配置好你的数据库连接，用把tph2文件夹复制到public（项目公开目录）目录下就可以使用。
 TPH2的设计思路是根据数据库信息用模板引擎解析“代码模板”并生成具体文件，所有的代码模板都放在codeRepository目录下，以'_theme'结尾的是代码风格模板目录，其他文件夹则是逻辑代码模板目录，生成时先把逻辑代码模板包含进风格模板再进行渲染，这样的二段渲染方式可以更加灵活的编写合适自己的代码模板仓库。
 
-
+演示视频:[http://video.weiyunstudio.com/tph.flv](http://video.weiyunstudio.com/tph.flv)
 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 
 项目地址：[https://github.com/zhuanqianfish/ThinkphpHelper](https://github.com/zhuanqianfish/ThinkphpHelper)
