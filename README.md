@@ -1,7 +1,7 @@
 ThinkphpHelper 
 =============================================
 
-thinkphp代码生成器-2.10	对应Thinkphp版本：5.0.19
+thinkphp代码生成器-2.10	对应Thinkphp版本：5.0.23
 
 ![ThinkphpHelper](http://weiyunstudio.qiniudn.com/tph2.jpg)
 
