@@ -6,7 +6,7 @@
 //	weiyunstudio.com
 //	sjj zhuanqianfish@gmail.com
 //	2014年9月18日
-namespace app\tph2\Controller;
+namespace app\tph2\controller;
 use think\Controller;
 
 class ViewCode extends Base {
