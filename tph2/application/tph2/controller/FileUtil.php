@@ -4,7 +4,7 @@
 //	weiyunstudio.com
 //	sjj zhuanqianfish@gmail.com
 //	
-namespace app\tph2\Controller;
+namespace app\tph2\controller;
 
 /**
  * 操纵文件类
