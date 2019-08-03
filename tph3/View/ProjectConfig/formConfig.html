@@ -1,0 +1,140 @@
+{extend name="default_layout" /}
+
+{block name="title"}配置TPH{/block}
+
+{block name="content"}
+<style>
+    #fieldsTable th{
+        text-align: center;
+    }
+    input[type="checkbox"]{
+        width: 20px;
+        height: 20px;
+    }
+</style>
+<div class="mainbar">
+	    <!-- Page heading -->
+	    <div class="page-head">
+	        <h2 class="pull-left"><i class="icon-home"></i>配置</h2>
+            <div class="clearfix"></div>
+	    </div>
+	    <!-- Page heading ends -->
+
+	    <!-- Matter -->
+	    <div class="matter">
+        <div class="container">
+          <!-- Dashboard Graph starts -->
+
+          <div class="row">
+            <div class="col-md-6">
+              <!-- Widget -->
+              <div class="widget">
+                <!-- Widget head -->
+                <div class="widget-head">
+                  <div class="pull-left" height="80">
+				  选择数据表
+				  </div>
+                  <div class="widget-icons pull-right">
+                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+                    <a href="#" class="wclose"><i class="icon-remove"></i></a>
+                  </div>  
+                  <div class="clearfix"></div>
+                </div>              
+
+                <!-- Widget content -->
+                <div class="widget-content">
+                  <div class="padd">
+                    <select class="form-control" name="tableList" id="tableList">
+                        {volist name="tableList" id="table"}
+                            <option value="{$table}">{$table}</option>
+                        {/volist}
+                    </select>
+                    <br>
+                    <p>
+                        <button type="button" onclick="selectTable()" class="btn btn-primary">读取表字段</button>
+                    </p>
+                </div>
+                <!-- Widget ends -->
+				<!-- Widget footer -->
+			  <div class="widget-foot">
+			  </div>
+			  <!-- Widget footer end-->
+              </div>
+            </div>
+        </div>
+        
+     </div>
+     
+     <div class="row">
+        <div class="col-md-12">
+            <!-- Widget -->
+            <div class="widget">
+                <!-- Widget head -->
+                <div class="widget-head">
+                    <div class="pull-left" height="80">
+                    表单项配置
+                    </div>
+                    <div class="widget-icons pull-right">
+                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+                    <a href="#" class="wclose"><i class="icon-remove"></i></a>
+                    </div>  
+                    <div class="clearfix"></div>
+                </div>              
+
+                <!-- Widget content -->
+                <div class="widget-content">
+                    <div class="padd">
+                    <form id="form2" class="form-inline" method="post" action="saveTableConfig">
+                        <input type="hidden" id="table_name" name="table_name" value="">
+                        <table class="table table-hover table-condensed" id="fieldsTable" >
+                            <thead>
+                                <th>字段名</th>
+                                <th>中文描述</th>
+                                <th>表单类型</th>
+                                <th>选项值</th>
+                                <th>默认值</th>
+                                <th>作为搜索条件</th>
+                                <th>必填</th>
+                                <th>搜索类型</th>
+                                <th>可排序</th>
+                                <th>验证规则</th>
+                                <th>必填为空提示</th>
+                                <th>格式错误提示</th>
+                                <th>高级选项</th>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <p>
+                            <button class="btn btn-primary">确定</button>
+                        </p>
+                    </form>
+                </div>
+                <!-- Widget ends -->
+                <!-- Widget footer -->
+                <div class="widget-foot">
+                </div>
+                <!-- Widget footer end-->
+                </div>
+            </div>
+        </div>
+        
+     </div>
+    <!-- 项目配置 ends -->
+    </div>
+   <div class="clearfix"></div>
+
+   <script>
+       //选择表，读取字段信息
+       function selectTable(){
+            var url = "{:url('ProjectConfig/getTableInfo')}";
+            var tableName = $('#tableList').val();
+            $.post(url, {'tableName':tableName}, function(res){
+                $('#fieldsTable > tbody').empty();
+                $('#table_name').val(tableName);
+                $('#fieldsTable > tbody').append(res);
+            });
+       }
+   </script>
+  
+{/block}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <!-- Title and other stuffs -->
+  <title>{block name="title"}ThinkphpHelper V2.20 for Thinkphp5{/block}</title>
+  <meta name="keywords" content="ThinkphpHelper,Thinkphp5代码自动生成,Thinkphp5脚手架,快速原型工具" />
+  <meta name="description" content="ThinkphpHelper,Thinkphp5代码自动生成工具,Thinkphp5脚手架,快速原型工具" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="sjj">
+  <script src="{:BASE_URL}{:PUBLIC_DIR}asset/js/jquery.js"></script> <!-- jQuery -->
+  <!-- Stylesheets -->
+  <link href="{:BASE_URL}{:PUBLIC_DIR}asset/style/bootstrap.css" rel="stylesheet">
+  <!-- Font awesome icon -->
+  <link rel="stylesheet" href="{:BASE_URL}{:PUBLIC_DIR}asset/style/font-awesome.css">
+  <!-- jQuery UI -->
+  <link rel="stylesheet" href="{:BASE_URL}{:PUBLIC_DIR}asset/style/jquery-ui.css">
+  <!-- Calendar -->
+  <link rel="stylesheet" href="{:BASE_URL}{:PUBLIC_DIR}asset/style/fullcalendar.css">
+  <!-- prettyPhoto -->
+  <link rel="stylesheet" href="{:BASE_URL}{:PUBLIC_DIR}asset/style/prettyPhoto.css">
+  <!-- Star rating -->
+  <link rel="stylesheet" href="{:BASE_URL}{:PUBLIC_DIR}asset/style/rateit.css">
+  <!-- Date picker -->
+  <link rel="stylesheet" href="{:BASE_URL}{:PUBLIC_DIR}asset/style/bootstrap-datetimepicker.min.css">
+  <!-- CLEditor -->
+  <link rel="stylesheet" href="{:BASE_URL}{:PUBLIC_DIR}asset/style/jquery.cleditor.css">
+  <!-- Bootstrap toggle -->
+  <link rel="stylesheet" href="{:BASE_URL}{:PUBLIC_DIR}asset/style/bootstrap-switch.css">
+  <!-- Main stylesheet -->
+  <link href="{:BASE_URL}{:PUBLIC_DIR}asset/style/style.css" rel="stylesheet">
+  <!-- Widgets stylesheet -->
+  <link href="{:BASE_URL}{:PUBLIC_DIR}asset/style/widgets.css" rel="stylesheet">
+
+  <!-- HTML5 Support for IE -->
+  <!--[if lt IE 9]>
+  <script src="{:BASE_URL}{:PUBLIC_DIR}asset/js/html5shim.js"></script>
+  <![endif]-->
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{:MODULE_PATH}/img/favicon/favicon.png">
+  <script>
+	$(document).ready(function(){
+		$.post('{:U(MODULE_NAME."/Index/checkVersion")}',
+			function(data){
+				$('#version').html(data);
+			}
+		);
+	});
+  </script>
+</head>
+
+<body>
+<!-- Header starts -->
+    <div class="container">
+      <div class="row">
+
+        <!-- Logo section -->
+        <div class="col-md-4">
+          <!-- Logo. <!-- Logo ends -->
+          <div class="logo">
+            <h1><a href="#">ThinkphpHelper V2.10<span class="bold"></span></a></h1>
+            <p class="meta">还未做好，不要使用不要使用，不要使用   代码生成工具　　　　<a href="https://github.com/zhuanqianfish/ThinkphpHelper" id="version"></a>
+			如果觉得好用，请记得分享给你的好基友们！</p>
+          </div>
+          
+        </div>
+
+        <!-- Button section -->
+        <div class="col-md-4">
+
+        </div>
+
+        <!-- Data section -->
+
+        <div class="col-md-4">
+          <div class="header-data">
+
+            <!-- Traffic data -->
+            <div class="hdata">
+              <div class="mcol-left">
+                <!-- Icon with red background -->
+                <i class="icon-signal bred"></i>
+              </div>
+              <div class="mcol-right">
+                <!-- Number of visitors -->
+                <p><a href="https://github.com/zhuanqianfish/ThinkphpHelper">项目</a> <em>GitHub</em></p>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+
+            <!-- Members data -->
+            <div class="hdata">
+              <div class="mcol-left">
+                <!-- Icon with blue background -->
+                <i class="icon-user bblue"></i>
+              </div>
+              <div class="mcol-right">
+                <!-- Number of visitors -->
+                <p><a href="http://zhuanqianfish.github.io/ThinkphpHelper/donation.html">捐赠</a> <em>donation</em></p>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+      <!-- revenue data
+        <div class="hdata">
+          <div class="mcol-left">
+            <i class="icon-money bgreen"></i>
+          </div>
+          <div class="mcol-right">
+            <p><a href="#">赞助</a><em>support</em></p>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+			-->
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+<!-- Header ends -->
+
+<!-- Main content starts -->
+
+<div class="content">
+
+  	<!-- Sidebar -->
+    {include file="leftmenu" /}
+    <!-- Sidebar ends -->
+  	<!-- Main bar -->
+		{block name="content"}主要内容{/block}
+  	
+</div>
+<!-- Content ends -->
+
+<!-- Footer starts -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+            <!-- Copyright info -->
+            <p class="copy">Copyright &copy; 2014-2018 | <a href="http://weiyunstudio.com">WeiYunStudio.com</a> </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Footer ends -->
+
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+
+<!-- JS -->
+
+<script src="{:BASE_URL}{:PUBLIC_DIR}asset/js/bootstrap.js"></script> <!-- Bootstrap -->
+<script src="{:BASE_URL}{:PUBLIC_DIR}asset/js/jquery-ui-1.9.2.custom.min.js"></script> <!-- jQuery UI -->
+<script src="{:BASE_URL}{:PUBLIC_DIR}asset/js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar -->
+<script src="{:BASE_URL}{:PUBLIC_DIR}asset/js/jquery.rateit.min.js"></script> <!-- RateIt - Star rating -->
+<script src="{:BASE_URL}{:PUBLIC_DIR}asset/js/jquery.prettyPhoto.js"></script> <!-- prettyPhoto -->
+
+<!-- jQuery Notification - Noty -->
+<script src="{:BASE_URL}{:PUBLIC_DIR}asset/js/jquery.noty.js"></script> <!-- jQuery Notify -->
+<script src="{:BASE_URL}{:PUBLIC_DIR}asset/js/themes/default.js"></script> <!-- jQuery Notify -->
+<script src="{:BASE_URL}{:PUBLIC_DIR}asset/js/layouts/bottom.js"></script> <!-- jQuery Notify -->
+<script src="{:BASE_URL}{:PUBLIC_DIR}asset/js/layouts/topRight.js"></script> <!-- jQuery Notify -->
+<script src="{:BASE_URL}{:PUBLIC_DIR}asset/js/layouts/top.js"></script> <!-- jQuery Notify -->
+<!-- jQuery Notification ends -->
+
+<script src="{:BASE_URL}{:PUBLIC_DIR}asset/js/sparklines.js"></script> <!-- Sparklines -->
+<script src="{:BASE_URL}{:PUBLIC_DIR}asset/js/jquery.cleditor.min.js"></script> <!-- CLEditor -->
+<script src="{:BASE_URL}{:PUBLIC_DIR}asset/js/bootstrap-datetimepicker.min.js"></script> <!-- Date picker -->
+<script src="{:BASE_URL}{:PUBLIC_DIR}asset/js/bootstrap-switch.min.js"></script> <!-- Bootstrap Toggle -->
+<script src="{:BASE_URL}{:PUBLIC_DIR}asset/js/filter.js"></script> <!-- Filter for support page -->
+<script src="{:BASE_URL}{:PUBLIC_DIR}asset/js/custom.js"></script> <!-- Custom codes -->
+<script src="{:BASE_URL}{:PUBLIC_DIR}asset/js/charts.js"></script> <!-- Charts & Graphs -->
+
+
+</body>
+</html>

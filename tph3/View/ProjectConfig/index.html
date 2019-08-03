@@ -1,0 +1,179 @@
+{extend name="default_layout" /}
+
+{block name="title"}配置TPH{/block}
+
+{block name="content"}
+<div class="mainbar">
+	    <!-- Page heading -->
+	    <div class="page-head">
+	        <h2 class="pull-left"><i class="icon-home"></i>配置</h2>
+            <div class="clearfix"></div>
+	    </div>
+	    <!-- Page heading ends -->
+
+	    <!-- Matter -->
+	    <div class="matter">
+        <div class="container">
+          <!-- Dashboard Graph starts -->
+
+          <div class="row">
+            <div class="col-md-6">
+              <!-- Widget -->
+              <div class="widget">
+                <!-- Widget head -->
+                <div class="widget-head">
+                  <div class="pull-left" height="80">
+				  项目配置
+				  </div>
+                  <div class="widget-icons pull-right">
+                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+                    <a href="#" class="wclose"><i class="icon-remove"></i></a>
+                  </div>  
+                  <div class="clearfix"></div>
+                </div>              
+
+                <!-- Widget content -->
+                <div class="widget-content">
+                  <div class="form-horizontal">
+                    <form id="form1" method="post">
+                        {volist name="configList" id="config"}
+                        <!--废弃
+                            <p>
+                            <input type="hidden" id="{$config.name}" name="{$config.name}" value="{$config.value}" style="width:50%" >
+                        </p>
+                        -->
+                        {/volist}
+                        <br>
+                        <br>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">项目名称:</label>
+                            <div class="col-lg-6">                               
+                               <input name="projectName" class="form-control" value="项目名" type="text">
+                            </div>
+                            <span class="col-lg-4"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">目标模块:</label>
+                            <div class="col-lg-6">  
+                            <select class="form-control" name="moduleName" id="moduleName">
+                                {volist name="moduleNameList" id="moduleName" }
+                                    <option value="{$moduleName}">{$moduleName}</option>
+                                {/volist}
+                            </select> 
+                            </div> 
+                            
+                            <span class="col-lg-4">目标模块名称</span>
+                        </div> 
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">项目命名空间:</label>
+                            <div class="col-lg-6">                               
+                               <input name="projectName" class="form-control" value="{:getDbConfig('app_namespace')}" type="text">
+                            </div>
+                            <span class="col-lg-4"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">项目路径:</label>
+                            <div class="col-lg-6">                               
+                               <input name="projectPath" class="form-control" value="{:getDbConfig('projectPath')}" type="text">
+                            </div>
+                            <span class="col-lg-4"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">发布路径:</label>
+                            <div class="col-lg-6">                               
+                               <input name="projectPublicPath" class="form-control" value="{:getDbConfig('projectPublicPath')}" type="text">
+                            </div>
+                            <span class="col-lg-4"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">风格模板:</label>
+                            <div class="col-lg-6">                               
+                                <select class="form-control"  name="theme"  id="layoutName">
+                                    {volist name="layoutNameList" id="layoutName" }
+                                        <option value="{$layoutName}">{$layoutName}</option>
+                                    {/volist}
+                                </select>  
+                            </div>
+                            <span class="col-lg-4">默认前端代码模板</span>
+                        </div> 
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">后端代码库:</label>
+                            <div class="col-lg-6">                               
+                                <select class="form-control" name="codelib" id="codelib">
+                                    {volist name="codelibNameList" id="codelibName" }
+                                        <option value="{$codelibName}">{$codelibName}</option>
+                                    {/volist}
+                                </select>  
+                            </div>
+                            <span class="col-lg-4"></span>
+                        </div> 
+
+
+                        <div class="form-group">
+                             <label class="control-label col-lg-2"> </label>
+                            <div class="col-lg-6 ">          
+                                <button type="button" onclick="save()" class="btn btn-primary">确定</button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                </div>
+                <!-- Widget ends -->
+				<!-- Widget footer -->
+			  <div class="widget-foot">
+				  <form class="form-inline">
+					
+				  </form>
+			  </div>
+			  <!-- Widget footer end-->
+              </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+	 </div>
+    <!-- 项目配置 ends -->
+    </div>
+   <div class="clearfix"></div>
+   <!-- 模态框（Modal） -->
+   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        模态框（Modal）标题
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    在这里添加一些文本
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        确定
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+   <script>
+       function save(){
+            var projectName = $('#projectName').val();
+            var theme = $('#theme').val();
+            var codelib = $('#codelib').val();
+
+            $('#form1').submit();
+       }
+   </script>
+  
+{/block}

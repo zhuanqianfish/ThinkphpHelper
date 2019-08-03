@@ -1,0 +1,13 @@
+<!--关联模型表字段信息-->
+<div class="form-group">
+<form>
+<div class="col-md-6">
+	<label class="control-label col-lg-3">{$label}</label><br>
+	<div class="col-lg-7" style="padding-left:30px;">                               
+		<volist name="tableInfoList" id="table" >
+			<input type="radio" name="foreignKey" value="{$table[$columnNameKey]}">{$table[$columnNameKey]}</input><br>
+		</volist> 
+	</div>
+</div>
+</form>
+</div>

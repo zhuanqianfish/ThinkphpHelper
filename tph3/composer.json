@@ -1,0 +1,22 @@
+{
+    "name": "zhuanqianfish/wyFramework",
+    "description": "a php framework just by dint of interest.",
+    "type": "project",
+    "keywords": [
+        "framework",
+        "wyFramework",
+        "ORM"
+    ],
+    "homepage": "https://github.com/zhuanqianfish/wyFramework/",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "zhuanqianfish",
+            "email": "859793114@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "catfan/Medoo": "1.7.2"
+    }
+}

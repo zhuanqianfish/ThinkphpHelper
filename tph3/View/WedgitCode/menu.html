@@ -1,0 +1,142 @@
+{extend name="default_layout" /}
+{block name="content"}
+<script type="text/javascript">
+var db_prefix = '{$db_prefix}';
+
+function gogogo(moduleName, selectTableName, layoutName, codelibName, menuName, saveFile){
+	$.post("{:url(CONTROLLER_NAME.'/creatFiles')}", {'moduleName' : moduleName,'selectTableName' : selectTableName, 
+			 'theme' : layoutName, 'codelib':codelibName, 'menuName':menuName, 'saveFileName':saveFile},
+		function(data){
+			$('#msg').html(data);
+		}
+	);
+}
+
+function readMenuList(){
+	var theme = $('#themeName');
+	$.post("{:CONTROLLER_NAME}/getMenuFileList",{'theme':theme},
+		function(data){
+			console.log(data);
+		}
+	);
+}
+
+$(function(){
+	$('#gogogo').bind("click", function(){
+		var moduleName = $('#moduleName').val();
+		var checkedBox = $('input:checked');
+		var selectTableName = [];
+		var saveFile = $('#saveFileName').val();
+		var menuName = $('#menuName').val();
+		var codelibName = $('#codelibName').val();
+		checkedBox.each(function(){
+			selectTableName.push($(this).val());
+		});
+		layoutName = $('#layoutName').val();
+		console.log(selectTableName);
+		gogogo(moduleName, selectTableName, layoutName,codelibName, menuName, saveFile);
+	});	
+	
+	
+});
+</script>
+<div class="mainbar">
+	<!-- Page heading -->
+	<div class="page-head">
+	  <h2 class="pull-left"><i class="icon-home"></i>生成菜单</h2>
+
+	<div class="clearfix"></div>
+	</div>
+	<!-- Page heading ends -->
+
+
+	<!-- Matter -->
+
+	<div class="matter">
+		<div class="container">
+			<div class="row">
+			<div class="col-md-6">
+				<div class="widget">
+					<div class="widget-head">
+					  <div class="pull-left" height="80">
+					  生成菜单
+					  </div>
+					  <div class="widget-icons pull-right">
+						<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+						<a href="#" class="wclose"><i class="icon-remove"></i></a>
+					  </div>  
+					  <div class="clearfix"></div>
+					</div>  
+					<div class="widget-content" >
+					<div class="padd">
+                      <div class="form quick-post">
+							<!-- Edit profile form (not working)-->
+							<div class="form-horizontal">  
+									<div class="form-group">
+										<label class="control-label col-lg-2">目标模块:</label>
+										<div class="col-lg-6">       
+											<input  id="moduleName" value="{$moduleName}" disabled="disabled" class="form-control" type="text">                            
+										</div>
+									</div>  
+									<!-- Table -->
+								<div class="form-group">
+									<label class="control-label col-lg-3">数据表:</label>
+									<div class="col-lg-6">                               
+										{volist name="tableNameList" id="table" }
+											<input type="checkbox" name="table" value="{$table}" >{$table}</input><br>
+										{/volist} 
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-lg-3">风格模板:</label>
+									<div class="col-lg-6">  
+										<input  id="layoutName" value="{$layoutName}" disabled="disabled" class="form-control" type="text">                            
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label col-lg-3">代码模板:</label>
+									<div class="col-lg-6">  
+										<input  id="codelibName" value="{$codelibName}" disabled="disabled" class="form-control" type="text">                            
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<label class="control-label col-lg-3">菜单模板:</label>
+									<div class="col-lg-6">                               
+										<select class="form-control" id="menuName">
+											{volist name="menuList" id="menu" }
+												<option value="{$menu}">{$menu}</option>
+											{/volist}
+										</select>  
+									</div>
+								</div>
+									
+								<!-- Buttons -->
+								<div class="form-group">
+									<!-- Buttons -->
+									<label class="control-label col-lg-3">保存文件名:</label>
+									<div class="col-lg-6">
+									<p>
+										<input class="form-control"  name="saveFileName" id="saveFileName" type="text" value="menu1" placeholder="（不加后缀）">
+									</p>
+									<p>
+									<button class="btn btn-success" id="gogogo">生成</button>
+										
+									</p>
+									</div>
+								</div>
+							</div>
+						</div><!--end  paddad-->
+					</div>
+				</div>	
+				</div>	
+			</div>
+		</div>
+		  
+		 <div id="msg"></div> 
+		</div><!-- container Graph end -->
+	</div>
+</div>
+{/block}

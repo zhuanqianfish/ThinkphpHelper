@@ -1,0 +1,98 @@
+{extend name="default_layout" /}
+{block name="content"}
+<script type="text/javascript">
+db_prefix = '{$db_prefix}';
+
+
+function createFiles(moduleName, selectTableName){
+	var 	createFlieUrl = '{:U("tph2/ModelCode/creatAllFiles")}';
+	$.post(createFlieUrl, {"moduleName":moduleName,"selectTableName":selectTableName}, function(data){
+		$('#fileMsg').html(data);
+	});
+}
+
+//一键生成模型代码文件
+function createModelFile(){
+	var url = "{:APP_NAME}/ModelCode/createModelFile";
+	moduleName = $('#moduleName').val();
+			checkedBox = $('#selectTables input:checked');
+			selectTableName = [];
+			if(db_prefix != ''){
+				checkedBox.each(function(){
+				selectTableName.push($(this).val().replace(db_prefix,''));
+				});
+			}else{
+			checkedBox.each(function(){
+				selectTableName.push($(this).val());
+				});
+			}
+			createFiles(moduleName, selectTableName);
+}
+
+</script>
+<div class="mainbar">
+	<!-- Page heading -->
+	<div class="page-head">
+		<h2 class="pull-left"><i class="icon-home"></i>快捷生成CRUD模型代码</h2>
+		<div class="clearfix"></div>
+	</div>
+	<!-- Page heading ends -->
+
+
+	<!-- Matter -->
+	<div class="matter">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-6">
+
+						<div class="widget">
+
+							<div class="widget-head">
+								<div class="pull-left">直接生成文件</div>
+								<div class="widget-icons pull-right">
+									<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+									<a href="#" class="wclose"><i class="icon-remove"></i></a>
+								</div>  
+								<div class="clearfix"></div>
+							</div>             
+
+							<div class="widget-content">
+								<div class="padd">
+									<form class="form-horizontal">
+										<div class="form-group">
+											<label class="control-label col-lg-3" for="title">选择模块</label>
+											<div class="col-lg-6"> 
+													<input  id="moduleName" name="moduleName" value="{$moduleName}" disabled="disabled" class="form-control" type="text">   
+
+											</div>
+											</div>
+											<!-- 数据表 -->
+											<div class="form-group" id="selectTables">
+											<label class="control-label col-lg-3">数据表:</label>
+											<div class="col-lg-9">                               
+												{volist name="tableNameList" id="table" }
+													<input type="checkbox" name="table" value="{$table}" >{$table}</input><br>
+												{/volist} 
+											</div>
+											</div>
+											
+										</form>
+								</div>
+							</div>
+								<!-- Widget footer -->
+								<div class="widget-foot">
+									<button type="button" id="createFilesBtn" onclick="createModelFile()" class="btn btn-primary">直接生成文件</button>
+								</div>
+								<!-- Widget footer end-->
+								<div class="widget-foot" id="fileMsg"></div>
+						</div>
+
+					</div><!--end col6-->
+
+		  
+		 <div id="msg"></div> 
+		</div><!-- container Graph end -->
+	</div>
+</div>
+{/block}

@@ -1,0 +1,468 @@
+{extend name="default_layout" /}
+{block name="content"}
+<script type="text/javascript">
+	
+	allPageUrl = '{:CONTROLLER_NAME}/previewAllPage/';
+	allPageCodeUrl = '{:CONTROLLER_NAME}/allPageCode/';
+	allCodeUrl = '{:CONTROLLER_NAME}/allCode/';
+	addPageUrl = '{:CONTROLLER_NAME}/addPage/';
+	addCodeUrl = '{:CONTROLLER_NAME}/addCode/';
+	editPageUrl = '{:CONTROLLER_NAME}/editPage/';
+	editCodeUrl = '{:CONTROLLER_NAME}/editCode/';
+	deleteCodeUrl = '{:CONTROLLER_NAME}/deleteCode/';
+	createFlieUrl = '{:CONTROLLER_NAME}/creatAllFiles/'
+	selectTableName = "['{$selectTableName}']";//
+	
+	db_prefix = '{$db_prefix}';
+
+  //生成控制器文件
+  function generateController(){
+    var url = "{:APP_NAME}/ControllerCode/generateControllerFile";
+    var moduleName = $('#moduleName').val();
+    var tableName = $('#tables').val();
+    var code = $.post(url, {'moduleName':moduleName, 'tableName':tableName}, function(resCode){
+      $('#resultCode').html(resCode);
+    })
+  }
+
+	function gogogo(table){
+    if(db_prefix != ''){
+      table = table.replace(db_prefix,'');
+    }
+    var moduleName = $('#moduleName').val();
+		isPage = $('#isPage').attr("checked");
+		$.post(allPageUrl, {'moduleName':moduleName, "table":table}, function(data){
+		  $('#allPage').html(data);
+		});
+		$.post(allPageCodeUrl, {'moduleName':moduleName, "table":table, "isPage":isPage}, function(data){
+		  $('#allPageCode').html(data);
+		});
+		$.post(allCodeUrl, {'moduleName':moduleName, "table":table, "isPage":isPage}, function(data){
+		  $('#allCode').html(data);
+		});
+		isPage ? $('#pagination').show() : $('#pagination').hide();
+		
+		$.post(addPageUrl, {'moduleName':moduleName, "table":table}, function(data){
+		  $('#addPage').html(data);
+		  $('#addPageCode').html(data);
+		});
+		$.post(addCodeUrl, {'moduleName':moduleName, "table":table}, function(data){
+		  $('#addCode').html(data);
+		});
+		$.post(editPageUrl, {'moduleName':moduleName, "table":table}, function(data){
+		  $('#editPage').html(data);
+		  $('#editPageCode').html(data);
+		});
+		$.post(editCodeUrl, {'moduleName':moduleName, "table":table}, function(data){
+		  $('#editCode').html(data);
+		});
+		$.post(deleteCodeUrl, {'moduleName':moduleName, "table":table} , function(data){
+		  $('#deleteCode').html(data);
+		});
+		
+	}
+
+	function createFiles(moduleName, selectTableName){
+		$.post(createFlieUrl, {"moduleName":moduleName,"selectTableName":selectTableName}, function(data){
+		  $('#fileMsg').html(data);
+		});
+	}
+	
+	jQuery(document).ready(function($) {
+		
+		$('#gogogo').bind("click", function(){
+			table = $('#tables option:selected').val();
+			gogogo(table);
+		});
+		
+		$('#createFilesBtn').bind("click", function(){
+			moduleName = $('#moduleName').val();
+			checkedBox = $('#selectTables input:checked');
+			selectTableName = [];
+			if(db_prefix != ''){
+				checkedBox.each(function(){
+				selectTableName.push($(this).val().replace(db_prefix,''));
+				});
+			}else{
+			checkedBox.each(function(){
+				selectTableName.push($(this).val());
+				});
+			}
+			createFiles(moduleName, selectTableName);
+			
+		});
+		
+		$('#isPage').bind("click",function(){
+			$('#isPage').attr("checked") ? $('#isPage').attr("checked", false) :　$('#isPage').attr("checked", true);
+		});
+		$('#pagination').hide();
+		
+	});
+</script>
+<div class="mainbar">
+	    <!-- Page heading -->
+	    <div class="page-head">
+	      <h2 class="pull-left"><i class="icon-home"></i> 生成控制器代码</h2>
+
+        <div class="clearfix"></div>
+
+	    </div>
+	    <!-- Page heading ends -->
+
+
+
+	    <!-- Matter -->
+
+	    <div class="matter">
+        <div class="container">
+          <!-- Dashboard Graph starts -->
+		<div class="row">
+			<div class="col-md-6">
+
+              <div class="widget">
+
+                <div class="widget-head">
+                  <div class="pull-left">直接生成文件</div>
+                  <div class="widget-icons pull-right">
+                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+                    <a href="#" class="wclose"><i class="icon-remove"></i></a>
+                  </div>  
+                  <div class="clearfix"></div>
+                </div>             
+
+                <div class="widget-content">
+                  <div class="padd">
+                    <form class="form-horizontal">
+					<div class="form-group">
+						<label class="control-label col-lg-3" for="title">目标模块</label>
+						<div class="col-lg-6">  
+            <input  id="moduleName" name="moduleName" value="{$moduleName}" disabled="disabled" class="form-control" type="text">   
+						</div>
+					  </div>
+					  <!-- 数据表 -->
+					  <div class="form-group" id="selectTables">
+						<label class="control-label col-lg-3">数据表:</label>
+						<div class="col-lg-9">                               
+							{volist name="tableNameList" id="table" }
+								<input type="checkbox" name="table" value="{$table}" >{$table}</input><br>
+							{/volist} 
+						</div>
+					  </div>
+					  
+					</form>
+                  </div>
+                </div>
+				<!-- Widget footer -->
+			  <div class="widget-foot">
+					<button type="button" id="createFilesBtn" class="btn btn-primary">直接生成文件</button>
+			  </div>
+			  <!-- Widget footer end-->
+			  <div class="widget-foot" id="fileMsg"></div>
+              </div>
+
+            </div>
+			
+			
+			<div class="col-md-6">
+				<div class="widget">
+					<div class="widget-head">
+					  <div class="pull-left" height="80">
+					  手动生成
+					  </div>
+					  <div class="widget-icons pull-right">
+						<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+						<a href="#" class="wclose"><i class="icon-remove"></i></a>
+					  </div>  
+					  <div class="clearfix"></div>
+					</div>  
+					<div class="widget-content" >
+					<div class="padd">	  
+           <div class="form quick-post">
+						  <!-- Edit profile form (not working)-->
+						  <div class="form-horizontal">                        
+							  <!-- Table -->
+							  <div class="form-group">
+								<label class="control-label col-lg-3">数据表:</label>
+								<div class="col-lg-9">                               
+									<select class="form-control" id="tables">
+										{volist name="tableNameList" id="table" }
+											<option name="table" value="{$table}" >{$table}</option><br>
+										{/volist} 
+									</select>  
+								</div>
+							  </div>              
+							  <label class="control-label col-lg-1" for="title">生成带分页代码</label>
+								<div class="col-lg-3"> 
+								  <input type="checkbox" id="isPage" checked />
+								</div>
+							  <!-- Buttons -->
+							  <div class="form-group">
+								 <!-- Buttons -->
+								 <div class="col-lg-offset-2 col-lg-9">
+                  <button class="btn btn-success" id="gogogo">生成</button>
+                  
+									<button type="button" class="btn btn-success" id="generateController" onclick="generateController()">生成控制器文件</button>
+								 </div>
+							  </div>
+						  </div>
+						</div><!--end  paddad-->
+			
+					</div>
+        </div>
+        <div class="widget-foot">
+					<div id="resultCode"></div>
+			  </div>
+        
+				</div>	
+			</div>
+		</div>
+		
+          <div class="row">
+		  <div class="col-md-12">
+
+              <!-- Widget -->
+              <div class="widget">
+                <!-- Widget head -->
+                <div class="widget-head">
+                  <div class="pull-left">
+				  所有列表预览(填充示例数据)
+				  </div>
+                  <div class="widget-icons pull-right">
+                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+                    <a href="#" class="wclose"><i class="icon-remove"></i></a>
+                  </div>  
+                  <div class="clearfix"></div>
+                </div>              
+
+                <!-- Widget content -->
+                <div class="widget-content">
+                  <div class="padd">
+					<div id="allPage">(暂无)</div>
+
+                   <ul class="pagination pull-right" id="pagination">
+                        <li><a href="#">上一页</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">下一页</a></li>
+                      </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+                <!-- Widget ends -->
+				
+              </div>
+            </div>
+          </div>
+          <!-- all part1 ends -->
+		  
+		  <div class="row">
+		  <div class="col-md-6">
+
+              <div class="widget">
+
+                <div class="widget-head">
+                  <div class="pull-left">所有记录列表View代码</div>
+                  <div class="widget-icons pull-right">
+                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+                    <a href="#" class="wclose"><i class="icon-remove"></i></a>
+                  </div>  
+                  <div class="clearfix"></div>
+                </div>             
+
+                <div class="widget-content">
+                  <div class="padd">
+                    <textarea class="form-control" id="allPageCode" rows="12">	
+					</textarea>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+		  
+		  <div class="col-md-6">
+
+              <div class="widget">
+
+                <div class="widget-head">
+                  <div class="pull-left">所有记录列表Controller代码</div>
+                  <div class="widget-icons pull-right">
+                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+                    <a href="#" class="wclose"><i class="icon-remove"></i></a>
+                  </div>  
+                  <div class="clearfix"></div>
+                </div>             
+
+                <div class="widget-content">
+                  <div class="padd">
+                    <textarea class="form-control" id="allCode" rows="12">	
+					</textarea>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <!-- all parts ends -->
+
+          <!-- Chats, File upload and Recent Comments -->
+          <div class="row">
+            <div class="col-md-4">
+              <div class="widget">
+                <!-- Widget title -->
+                <div class="widget-head">
+                  <div class="pull-left">新建-效果预览</div>
+                  <div class="widget-icons pull-right">
+                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+                    <a href="#" class="wclose"><i class="icon-remove"></i></a>
+                  </div>  
+                  <div class="clearfix"></div>
+                </div>
+
+                <div class="widget-content">
+					<div class="padd">
+						<div class="form quick-post"  id="addPage"></div>
+					</div>
+                </div>
+              </div>
+            </div>
+			
+			
+			<div class="col-md-4">
+              <div class="widget">
+                <!-- Widget title -->
+                <div class="widget-head">
+                  <div class="pull-left">新建-View代码</div>
+                  <div class="widget-icons pull-right">
+                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+                    <a href="#" class="wclose"><i class="icon-remove"></i></a>
+                  </div>  
+                  <div class="clearfix"></div>
+                </div>
+
+                <div class="widget-content" >
+					<textarea class="form-control" id="addPageCode" rows="12">	
+					</textarea>
+                </div>
+              </div>
+            </div>
+			
+			
+			<div class="col-md-4">
+              <div class="widget">
+                <!-- Widget title -->
+                <div class="widget-head">
+                  <div class="pull-left">新建-Controller代码</div>
+                  <div class="widget-icons pull-right">
+                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+                    <a href="#" class="wclose"><i class="icon-remove"></i></a>
+                  </div>  
+                  <div class="clearfix"></div>
+                </div>
+
+               <div class="widget-content" >
+                  <textarea class="form-control" id="addCode" rows="12">	
+					</textarea>
+                </div>
+              </div>
+            </div>
+		</div>
+		<!--end add part-->
+
+			
+		<div class="row">
+			<div class="col-md-4">
+              <div class="widget">
+                <!-- Widget title -->
+                <div class="widget-head">
+                  <div class="pull-left">编辑-效果预览</div>
+                  <div class="widget-icons pull-right">
+                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+                    <a href="#" class="wclose"><i class="icon-remove"></i></a>
+                  </div>  
+                  <div class="clearfix"></div>
+                </div>
+
+                <div class="widget-content">
+					<div class="padd">
+						<div class="form quick-post"  id="editPage"></div>
+					</div>
+                </div>
+              </div>
+            </div>
+		
+			<div class="col-md-4">
+              <div class="widget">
+                <!-- Widget title -->
+                <div class="widget-head">
+                  <div class="pull-left">编辑View代码</div>
+                  <div class="widget-icons pull-right">
+                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+                    <a href="#" class="wclose"><i class="icon-remove"></i></a>
+                  </div>  
+                  <div class="clearfix"></div>
+                </div>
+
+               <div class="widget-content" >
+					<textarea class="form-control" id="editPageCode" rows="12">	
+					</textarea>
+                </div>
+              </div>
+            </div>
+			
+			
+			<div class="col-md-4">
+              <div class="widget">
+                <!-- Widget title -->
+                <div class="widget-head">
+                  <div class="pull-left">编辑-Controller代码</div>
+                  <div class="widget-icons pull-right">
+                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+                    <a href="#" class="wclose"><i class="icon-remove"></i></a>
+                  </div>  
+                  <div class="clearfix"></div>
+                </div>
+
+               <div class="widget-content" >
+                  <textarea class="form-control" id="editCode" rows="12">	
+					</textarea>
+                </div>
+              </div>
+            </div>
+        </div>
+		<!--end edit part-->
+			
+			
+		<div class="row">
+			<div class="col-md-6">
+              <div class="widget">
+                <!-- Widget title -->
+                <div class="widget-head">
+                  <div class="pull-left">删除-Controller代码</div>
+                  <div class="widget-icons pull-right">
+                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+                    <a href="#" class="wclose"><i class="icon-remove"></i></a>
+                  </div>  
+                  <div class="clearfix"></div>
+                </div>
+
+               <div class="widget-content" >
+                  <textarea class="form-control" id="deleteCode" rows="12">	
+					</textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+			<!--end delete part2-->
+        </div>
+		</div>
+
+		<!-- Matter ends -->
+
+    </div>
+
+   <!-- Mainbar ends -->
+   <div class="clearfix"></div>
+  {/block}

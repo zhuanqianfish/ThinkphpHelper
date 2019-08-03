@@ -1,0 +1,366 @@
+{extend name="default_layout" /}
+{block name="content"}
+<script type="text/javascript">
+db_prefix = '{$db_prefix}';
+
+//读取数据表对应列
+function readTableColume(){
+	var tableName = $('#tableNameList').val();
+}
+
+//生成模型代码
+function generateModelCode(){
+	var url = "{:APP_NAME}/ModelCode/generateModelCode";
+	//var url = "{url('generateModelCode')}"
+	var moduleName = $('#moduleName2').val();
+	var tableName = $('#tableNameList2').val();
+	var code = $.post(url, {'moduleName':moduleName, 'tableName':tableName}, function(resCode){
+		$('#resultCode').html(resCode);
+	})
+}
+
+//一键生成模型代码文件
+function createModelFile(){
+	var url = "{:APP_NAME}/ModelCode/createModelFile";
+	var moduleName = $('#moduleName2').val();
+	var tableName = $('#tableNameList2').val();
+	var code = $.post(url, {'moduleName':moduleName, 'tableName':tableName}, function(resCode){
+		$('#resultCode').html(resCode);
+	})
+}
+
+//一键生成Controller代码文件
+function createControllerFile(){
+	var url = "{:APP_NAME}/ModelCode/createModelFile";
+	var moduleName = $('#moduleName2').val();
+	var tableName = $('#tableNameList2').val();
+	var code = $.post(url, {'moduleName':moduleName, 'tableName':tableName}, function(resCode){
+		$('#resultCode').html(resCode);
+	})
+}
+
+
+</script>
+<div class="mainbar">
+	<!-- Page heading -->
+	<div class="page-head">
+		<h2 class="pull-left"><i class="icon-home"></i>手动生成自定义模型代码(尚未完善，不要使用)</h2>
+		<div class="clearfix"></div>
+	</div>
+	<!-- Page heading ends -->
+
+
+	<!-- Matter -->
+	<div class="matter">
+		<div class="container">
+			<div class="row">
+			<div class="col-md-6">
+				<div class="widget">
+					<div class="widget-head">
+					  <div class="pull-left" height="80">
+						选择目标模块
+					  </div>
+					  <div class="widget-icons pull-right">
+						<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+						<a href="#" class="wclose"><i class="icon-remove"></i></a>
+					  </div>  
+					  <div class="clearfix"></div>
+					</div>  
+					<div class="widget-content" >
+					<div class="padd">
+					<!--<p>一些注释</p>-->
+                      <div class="form quick-post">
+						  <!-- Edit profile form (not working)-->
+						  <div class="form-horizontal">  
+								<div class="form-group">
+									<label class="control-label col-lg-3"  style="width:120px">目标模块:</label>
+									<div class="col-lg-9">                               
+										<select class="form-control" id="moduleName">
+										  {volist name="moduleNameList" id="moduleName"}
+											<option value="{$moduleName}">{$moduleName}</option>
+										  {/volist}
+										</select> 
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label col-lg-3"  style="width:120px">选择表:</label>
+									<div class="col-lg-9">                               
+										<select class="form-control" id="tableNameList">
+										  {volist name="tableNameList" id="tableName"}
+											<option value="{$tableName}">{$tableName}</option>
+										  {/volist}
+										</select>
+										<p>
+											<button onclick="readTableColume()" type="button" class="btn btn-success">确定</button>
+										</p> 
+									</div>
+								</div>
+							</div>	
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+			<!--end col6-->
+
+			<div class="col-md-6">
+				<div class="widget">
+					<div class="widget-head">
+					  <div class="pull-left" height="80">
+						一键生成
+					  </div>
+					  <div class="widget-icons pull-right">
+						<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+						<a href="#" class="wclose"><i class="icon-remove"></i></a>
+					  </div>  
+					  <div class="clearfix"></div>
+					</div>  
+					<div class="widget-content" >
+					<div class="padd">
+					<!--<p>生成</p>-->
+             <div class="form quick-post">
+						  <!-- Edit profile form (not working)-->
+						  <div class="form-horizontal">  
+								<div class="form-group">
+									<label class="control-label col-lg-3"  style="width:120px">目标模块:</label>
+									<div class="col-lg-9">                               
+										<select class="form-control" id="moduleName2">
+										  {volist name="moduleNameList" id="moduleName"}
+											<option value="{$moduleName}">{$moduleName}</option>
+										  {/volist}
+										</select> 
+									</div>
+								</div>
+							
+							<div class="form-group">
+								<label class="control-label col-lg-3"  style="width:120px">选择表:</label>
+								<div class="col-lg-9">                               
+									<select class="form-control" id="tableNameList2">
+										{volist name="tableNameList" id="tableName"}
+										<option value="{$tableName}">{$tableName}</option>
+										{/volist}
+									</select>
+									<p>
+											<button onclick="generateModelCode()" type="button" class="btn btn-success">生成代码</button>
+											<button onclick="createModelFile()" type="button" class="btn btn-primary">生成文件</button>
+									</p> 
+								</div>
+							</div>
+						</div>
+
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>	<!--end col6-->
+		</div>
+			<div class="row">
+			
+			<div class="col-md-6">
+				<div class="widget">
+					<div class="widget-head">
+					  <div class="pull-left" height="80">
+						配置模型信息
+					  </div>
+					  <div class="widget-icons pull-right">
+						<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+						<a href="#" class="wclose"><i class="icon-remove"></i></a>
+					  </div>  
+					  <div class="clearfix"></div>
+					</div>  
+					<div class="widget-content" >
+					<div class="padd">
+                      <div class="form quick-post">
+						  <div class="form-horizontal">
+							<b>关联模型</b>	 
+								<div class="form-group">
+									<label class="control-label col-lg-4" style="width:120px">模型数据表:</label>
+									<div class="col-lg-9"> 
+										<select class="form-control" id="tableName1">
+											{volist name="tableNameList" id="table" }
+												<option value="{$table}" >{$table}</option>
+											{/volist}
+										</select> 
+									</div>	
+								</div> 
+							 
+								<div class="form-group">
+									<label class="control-label col-lg-3"  style="width:120px">关联种类:</label>
+									<div class="col-lg-9">                               
+										<select class="form-control" id="mapping_type">
+											<option value="HAS_ONE">一对一(HAS_ONE)</option>
+											<option value="HAS_MANY">一对多(HAS_MANY)</option>
+											<option value="BELONGS_TO">从属于(BELONGS_TO)</option>
+											<option value="MANY_TO_MANY">多对多(MANY_TO_MANY)</option>
+										</select> 
+									</div>
+								</div>							
+								<hr>
+								<div class="form-group">
+									<label class="control-label col-lg-4" style="width:120px">对应数据表:</label>
+									<div class="col-lg-9"> 
+										<select class="form-control" id="tableName2">
+											{volist name="tableNameList" id="table" }
+												<option value="{$table}" >{$table}</option>
+											{/volist}
+										</select> 
+									</div>
+								</div> 
+								<div class="form-group">
+									<label class="control-label col-lg-4" style="width:120px">关系数据表:</label>
+									<div class="col-lg-9"> 
+										<select class="form-control" id="tableName3" disabled='disabled'>
+											{volist name="tableNameList" id="table" }
+												<option value="{$table}" >{$table}</option>
+											{volist} 
+										</select> 
+									</div>
+								</div>
+
+							  <hr>
+							  <div class="form-group">
+									<label class="control-label col-lg-4" style="width:120px">关联名称：</label>
+									<div class="col-lg-9"> 
+										<input type="text" id="mapping_name"  /> (mapping_name,注意不要和当前模型的字段有重复)
+									</div>
+								</div>
+							  <hr>
+							  <div class="form-group">
+								<div id="foreignerKeyTableInfo"></div>
+								<div id="relationshipTableInfo"></div>
+							  </div>
+							  <hr>
+							  <div class="form-group">
+								<textarea class="form-control" id="resultCode" rows="12"></textarea>
+							  </div>
+							  
+							  <!-- Buttons -->
+							  <div class="form-group" id="relationshipButton" >
+								 <!-- Buttons -->
+								 <div class="col-lg-offset-1 col-lg-2">
+									<button class="btn btn-success" id="relationCodeBtn">生成关联模型手工代码</button>
+								 </div>
+								 <div class="col-lg-offset-1 col-lg-2">
+									<button class="btn btn-info" id="addRelationCodeBtn">添加关联代码片段</button>
+								 </div>
+								 <div class="col-lg-offset-1 col-lg-2">
+									<button class="btn btn-primary" id="creatRelationFileBtn">直接生成关联模型文件</button>
+								 </div>
+							  </div>
+								<div class="col-lg-offset-1" id="relationResult"></div>
+						  </div>
+						</div><!--end  paddad-->
+					</div>
+				</div>	
+				</div>	
+			</div>
+			
+		
+		<div class="col-md-6">
+				<div class="widget">
+					<div class="widget-head">
+					  <div class="pull-left" height="80">
+						视图模型
+					  </div>
+					  <div class="widget-icons pull-right">
+						<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+						<a href="#" class="wclose"><i class="icon-remove"></i></a>
+					  </div>  
+					  <div class="clearfix"></div>
+					</div>  
+					<div class="widget-content" >
+						<div class="padd">
+						<!--<p>一些注释</p>-->
+							<div class="form quick-post">
+								<div class="form-horizontal">
+								 <div class="form-group">
+									<label class="control-label col-lg-4" style="width:120px">视图数据表:</label>
+									<div class="col-lg-9"> 
+										<select class="form-control" id="viewTable1">
+											{volist name="tableNameList" id="table" }
+												<option value="{$table}" >{$table}</option>
+											{volist} 
+										</select> 
+									</div>
+								<div id="viewTable1Info"></div>
+								</div>
+							  <hr>
+							  <div class="form-group">
+									<label class="control-label col-lg-4" style="width:120px">关联数据表:</label>
+									<div class="col-lg-9"> 
+										<select class="form-control" id="viewTable2">
+											{volist name="tableNameList" id="table" }
+												<option value="{$table}" >{$table}</option>
+											{/volist} 
+										</select> 
+									</div>
+								<div id="viewTable2Info"></div>
+								</div>
+							  <hr>
+							  <!-- Buttons -->
+							  <div class="form-group">
+								<label class="control-label col-lg-4" style="width:120px">视图表字段:</label>
+									<div class="col-lg-9"> 
+										<select class="form-control" id="viewModuleOn1">
+										</select> 
+									</div>
+								</div>
+								<div class="form-group">
+								<label class="control-label col-lg-4" style="width:120px">关联表字段:</label>
+									<div class="col-lg-9"> 
+										<select class="form-control" id="viewModuleOn2">
+										</select> 
+									</div>
+								</div>
+								<div class="form-group">
+									 <!-- Buttons -->
+									 <div class="col-lg-offset-2 col-lg-9">
+										<button class="btn btn-success" id="readOnColum">读取关联条件字段</button>
+									 </div>
+								</div>
+								
+								<div class="form-group">
+									 <label class="control-label col-lg-4" style="width:120px">JOIN类型:</label>
+									<div class="col-lg-9"> 
+										<select class="form-control" id="joinType">
+											<option value="JOIN">(JOIN)</option>
+											<option value="INNER">INNER</option>
+											<option value="LEFT">LEFT</option>
+											<option value="RIGHT">RIGHT</option>
+											<option value="FULL">FULL</option>
+										</select> 
+									</div>
+								</div>
+							   <hr>
+							  <div class="form-group">
+								<textarea class="form-control" id="viewCode" rows="12"></textarea>
+							  </div>
+							  
+							  <!-- Buttons -->
+							  <div class="form-group" id="relationshipButton" >
+								 <!-- Buttons -->
+								 <div class="col-lg-offset-1 col-lg-2">
+									<button class="btn btn-success" id="viewCodeBtn">生成视图模型手工代码</button>
+								 </div>
+								 <div class="col-lg-offset-1 col-lg-2">
+									<button class="btn btn-info" id="addViewCodeBtn">添加关联代码片段</button>
+								 </div>
+								 <div class="col-lg-offset-1 col-lg-2">
+									<button class="btn btn-primary" id="createViewFileBtn">直接生成关联模型文件</button>
+								 </div>
+							  </div>
+								<div class="col-lg-offset-1" id="viewResult"></div>
+								</div> 
+							</div>	
+						</div><!--end  paddad-->
+					</div>	
+				</div>	
+			</div>
+		</div>
+		  
+		 <div id="msg"></div> 
+		</div><!-- container Graph end -->
+	</div>
+</div>
+{/block}
